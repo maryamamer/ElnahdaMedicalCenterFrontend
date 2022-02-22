@@ -1,0 +1,9 @@
+ul.no-bullets {
+    list-style-type: none; 
+    
+
+  }
+footer{
+  margin: 0;
+  padding: 0;
+}

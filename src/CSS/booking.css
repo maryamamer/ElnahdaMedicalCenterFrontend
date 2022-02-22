@@ -1,0 +1,70 @@
+@font-face {
+    font-family: Nav;
+    src: url("../Fonts/Cairo/Cairo-VariableFont_wght.ttf");
+  }
+.well {
+    width: 50%;
+    margin:auto;
+    border: solid 2px black;
+    margin-top:20px;
+    background-color :white;
+    content:"";
+    padding:10px;
+    -webkit-box-shadow: 0 0 20px rgba(198, 156, 0, 1);
+    -moz-box-shadow: 0 0 20px rgba(198, 156, 0, 1);
+    box-shadow: 0 5px 20px #add8e6;
+}
+
+.well-header {
+    font-size: 2em;
+
+
+    color: black;
+
+}
+
+#disabledSelect{
+    height: 30px;
+}
+/*
+.form-control {
+    height: 30px;
+}
+*/
+.form-group1 {
+    padding-bottom: 45px;
+    height: 5px;
+}
+
+
+
+#disabledSelect{
+    padding-bottom: 25px;
+}
+
+.input-group-addon,.fa> fa-calendar {
+    color: #FFE071;
+    background: #1E2749;
+    border: solid 1px #1E2749;
+}
+
+p, label, checkbox {
+    font-size: 1em;
+    font-weight: bold;
+    color:black;
+
+}
+
+.header_p {
+    font-size: 1.1em;
+}
+
+.btn{
+    color: black;
+    background: white;
+    border: solid 1px #1E2749;
+}
+
+.help-block {
+    color: #1E2749;
+}

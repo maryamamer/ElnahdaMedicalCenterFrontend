@@ -1,0 +1,228 @@
+@font-face {
+    font-family: Nav;
+    src: url("../Fonts/Cairo/Cairo-VariableFont_wght.ttf");
+  }
+/*--------------------------------------------------------------
+# Sections General
+--------------------------------------------------------------*/
+section {
+  padding: 60px 0;
+  overflow: hidden;
+}
+
+.section-bg {
+  background-color: #fbfdff;
+}
+
+.section-title {
+  text-align: center;
+  padding-bottom: 30px;
+}
+.section-title h2 {
+  font-size: 32px;
+  font-weight: bold;
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  position: relative;
+}
+.section-title h2::after {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 50px;
+  height: 3px;
+  background: #1e386d;
+  bottom: 0;
+  left: calc(50% - 25px);
+}
+.section-title p {
+  margin-bottom: 0;
+}
+
+/*--------------------------------------------------------------
+  # Featured Services
+  --------------------------------------------------------------*/
+  .featured-services .icon-box>h4 {
+
+  color: #c59a0b;
+  text-decoration: none;
+  }
+.featured-services .icon-box {
+
+  padding: 30px;
+  position: relative;
+  overflow: hidden;
+  background: #fff;
+  box-shadow: 0 0 29px 0 rgba(68, 88, 144, 0.12);
+  transition: all 0.3s ease-in-out;
+  border-radius: 8px;
+  z-index: 1;
+}
+.featured-services .icon-box::before {
+  content: "";
+  position: absolute;
+  background: #d9f1f2;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  top: 100%;
+  transition: all 0.3s;
+  z-index: -1;
+}
+.featured-services .icon-box:hover::before {
+  background: #1e386d;
+  top: 0;
+  border-radius: 0px;
+}
+.featured-services .description {
+  font-size: 20px;
+  line-height: 30px;
+  margin-bottom: 0;
+}
+
+.featured-services .icon-box:hover .description {
+  color: #fff;
+}
+/*--------------------------------------------------------------
+# appointment
+--------------------------------------------------------------*/
+.appointment {
+  background: #1e386d;
+  color: #fff;
+  background-size: cover;
+  padding: 60px 0;
+}
+.appointment h3 {
+  font-size: 28px;
+  font-weight: 700;
+}
+.appointment .appointment-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: 1px;
+  display: inline-block;
+  padding: 10px 35px;
+  border-radius: 25px;
+  transition: 0.5s;
+  margin-top: 10px;
+  border: 2px solid #fff;
+  color: #fff;
+}
+.appointment .appointment-btn:hover {
+  background: #fff;
+  color: #1e386d;
+}
+
+.about .content h3 {
+    font-weight: 700;
+    font-size: 40px;
+  }
+  .about .content ul {
+    list-style: none;
+    padding: 0;
+  }
+  .about .content ul li {
+    padding-bottom: 10px;
+  }
+  .about .content ul i {
+    font-size: 24px;
+    padding-right: 4px;
+    color: #1e386d;
+  }
+  .about .content p:last-child {
+    margin-bottom: 0;
+  }
+
+.description2 {
+  font-size: 22px;
+  line-height: 28px;
+  margin-bottom: 0;
+}
+/*--------------------------------------------------------------
+# Frequently Asked Questioins
+--------------------------------------------------------------*/
+.faq {
+    padding: 60px 0;
+  }
+  .faq .faq-list {
+    padding: 0;
+    list-style: none;
+  }
+  .faq .faq-list li {
+    border-bottom: 1px solid #1e386d;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+  }
+ 
+  .faq .faq-list i {
+    font-size: 16px;
+    position: absolute;
+    left: 0;
+    top: -2px;
+  }
+  .faq .faq-list p {
+    margin-bottom: 0;
+    padding: 10px 0 0 25px;
+  }
+  .faq .faq-list .icon-show {
+    display: none;
+  }
+  .faq .faq-list .collapsed {
+    color: rgb(7, 7, 7);
+  }
+  .faq .faq-list .collapsed:hover {
+    color: #1e386d;
+  }
+  .faq .faq-list .collapsed .icon-show {
+    display: inline-block;
+    transition: 0.6s;
+  }
+  .faq .faq-list .collapsed .icon-close {
+    display: none;
+    transition: 0.6s;
+  }
+
+/*--------------------------------------------------------------
+# Slider
+--------------------------------------------------------------*/
+  .carousel-inner img {
+    width: 100%;
+    height: 100%;
+  }
+
+  #hero .carousel-caption {
+
+    text-align: center;
+    background: rgba(255, 255, 255, 0.9);
+    padding-top: 100px;
+    padding-bottom: 30px;
+    margin-bottom: 50px;
+    border-top: 4px solid #1e386d;
+  }
+  @media (max-width: 1200px) {
+
+    #hero .carousel-caption {
+
+      margin-left: 50px;
+      margin-right: 50px;
+    }
+  }
+
+  #hero h2 {
+
+    color: #2f2f2f;
+    margin-bottom: 90px;
+    font-size: 40px;
+    font-weight: 700;
+    align-items:center;
+    justify-content:center;
+    display: flex;
+  }
+
+  #hero p {
+
+    margin: 0 auto 30px auto;
+    color: #555555;
+  }
