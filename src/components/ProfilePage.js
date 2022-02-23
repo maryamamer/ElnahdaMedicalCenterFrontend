@@ -1,16 +1,16 @@
 
 
-import React from "react";
 import pp from "../media/images/pp.png";
 import "../CSS/Profile.css";
 import axios from "axios";
 import { connect } from 'react-redux';
 import jwtDecode from "jwt-decode";
+import { React, useState, useEffect, Fragment } from "react";
+import { Link, useParams, Redirect } from "react-router-dom";
 
-import { Link } from "react-router-dom";
 
 function ProfilePage() {
-  const params = useParams();
+ {/* const params = useParams();
   const token = localStorage.getItem('access')
   const user = jwtDecode(token).user_id
   const [patient, setpatient] = useState({});
@@ -19,7 +19,7 @@ function ProfilePage() {
     axios
       .get(`/users/${params.id}`)
       .then((res) => setpatient(res.data))
-  }, [])
+  }, [])*/}
   return (
     <>
       <div className="flex-container">
