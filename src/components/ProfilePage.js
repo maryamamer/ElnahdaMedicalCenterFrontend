@@ -111,6 +111,7 @@ function ProfilePage() {
               </div>
             </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -125,6 +126,7 @@ function ProfilePage() {
           <div className="col-sm-8 ">
             <div className="card mt-3 ">
               <div className="card-body p-100">
+
                 <h6 className="d-flex align-items-right mb-3">هذا الشهر</h6> <i
                   className="material-icons text-info mr-2">التحاليل</i>
                 <br />
