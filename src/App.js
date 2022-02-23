@@ -61,7 +61,7 @@ export default function App (props) {
               <Route path={"/prescription"} exact component={prescription} />
               <Route path={"/appointments"} exact component={appointments} />
               <Route path={"/Message"} exact component={Message} />
-              <Route path={"/ProfilePage"} exact component={ProfilePage} />
+              <Route path={"/Patient/:id"} exact component={ProfilePage} />
               <Route path={"/Login"} exact component={Login} />
               <Route path={"/Message"} exact component={Message} />
               <Route path={"/Forget"} exact component={Forget} />
