@@ -1,14 +1,26 @@
-
-
-import React from "react";
+import { React, useState, useEffect, Fragment } from "react";
+import { Link, useParams, Redirect } from "react-router-dom";
 import pp from "../media/images/pp.png";
 import "../CSS/Profile.css";
+import axios from "axios";
+import { connect } from 'react-redux';
+import jwtDecode from "jwt-decode";
 
-
-import { Link } from "react-router-dom";
 
 function ProfilePage() {
+  const params = useParams();
+  const token = localStorage.getItem('access')
+  const user = jwtDecode(token).user_id
+  const [patient, setpatient] = useState({});
 
+  useEffect(() => {
+    axios
+      .get(`/users/${params.id}`)
+      .then((res) => setpatient(res.data))
+  }, [])
+
+
+  
   return (
     <>
       <div className="flex-container">
@@ -26,78 +38,93 @@ function ProfilePage() {
                       id="photo"
                     />
                     <div className="mt-3">
-                      <h4>ندى طه </h4>
+                      <h4>{patient.email}</h4>
                       <p className="text-secondary mb-1">طالبه </p>
-                      <p className="text-muted font-size-sm">الفيوم ,مصر</p>
+                      <p className="text-muted font-size-sm">{patient.address}</p>
 
                       <button className="btn btn-outline-primary">رسالة</button>
-                      <div className="row" >
+    
+          <div className="row" >
 
 
-<div className="col-md-4">
-  <div className="card " >
-    <div className="card-body">
-      <div className="row">
+            <div className="col-md-4">
+              <div className="card " >
+                <div className="card-body">
+                  <div className="row">
 
 
+                    <div className="col-md-9 text-secondary">
 
-        <div className="col-md-3">
-          <h6 className="mb-0">الاسم بالكامل</h6>
-        </div>
-        <div className="col-md-9 text-secondary">
+                    </div>
+                    <div className="col-md-3">
+                      <h6 className="mb-0">الاسم بالكامل</h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
 
-          ندى طه السيد شعبان
-        </div>
+                    <div className="col-md-9 text-secondary">
+                      {patient.email}
+                    </div>
+                    <div className="col-sm-3">
+                      <h6 className="mb-0"> البريد الألكتروني </h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+
+                    <div className="col-md-9 text-secondary">
+                    {patient.age}
+                    </div>
+                    <div className="col-md-3">
+                      <h6 className="mb-0"> العمر </h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+
+                    <div className="col-md-9 text-secondary">
+                    {patient.phone}
+                    </div>
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">الجوال</h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+
+                    <div className="col-sm-9 text-secondary">
+                    {patient.address}
+                    </div>
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">العنوان</h6>
+                    </div>
+                  </div>
+                  <hr />
+                  <div className="row">
+                    <div className="col-sm-12">
+                      <a className="btn btn-info " target="__blank"
+                        href="Edit.html">تعديل</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
       </div>
-      <hr />
-      <div className="row">
-        <div className="col-sm-3">
-          <h6 className="mb-0"> البريد الألكتروني </h6>
-        </div>
-        <div className="col-md-9 text-secondary">
-          nada.taha9411@gmail.com
-        </div>
+    </div>
+  </div>
+</div>
 
-      </div>
-      <hr />
-      <div className="row">
-      <div className="col-md-3">
-          <h6 className="mb-0">الهاتف المنزلى</h6>
-        </div>
-        <div className="col-md-9 text-secondary">
-          08455464
-        </div>
-        
-      </div>
-      <hr />
-      <div className="row">
-      <div className="col-sm-3">
-          <h6 className="mb-0">الجوال</h6>
-        </div>
-      
-        <div className="col-md-9 text-secondary">
-          01033377120
-        </div>
-        </div>
-      <hr />
-      <div className="row">
-      <div className="col-sm-3">
-          <h6 className="mb-0">العنوان</h6>
-        </div>
-        <div className="col-sm-9 text-secondary">
-          الدقى ,الجيزة
-        </div>
-        
-      </div>
-      <hr />
-      <div className="row">
-        <div className="col-sm-12">
-          <a className="btn btn-info " target="__blank"
-            href="Edit.html">تعديل</a>
-        </div>
-        <div className="col-sm-8 ">
-           
-              <div className="card-body ">
+</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+          </div>
+          <div className="col-sm-8 ">
+            <div className="card mt-3 ">
+              <div className="card-body p-100">
                 <h6 className="d-flex align-items-right mb-3">هذا الشهر</h6> <i
                   className="material-icons text-info mr-2">التحاليل</i>
                 <br />
@@ -127,23 +154,8 @@ function ProfilePage() {
                     aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                 </div>
               </div>
-            
-          </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
             </div>
           </div>
-         
-          
         </div>
 
 
