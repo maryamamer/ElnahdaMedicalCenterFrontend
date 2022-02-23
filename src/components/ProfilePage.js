@@ -91,10 +91,24 @@ function ProfilePage() {
       </div>
       <hr />
       <div className="row">
+       
+        <Link to={'/patientPortal'}>
+        <span className="row">
         <div className="col-sm-12">
           <a className="btn btn-info " target="__blank"
-            href="Edit.html">تعديل</a>
-        </div>
+            href="Edit.html">سجل المريض</a>
+<Link to={'/Editpp'}>
+
+<a className="btn btn-info " target="__blank"
+            href="Edit.html"> تعديل</a>
+
+</Link>
+
+
+            </div>
+        </span>
+
+        </Link>
         <div className="col-sm-8 ">
            
               <div className="card-body ">
