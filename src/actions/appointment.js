@@ -1,8 +1,6 @@
-
 import axios from "axios";
 import login from "./auth";
 import { useParams, Link } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { FaAccessibleIcon } from "react-icons/fa";
 import {
