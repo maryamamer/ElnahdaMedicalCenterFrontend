@@ -4,27 +4,37 @@ import { React, useState, useEffect, Fragment } from "react";
 
 import axios from "axios";
 import jwtDecode from "jwt-decode";
-export default function Comment() {
+import { useParams } from "react-router";
+
+export default function Comment({id}) {
     const [comments,setcomments]=useState([])
     const [patient,setpatient]=useState([])
+    const[filtered,setfiltered]=useState([])
+   
+    
     useEffect(()=>{
-  axios.get('/Comments/').then((res)=>setcomments(res.data))
+  axios.get('/Comments/').then((res)=>{
+    setcomments(res.data.filter((cm)=>cm.doctor_id==id))
+  })
+  
   get_all()
  
-
+  
     },[])
-    const get_all = ()=>{
+  
+    const get_all = async ()=>{
         axios.get(`/users/`).then((res)=>setpatient(res.data))
       }
-   
+     
+    
   return (
     <>
      <h1>التعليقات</h1>
      <div className="text-justify darker mt-4 float-right commentsection" >
                   <h4 className="text-center m-2" style={{color:'black'}}>أضف تجربتك </h4>
-                    { comments.map((c)=>{
+                    { comments.map((c,i)=>{
                         return (
-                            <>
+                            <div key={i}>
                             <h6 className="text-muted m-1" >{
                                 patient.map((p)=>{
                                     if (p.id===c.patient_id){
@@ -35,13 +45,12 @@ export default function Comment() {
                                         )
                                     }
                                 })
-
                             
                             }</h6> <span>{c.date_added}</span> <br />
                             <p>
                               {c.comment_description}
                             </p>
-                            </>
+                            </div>
                         )
                     })
                   

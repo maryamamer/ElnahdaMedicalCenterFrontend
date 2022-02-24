@@ -29,8 +29,6 @@ const [currentdate,setcurrentdate]=useState('')
   const appointment = localStorage.getItem('appointment')
   const username=JSON.stringify(patient.username)
   
-
-  console.log(isregistered)
   useEffect(() => {
    
     axios
@@ -199,7 +197,7 @@ setcomm(e.target.value)
 
                     </p>
                   </div>
-                <Comment/>
+                <Comment id={params.id}/>
                 </div>
                 <div className="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                   <form id="algin-form">

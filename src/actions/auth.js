@@ -1,4 +1,5 @@
 import axios from 'axios';
+import jwtDecode from 'jwt-decode';
 import {
     LOGIN_SUCCESS,
     LOGIN_FAIL,
@@ -10,7 +11,9 @@ import {
 } from './types';
 
 export const load_user = () => async dispatch => {
+
     if (localStorage.getItem('access')) {
+        const user=jwtDecode(localStorage.get('access')).user_id
         const config = {
             headers: {
                 'Content-Type': 'application/json',
@@ -20,7 +23,7 @@ export const load_user = () => async dispatch => {
         }; 
 
         try {
-            const res = await axios.get(`/auth/users/me`, config);
+            const res = await axios.get(`/users/${user}`, config);
     
             dispatch({
                 type: USER_LOADED_SUCCESS,
