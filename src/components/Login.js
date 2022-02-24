@@ -80,9 +80,9 @@ const Login = ({ login, isAuthenticated }) => {
                                     <div className="custom-checkbox custom-control">
                                         <input type="checkbox" name="remember" id="remember" className="custom-control-input" />
                                         <label for="remember" className="custom-control-label text-light">تذكرني
-                                            <a href="forgot.html" className="float-right">
+                                            <Link to="/RestPass" className="float-right">
                                                 هل نسيت كلمة السر ؟
-                                            </a>
+                                            </Link>
                                         </label>
                                     </div>
 

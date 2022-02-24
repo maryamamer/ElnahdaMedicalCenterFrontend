@@ -27,7 +27,7 @@ import Dr_Profile from "./components/Dr_profile";
 
 import Booking from "./components/booking";
 
-
+import RestPass from "./components/RestPass"
 
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
@@ -67,8 +67,12 @@ export default function App (props) {
               <Route path={"/Login"} exact component={Login} />
               <Route path={"/Message"} exact component={Message} />
               <Route path={"/Forget"} exact component={Forget} />
+
+              <Route path={"/RestPass"} exact component={RestPass} />
+
               <Route path={"/recommend/:id"} exact component={Recommend} />
               <Route path={"/comments"} exact component={Comment} />
+
 
             </Switch>
             <Footer />
