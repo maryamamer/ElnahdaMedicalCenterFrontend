@@ -9,31 +9,71 @@ import { BsBook } from "react-icons/bs";
 import axios from "axios";
 import { add_appointment, remAppointment } from '../actions/appointment';
 import { connect } from 'react-redux';
+import Comment from "./comments";
 import jwtDecode from "jwt-decode";
 
-function Dr_Profile({ isregistered, remAppointment }) {
+
+function Dr_Profile({ isregistered, remAppointment },props) {
   const params = useParams();
   const [doctor, setdoctor] = useState({});
-  console.log(params);
-  /* const [registered, setregistered] = useState(false) */
-  const [recommend, setrecommend] = useState([])
+  const [patient, setpatient] = useState([]);
+  const[commvalue,setcomm]=useState('')
+  const[isadded,setisadded]=useState(false)
   const token = localStorage.getItem('access')
+const [currentdate,setcurrentdate]=useState('')
   const user = jwtDecode(token).user_id
+  const get_user = ()=>{
+    axios.get(`/users/${user}`).then((res)=>setpatient(res.data))
+  }
+  
   const appointment = localStorage.getItem('appointment')
+  const username=JSON.stringify(patient.username)
+  
 
   console.log(isregistered)
   useEffect(() => {
+   
     axios
       .get(`/doctors/${params.id}`)
       .then((res) => setdoctor(res.data))
-  }, [])
 
-  function getrecommend() {
-    const res = axios
-      .get(`/doctors`)
-    res.filter((r) => r.specialization == doctor.specialization)
-    setrecommend(res)
-  }
+
+
+    get_user()
+     var today = new Date(),
+  date = today.getFullYear() + '-' + (today.getMonth() + 1) + '-' + today.getDate();
+  setcurrentdate(date)
+  
+
+      // get_user()
+  }, [])
+ 
+ const add_comment = async () =>{
+  const config = {
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: `JWT ${localStorage.getItem("access")}`,
+      Accept: "application/json",
+    },
+  };
+
+
+
+  const body = JSON.stringify({
+    patient_id:user,
+    doctor_id:params.id,
+    comment_description:commvalue,
+    date_added:currentdate
+
+  }) 
+ await axios.post('/Comments/',body,config).then((res)=>console.log(res)).catch((err)=>console.log(err))
+ setisadded(true)
+ }
+ const handlechange = (e)=>{
+setcomm(e.target.value)
+ }
+
+
   const [redirect, setRedirect] = useState(false);
   const notregLinks = () => (
     <Fragment>
@@ -66,24 +106,16 @@ function Dr_Profile({ isregistered, remAppointment }) {
   );
 
 
-
+  if (isadded){
+   window.location.reload(true)
+   }
   return (
     <>
       <div className="row text-right ">
         <div className="col-md-3 ">
           <div className="doc-det">
             <img src={doctor.image} alt="" />
-            <svg
-              xmlns={"http://www.w3.org/2000/svg"}
-              width="30"
-              height="30"
-              fill="white"
-              className="bi bi-check-circle"
-              viewBox="0 0 16 16"
-            >
-              <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z" />
-              <path d="M10.97 4.97a.235.235 0 0 0-.02.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-1.071-1.05z" />
-            </svg>
+      
             <h5>{doctor.fullname}</h5>
             <div className="stars">
               <svg
@@ -104,7 +136,7 @@ function Dr_Profile({ isregistered, remAppointment }) {
                 <br />
                 تخصص : {doctor.specialization}
                 <br /> ثمن الكشف :  {doctor.price}
-                <br /> الخبرة : 20 عام
+                <br /> الخبرة : {doctor.experience}
               </h6>
             </div>
           </div>
@@ -123,6 +155,7 @@ function Dr_Profile({ isregistered, remAppointment }) {
                   </Link> */}
               { appointment ? regLinks() : notregLinks()  }
             </Fragment>
+            <Link to={`/recommend/${doctor.id}`}> <input type="button"  className="btn btn-primary btn-lg" value="المقترحات"/> </Link>
           </div>
         </div>
         <div className="col">
@@ -145,16 +178,9 @@ function Dr_Profile({ isregistered, remAppointment }) {
         </div>
       </div>
       <div className="row m-5">
-        <div className="col">
-          <div className="recommend">
-            <h6>المقترحات</h6>
-            <img src={Doctor} width="100px" alt="" height="100px" />
-            <img src={Doctor} width="100px" alt="" height="100px" />
-            <img src={Doctor} width="100px" alt="" height="100px" />
-            <img src={Doctor} width="100px" alt="" height="100px" />
-          </div>
-        </div>
-        <div className="col">
+        
+      
+        <div className="col-md-6">
           <section>
             <div className="container">
               <div className="row">
@@ -168,26 +194,12 @@ function Dr_Profile({ isregistered, remAppointment }) {
                       width="40"
                       height="40"
                     />
-                    <h4> {user}</h4> <span>- 20 October, 2018</span> <br />
+                    <h4> {username }</h4> <span>{currentdate}</span> <br />
                     <p>
 
                     </p>
                   </div>
-                  <div className="text-justify darker mt-4 float-right">
-                    <img
-                      src={"https://i.imgur.com/CFpa3nK.jpg"}
-                      alt=""
-                      className="rounded-circle"
-                      width="40"
-                      height="40"
-                    />
-                    <h4>Rob Simpson</h4> <span>- 20 October, 2018</span> <br />
-                    <p>
-                      Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                      Accusamus numquam assumenda hic aliquam vero sequi velit
-                      molestias doloremque molestiae dicta?
-                    </p>
-                  </div>
+                <Comment/>
                 </div>
                 <div className="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
                   <form id="algin-form">
@@ -199,46 +211,20 @@ function Dr_Profile({ isregistered, remAppointment }) {
                         msg
                         cols="30"
                         rows="5"
+                        value={ commvalue }
+                        onChange={handlechange}
                         className="form-control"
                         style={{ "background-color": "white" }}
                       ></textarea>
                     </div>
-                    <div className="form-group">
-                      <label for="name">الاسم</label>{" "}
-                      <input
-                        type="text"
-                        name="name"
-                        id="fullname"
-                        className="form-control"
-                      />
-                    </div>
-                    <div className="form-group">
-                      <label for="email">الميل</label>{" "}
-                      <input
-                        type="text"
-                        name="email"
-                        id="email"
-                        className="form-control"
-                      />
-                    </div>
+               
+  
 
-                    <div className="form-inline">
-                      <input
-                        type="checkbox"
-                        name="check"
-                        id="checkbx"
-                        className="mr-1"
-                      />
-                      <label for="subscribe">
-
-                        تابعنا ﻵخر المستجدات
-
-                      </label>
-                    </div>
                     <div className="form-group">
-                      <button type="button" id="post" className="btn">
+                     <button type="button" id="post" onClick={add_comment} className="btn btn-primary btn-lg">
                         انشر تعليقك
                       </button>
+                     
                     </div>
                   </form>
                 </div>

@@ -5,9 +5,9 @@ import {
 const INITIAL_STATE = [{}]
 export default function getdoctor(state = INITIAL_STATE, action) {
   const { type, payload } = action;
-  switch (action.type) {
+  switch (type) {
     case GET_DOCTOR:
-      return [action.payload]
+      return payload
     default:
       return state;
   }
