@@ -32,11 +32,10 @@
 }
 .doc-det > img {
   z-index: 1;
-
-
-
   width: 280px;
   height: 250px;
+  margin:20px;
+  border-radius: 50%;
 
 }
 .doc-det h5 {
@@ -222,17 +221,21 @@ width:20px;
 
 .comments {
     margin-top: 5%;
-    margin-left: 20px
+    margin-left: 20px;
+   
 }
 
 .darker {
-    border: 1px solid #ecb21f;
+    border: 1px solid #172288;
 
     float: right;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 30px;
-    padding-top: 10px
+    padding-top: 10px;
+    overflow-y:auto;
+    height:40%;
+    
 }
 
 .comment {
@@ -242,7 +245,7 @@ width:20px;
     border-radius: 5px;
     padding-left: 40px;
     padding-right: 30px;
-    padding-top: 10px
+    padding-top: 10px;
 }
 
 .comment h4,

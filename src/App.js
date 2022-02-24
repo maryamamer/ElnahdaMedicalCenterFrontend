@@ -30,7 +30,9 @@ import Booking from "./components/booking";
 
 
 import Message from "./components/Message";
-import Chatbot from './components/chatbot/Chatbot'
+import Chatbot from './components/chatbot/Chatbot';
+import Comment from "./components/comments";
+import Recommend from "./components/recommendations";
 
 
 
@@ -65,6 +67,9 @@ export default function App (props) {
               <Route path={"/Login"} exact component={Login} />
               <Route path={"/Message"} exact component={Message} />
               <Route path={"/Forget"} exact component={Forget} />
+              <Route path={"/recommend/:id"} exact component={Recommend} />
+              <Route path={"/comments"} exact component={Comment} />
+
             </Switch>
             <Footer />
           </Provider>

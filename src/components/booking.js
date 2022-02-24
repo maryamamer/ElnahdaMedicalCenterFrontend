@@ -6,7 +6,7 @@ import { add_appointment, registered } from "../actions/appointment";
 import { connect } from 'react-redux';
 
 
-function Booking({ registered, isregistered, add_appointment }) {
+function Booking({ registered, isregistered, add_appointment,app }) {
 
   const params = useParams()
   const [formData, setFormData] = useState({
@@ -27,11 +27,15 @@ function Booking({ registered, isregistered, add_appointment }) {
 
     add_appointment(date, message);
     registered();
+    
   };
 
   if (isregistered) {
+    localStorage.setItem('appointment',(JSON.parse(app))[0].id)
+
     return <Redirect to={`/dr/${params.id}`} />
   }
+ 
 
   return (
     <>
@@ -84,7 +88,8 @@ function Booking({ registered, isregistered, add_appointment }) {
   );
 }
 const mapStateToProps = state => ({
-  isregistered: state.addapp.isregistered
+  isregistered: state.addapp.isregistered,
+  app:state.getapp.app
 });
 
 

@@ -6,9 +6,7 @@ import {
 } from './types';
 import jwtDecode from 'jwt-decode';
 
-export const get_doctor = () => async dispatch => {
-
-
+export const get_doctor = () => async (dispatch) => {
     const config = {
         headers: {
             'Content-Type': 'application/json',
@@ -16,15 +14,14 @@ export const get_doctor = () => async dispatch => {
         }
 
     }
-    await axios.get('/doctors/', config)
+    return axios.get('/doctors',config)
         .then((res) =>
             dispatch({
                 type: GET_DOCTOR,
-                payload: res.data,
+                payload:res.data,
 
             })
         )
-
         .catch((err) => {
             console.log(err)
         })

@@ -1,4 +1,4 @@
-
+import jwtDecode from "jwt-decode"
 import {
     ADD_APPOINTMENT,
     ADD_Patient_APPOINTMENT,
@@ -27,8 +27,10 @@ export default function addapp(state = INITIAL_STATE, action) {
        
       };
     case ADDED_APP:
+      // const token = localStorage.getItem("access");
+      // const user = jwtDecode(token).user_id;
+      // localStorage.setItem('appointment', JSON.stringify(payload.filter((r)=>r.patient_id===user)))
       return {
-        ...state,
         app:payload,
         isregistered:true
       }
