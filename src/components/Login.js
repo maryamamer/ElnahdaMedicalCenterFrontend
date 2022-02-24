@@ -16,19 +16,19 @@ function Login() {
     let { loginuser } = useContext(Auth)*/
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
     const history = useHistory();
 
-    const { email, password } = formData;
+    const { username, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
 
     const onSubmit = e => {
         e.preventDefault();
 
-        login(email, password);
+        login(username, password);
     };
 
     /* let { user } = useContext(Auth)
@@ -55,7 +55,7 @@ const Login = ({ login, isAuthenticated }) => {
                                 <form method="post" class="my-login-validation" novalidate onSubmit={e => onSubmit(e)} /* onSubmit={loginuser} */>
                                     <div class="form-group ">
                                         <label for="email " className=" text-light">اسم المستخدم</label>
-                                        <input id="email" type="email" class="form-control" name="email" required value={email}
+                                        <input id="email" type="text" class="form-control" name="username" required value={username}
                                             onChange={e => onChange(e)} />
                                         <div class="invalid-feedback">
 

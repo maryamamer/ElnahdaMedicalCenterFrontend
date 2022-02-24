@@ -18,7 +18,6 @@ import Footer from "./components/Footer"
 import ProfilePage from "./components/ProfilePage";
 import Login from "./components/Login";
 import Forget from "./components/Forget";
-import PrivateRoute from "./PrivateRoute"
 import { AuthProvider } from './context/auth'
 import logout from "./components/logout";
 import prescription from "./components/prescription"
