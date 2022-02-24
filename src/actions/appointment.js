@@ -1,8 +1,6 @@
-
 import axios from "axios";
 import login from "./auth";
 import { useParams, Link } from "react-router-dom";
-
 import { useSelector, useDispatch } from "react-redux";
 import { FaAccessibleIcon } from "react-icons/fa";
 import {
@@ -50,6 +48,8 @@ export const add_appointment = (date, message) => async (dispatch) => {
 
 export const registered = () => async dispatch => {
 
+  const token = localStorage.getItem("access");
+  const user = jwtDecode(token).user_id;
   const config = {
     headers: {
       "Content-Type": "application/json",
@@ -58,13 +58,12 @@ export const registered = () => async dispatch => {
     },
   };
   return axios
-    .get(`/Appointments/`)
+    .get(`/Appointments`)
     .then((res) => {
       if (res.status === 200) {
-        localStorage.setItem('appointment', res.data)
         dispatch({
           type: "ADDED_APP",
-          payload: res.data,
+          payload:JSON.stringify(res.data.filter((r)=>r.patient_id===user)),
         })
       }
     })
@@ -121,17 +120,14 @@ export const registered = () => async dispatch => {
 
 
 export const remAppointment = () => async dispatch => {
-  /* const app = localStorage.getItem('appointment')
-  console.log(JSON.stringify(app))
+  const app_id=localStorage.getItem('appointment')
+  console.log(app_id)
   return axios
-    .delete(`/Appointments/${JSON.stringify(app)}`)
+    .delete(`/Appointments/${app_id}`)
     .then((res) => dispatch({
       type: "REM_APPOINTMENT",
       payload: res.data,
     })
     )
-    .catch((err) => console.log(err)) */
-  dispatch({
-    type: REM_APPOINTMENT
-  });
+    .catch((err) => console.log(err))
 };

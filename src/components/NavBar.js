@@ -6,12 +6,12 @@ import '../CSS/NavBar.css';
 
 
 
-import React, { Fragment, useState } from 'react';
+import React, { Fragment, useState, useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
-
+import axios from "axios"
 
 
 const Navbar = ({ logout, isAuthenticated }) => {
@@ -46,17 +46,35 @@ const Navbar = ({ logout, isAuthenticated }) => {
         </Fragment>
     );
 
-
-
+    const [patients, setpatient] = useState([]);
+    useEffect(() => {
+        axios.get('/users')
+            .then(res => setpatient(res.data))
+            .catch((err) => console.log(err));
+    });
+    /* const user = jwtDecode(token).user_id */
     const authLinks = () => (
         <>
 
             <li className='nav-item'>
-                <a className='nav-link' href='/Logout' onClick={logout_user}> تسجيل خروج</a>
+                <Link className='nav-link' to='/Logout' onClick={logout_user}> تسجيل خروج</Link>
             </li>
+            {/* {
+                patients.map((p, i) => {
+                    return (
+                        <>
+                            <li className='nav-item'>
+                                <Link className='nav-link' to={`/Patient/${p.id}`}> الصفحة الشخصية</Link>
+                            </li>
+                        </>
+                    )
+                })
+            } */}
+
             <li className='nav-item'>
-                <a className='nav-link' href='/ProfilePage'> الصفحة الشخصية</a>
+                <Link className='nav-link' to={`/Patient/${patients.id}`}> الصفحة الشخصية</Link>
             </li>
+
         </>
     );
 
@@ -138,8 +156,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
 }
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
+    patient: state.patient,
 
 });
+
 
 export default connect(mapStateToProps, { logout })(Navbar);
 /* export default NavBar; */

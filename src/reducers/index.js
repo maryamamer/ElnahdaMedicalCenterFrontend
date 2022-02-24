@@ -1,10 +1,14 @@
 import { combineReducers } from 'redux';
 import auth from './auth';
 import addapp from './addappointement';
-import doctor from './getdoctor';
+import getdoctor from './getdoctor';
+import patient from './getpatient';
+import getapp from './getapp';
 
 export default combineReducers({
     auth,
     addapp:addapp,
-    doctor:doctor
+    getdoctor:getdoctor,
+    patient:patient,
+    getapp:getapp
 });
