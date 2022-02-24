@@ -15,6 +15,7 @@ function Recommend() {
   const params = useParams();
   const [doctor, setdoctor] = useState([]);
   const dispatch=useDispatch()
+
   const [recommend, setrecommend] = useState([]);
 
   const all=useSelector((state)=>state.getdoctor)
@@ -22,64 +23,21 @@ function Recommend() {
   
 
   useEffect(() => {
-//     axios
-//   .get(`/doctors/`)
-//   .then((res) => {
-//     setdoctors(res.data);
-//   }).catch((err) => console.log(err));
-
-
   
 dispatch(get_doctor())
-// getdoctor()
+getdoctor()
+filterdoctor()
 
-// filterdoctor()
   },[]);
   
 const getdoctor =()=>{
-    all.map((d)=>{if(d.id==params.id){setdoctor(d)}})
+    setdoctor(all.filter((d)=>d.id===params.id))
    
 }
 const filterdoctor =()=>{
  
-    const recommended=all.filter((d)=>d.specialization===doctor.specialization)
-    setrecommend(recommended)
+   setrecommend(all.filter((d)=>d.specialization==doctor.specialization))
 }
-
-
- 
-//   setrecommend(all.filter((d)=>d.specialization===doctor.specialization))
-
-
-//   setdoctors(get_doctor())
-//   const recommended = doctors.filter(
-//     (d) => d.specialization === doctor.specialization
-//   );
-//  setrecommend(recommended)
- 
- 
- 
-
-  
-
-
-
-  //    axios.get('/doctors').then((res)=>setdoctors(res.data))
-
-  //    setrecommend(doctors.filter((d)=>d.specialization===doctor.specialization))
-
-  // console.log(doctors)
-  // useEffect(()=>{
-  //     const res = axios
-  //     .get(`/doctors/`)
-  //     res.data.filter((r) => r.specialization === doctor.specialization)
-  //     setrecommend(res)
-  // },[])
-
-  // setdoctor(doctor)
-  // setdoctor(useSelector(state=>state.doctor.doctor))
-  // console.log(doctors)
-  // console.log(doctor)
 
   return (
     <>
@@ -107,9 +65,9 @@ const filterdoctor =()=>{
   );
 }
 
-// const mapStateToProps = (state) => ({
-//   Doctors: state.getdoctor,
-// });
+const mapStateToProps = (state) => ({
+  Doctors: state.getdoctor,
+});
 
-// export default connect(mapStateToProps)(Recommend);
-export default Recommend
+export default connect(mapStateToProps,{get_doctor})(Recommend);
+
