@@ -10,46 +10,19 @@ import { connect } from 'react-redux';
 import { get_doctor } from '../actions/doctor';
 
 
-function Doctors({doctor,get_doctor}) {
-
-    
-    // console.log(JSON.parse(Doctors))
-    // console.log(doctors)
+function Doctors() {
    
-    // const dispatch=useDispatch()
-    // console.log(doctor)
-    const [doctors, setdoctor] = useState([]);
+    const dispatch=useDispatch()
+ 
+     const doctors= useSelector((state)=>state.getdoctor)
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     useEffect(() => {
-        
-        // dispatch(get_doctor())
-        axios.get('/doctors')
-            .then(res => setdoctor(res.data))
-            .catch((err) => console.log(err));
+
+        dispatch(get_doctor())
 
 
     },[]);
-    // setdoctor(doctor)
-    // setdoctor(useSelector(state=>state.doctor.doctor))
-    // console.log(doctors)
-    // console.log(doctor)
-//    const search = async val => {
-//         setloading(true)
-//         const res = await axios(
-//           `/doctors/?query=${val}`
-//         );
-//         const searchdoctors = await res.data;
-    
-//         setdoctor(searchdoctors)
-//         setloading(false)
-//       };
-//    const onChangeHandler = async e => {
-//         search(e.target.value);
-//         setvalue(e.target.value)
-//       };
-    
-        // const alldoctors=JSON.parse(Doctors)
         const searchItems = (query) => {
             setSearchInput(query)
             if (searchInput!==''){
@@ -62,9 +35,6 @@ function Doctors({doctor,get_doctor}) {
             setFilteredResults(doctors)
         }
         }
-    
-  
-    
 
     return (
         <>

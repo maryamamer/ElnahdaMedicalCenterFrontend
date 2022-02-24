@@ -38,7 +38,7 @@ function ProfilePage() {
                       id="photo"
                     />
                     <div className="mt-3">
-                      <h4>{patient.username} </h4>
+                      <h4>{patient.fullname} </h4>
                       <p className="text-secondary mb-1">طالبه </p>
                       <p className="text-muted font-size-sm">{patient.address}</p>
 
