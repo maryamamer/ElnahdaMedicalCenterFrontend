@@ -117,7 +117,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
                         } */}
 
-                            {token && token_refresh ? authLinks() : guestLinks()}
+                            
 
 
                             <li className="nav-item">
@@ -136,6 +136,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
                                 <Link className="nav-link" to="/ContactUs">اتصل بنا
                                 </Link>
                             </li>
+                            {token && token_refresh ? authLinks() : guestLinks()}
 
 
 
@@ -144,14 +145,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
 
                         </ul>
-                        <Link className="navbar-brand" to="/">
-                            <img src={New}
-                                className="img-responsive logo"
-                                width="100"
-                                height="80"
-                                alt="New"
-                            />
-                        </Link>
+                       
 
                     </div>
                 </nav>
