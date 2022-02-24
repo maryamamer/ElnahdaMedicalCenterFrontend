@@ -11,6 +11,7 @@ import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
 import axios from 'axios';
+import { LOGIN_FAIL } from "../actions/types";
 /*
 function Login() {
     let { loginuser } = useContext(Auth)*/
@@ -24,16 +25,20 @@ const Login = ({ login, isAuthenticated }) => {
     const { username, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
+    const [loginfail,setloginfail]=useState('')
     const onSubmit = e => {
         e.preventDefault();
 
         login(username, password);
+        if(!localStorage.getItem('access')){
+            setloginfail('هذا المستخدم غير موجود , نرجو التواصب مع أحد الموظفين لاعطائك بيانات الدخول')
+        }
+       
     };
 
     /* let { user } = useContext(Auth)
     user ?  <Redirect to='/' /> : <Redirect to='/login' /> */
-
+console.log(loginfail)
     if (isAuthenticated) {
         return <Redirect to='/' />
         
@@ -49,6 +54,7 @@ const Login = ({ login, isAuthenticated }) => {
                         <div class="card-wrapper">
                             <div class="brand">
                                 <h1 class="card-title text-dark">تسجيل الدخول</h1>
+                               
                             </div>
                             <div class="card-body">
 
@@ -92,14 +98,21 @@ const Login = ({ login, isAuthenticated }) => {
 
 
                                 </form>
+                                <p style={{color:'red'}} className='text-danger'>
+                                {loginfail}
+                                </p>
+                               
                                 {/* {
                                     isAuthenticated ? (<Redirect to='/' />) : (<div style= {{color:"red"}}>هذا المستخدم غير موجود </div>)
                                 } */}
                             </div>
+                            
                         </div>
+                       
                     </div>
                 </div>
             </section>
+           
         </>
     );
 }
