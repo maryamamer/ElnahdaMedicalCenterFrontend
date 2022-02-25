@@ -19,7 +19,6 @@
   text-align: right;
   position: relative;
   z-index: 1;
-} 
 
 .doc-det > svg {
   position: absolute;
@@ -320,6 +319,7 @@ form {
   width: 200px;
   display: block;
   margin-right: 125px !important;
+
 }
 
 .btns {
@@ -335,7 +335,7 @@ form {
   width: 100px;
 }
 /* .div-size */
-.first-row  {
+.first-row {
   height: fit-content;
   padding: 20px;
 }
@@ -353,5 +353,6 @@ form {
 }
 
 .string {
-  color:#1e386d;
+  color: #1e386d;
 }
+

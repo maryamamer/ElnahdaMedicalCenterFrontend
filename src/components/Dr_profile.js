@@ -175,7 +175,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                     <br /> &nbsp;
                     <i className="fas fa-award"></i>
                     الإنجازات: حاصل على {doctor.achievements}
-                    
+
                   </h6>
                 </div>
               </div>
@@ -186,7 +186,10 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
           <div className="row">
             <div className="col-md-6 col-sm-12">
               <div className="card shadow-sm rounded">
-                <h1 className="text-center font-weight-bold string">التعليقات</h1>
+
+                <h1 className="text-center font-weight-bold string">
+                  التعليقات
+                </h1>
                 <div>
                   <img src={smile} width="70px" alt="" height="70px" />
                   <b className="h3">{username}</b>
@@ -194,10 +197,12 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                   <p className="text-muted">{currentdate}</p>
                 </div>
                 <Comment id={params.id} />
-                
+
 
                 <div className="text-center">
-                  <a href="" className="h6">أظهر كل التعليقات</a>
+                  <a href="" className="h6">
+                    أظهر كل التعليقات
+                  </a>
                 </div>
               </div>
             </div>
@@ -258,7 +263,6 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       </main>
 
       {/* =========================================================================================== */}
-
     </>
   );
 }
