@@ -109,7 +109,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
 
           <div className="row first-row">
             <div className="col-md-5 col-sm-12 div-size">
-              <div className="card mb-4 shadow-sm rounded">
+              <div className="card " style={{height:'500px'}}>
                 <div className="card-body doc-det">
                   <div className="row no-gutters">
                     <div className="col-md-2 col-sm-12 div-size">
