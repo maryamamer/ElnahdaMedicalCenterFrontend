@@ -32,6 +32,7 @@ import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
 import Comment from "./components/comments";
 import Recommend from "./components/recommendations";
+import chat from "./components/liveChat/chat";
 
 
 
@@ -70,7 +71,8 @@ export default function App (props) {
               <Route path={"/RestPass"} exact component={RestPass} />
 
               <Route path={"/recommend/:id"} exact component={Recommend} />
-              <Route path={"/comments"} exact component={Comment} />
+              <Route path={"/comments"} exact component={Comment} /> 
+              <Route path={"/chat"} exact component={chat} />
 
 
             </Switch>

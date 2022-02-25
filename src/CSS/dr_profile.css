@@ -19,7 +19,6 @@
   text-align: right;
   position: relative;
   z-index: 1;
-}
 
 .doc-det > svg {
   position: absolute;
@@ -320,6 +319,7 @@ form {
   width: 200px;
   display: block;
   margin-right: 125px !important;
+
 }
 
 .btns {
@@ -355,3 +355,4 @@ form {
 .string {
   color: #1e386d;
 }
+

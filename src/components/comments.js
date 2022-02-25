@@ -14,24 +14,29 @@ export default function Comment({id}) {
     
     useEffect(()=>{
   axios.get('/Comments/').then((res)=>{
-    setcomments(res.data.filter((cm)=>cm.doctor_id==id))
+    setcomments(res.data)
   })
-  
-  get_all()
  
-  
+  get_all()
+  console.log(id)
+
     },[])
   
     const get_all = async ()=>{
         axios.get(`/users/`).then((res)=>setpatient(res.data))
       }
+    const filter_comments =()=>{
+      const filtered=comments.filter((cm)=>cm.doctor_id===id)
+      console.log(filtered)
+    }
      
+   
+  
     
   return (
     <>
      <h1>التعليقات</h1>
      <div className="text-justify darker mt-4 float-right commentsection" >
-                  <h4 className="text-center m-2" style={{color:'black'}}>أضف تجربتك </h4>
                     { comments.map((c,i)=>{
                         return (
                             <div key={i}>
