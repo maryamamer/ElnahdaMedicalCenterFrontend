@@ -5,7 +5,7 @@ import Auth from "../context/auth";
 
 import Nurse from '../media/images/Nurse.jpeg';
 import '../CSS/Login.css';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, Redirect,useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
@@ -30,7 +30,7 @@ const Login = ({ login, isAuthenticated }) => {
         e.preventDefault();
 
         login(username, password);
-        if(!localStorage.getItem('access')){
+        if(!isAuthenticated){
             setloginfail('هذا المستخدم غير موجود , نرجو التواصب مع أحد الموظفين لاعطائك بيانات الدخول')
         }
        
@@ -38,7 +38,6 @@ const Login = ({ login, isAuthenticated }) => {
 
     /* let { user } = useContext(Auth)
     user ?  <Redirect to='/' /> : <Redirect to='/login' /> */
-console.log(loginfail)
     if (isAuthenticated) {
         return <Redirect to='/' />
         
