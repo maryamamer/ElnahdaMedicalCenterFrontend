@@ -14,7 +14,7 @@ export default function Comment({id}) {
     
     useEffect(()=>{
   axios.get('/Comments/').then((res)=>{
-    setcomments(res.data)
+    setcomments(res.data.filter((cm)=>cm.doctor_id==id))
   })
  
   get_all()
@@ -25,14 +25,7 @@ export default function Comment({id}) {
     const get_all = async ()=>{
         axios.get(`/users/`).then((res)=>setpatient(res.data))
       }
-    const filter_comments =()=>{
-      const filtered=comments.filter((cm)=>cm.doctor_id===id)
-      console.log(filtered)
-    }
-     
-   
-  
-    
+ 
   return (
     <>
      <h1>التعليقات</h1>

@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 
@@ -18,7 +18,6 @@ import Footer from "./components/Footer"
 import ProfilePage from "./components/ProfilePage";
 import Login from "./components/Login";
 import Forget from "./components/Forget";
-import { AuthProvider } from './context/auth'
 import logout from "./components/logout";
 import prescription from "./components/prescription"
 import appointments from './components/appointments'
@@ -33,6 +32,9 @@ import Chatbot from './components/chatbot/Chatbot';
 import Comment from "./components/comments";
 import Recommend from "./components/recommendations";
 import chat from "./components/liveChat/chat";
+import Admin from "./pgaes/adminpanel";
+import Edituser from "./components/edituser";
+import adduser from "./pgaes/adduser";
 
 
 
@@ -73,6 +75,9 @@ export default function App (props) {
               <Route path={"/recommend/:id"} exact component={Recommend} />
               <Route path={"/comments"} exact component={Comment} /> 
               <Route path={"/chat"} exact component={chat} />
+              <Route path={"/admin"} exact component={Admin} />
+              <Route path={"/edituser/:id"} exact component={Edituser} />
+              <Route path={"/add"} exact component={adduser} />
 
 
             </Switch>
