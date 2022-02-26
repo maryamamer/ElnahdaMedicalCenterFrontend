@@ -14,5 +14,11 @@ export const REM_APPOINTMENT ='REM_APPOINTMENT';
 export const GET_DOCTOR ='GET_DOCTOR';
 export const ADDED_APP='ADDED_APP';
 export const GET_PATIENT ='GET_PATIENT';
+export const ADD_USER ='ADD_USER';
+export const UPDATE_USER ='UPDATE_USER';
+export const REMOVE_USER ='REMOVE_USER';
+export const PARTIAL_UPDATE_USER ='PARTIAL_UPDATE_USER';
+
+
 
 
