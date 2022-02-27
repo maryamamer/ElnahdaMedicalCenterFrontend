@@ -4,6 +4,9 @@ import { ThemeProvider } from 'styled-components'
 import Post from './Post'
 import Link from './Link'
 import '../../App.css'
+import { useMediaQuery } from "react-responsive";
+
+
 const theme = {
   background: '#f5f8fb',
   fontFamily: 'Helvetica Neue',
@@ -36,6 +39,7 @@ const Chatbot = (props) => {
   }
 
   return (
+    
     <ThemeProvider theme={theme}>
       <div style={{ display: showChat ? 'none' : '' }}>
         <ChatBot
