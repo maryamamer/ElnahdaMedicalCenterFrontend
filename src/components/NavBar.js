@@ -15,8 +15,9 @@ import axios from "axios";
 
 const Navbar = ({ logout, isAuthenticated,users }) => {
     const[user_id,setuser_id]=useState('')
+    console.log(user_id)
     const token = localStorage.getItem('access')
-    if(localStorage.getItem('access')){
+    if(isAuthenticated){
         const token_refresh = localStorage.getItem('refresh')
         const user_id = jwtDecode(token).user_id
         setuser_id(user_id)
@@ -52,13 +53,13 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
         </Fragment>
     );
 
-    const superuserlink=()=>{
+    /* const superuserlink=()=>(
         <>
          <li className='nav-item'>
                 <a className='nav-link' href='/admin/users'> الأدمن </a>
             </li>
         </>
-    }
+    ) */
     const[issuper,setsuper]=useState(false)
     const [patients, setpatient] = useState([]);
     useEffect(() => {
@@ -151,7 +152,7 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                                 </Link>
                             </li>
                             {token ? authLinks() : guestLinks()}
-                            {token && issuper ? superuserlink():''}
+                            {/* {token && issuper ? superuserlink():''} */}
 
 
 
