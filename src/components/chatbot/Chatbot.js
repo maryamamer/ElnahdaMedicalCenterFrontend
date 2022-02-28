@@ -141,11 +141,11 @@ const Chatbot = (props) => {
       <div>
         {!showChat ? (
           <button className="btn" onClick={() => startChat()}>
-            <i className="fa fa-minus"></i>
+           {/* <i className="fa fa-minus"></i>*/}
           </button>
         ) : (
           <button className="btn" onClick={() => hideChat()}>
-            <i className="fa fa-plus"></i>
+           {/* <i className="fa fa-plus"></i>*/}
           </button>
         )}
       </div>
