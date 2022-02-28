@@ -13,15 +13,13 @@ function ContactUs() {
     return (
         <>
          <span>
-
          <Link to="/Chatbot">
+         <div class="input-group">
+  <span id="chatbot">
+    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+  </span>
 
-<input
-  type="button"
-  className="btn btn-primary"
-  id="book-btn"
-  value="نظام الرد اﻵلي"
-/>
+</div>
 </Link>
          </span>
              <div className="container text-right">

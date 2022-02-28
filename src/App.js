@@ -27,7 +27,7 @@ import Dr_Profile from "./components/Dr_profile";
 
 import Booking from "./components/booking";
 
-import { useMediaQuery } from 'react-responsive'
+
 
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot'
