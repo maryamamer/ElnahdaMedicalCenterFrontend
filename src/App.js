@@ -37,57 +37,60 @@ import chat from "./components/liveChat/chat";
 import Admin from "./pgaes/adminpanel";
 import Edituser from "./components/edituser";
 import adduser from "./pgaes/adduser";
-
-
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { Toaster } from "react-hot-toast";
+import { Payment } from "./components/Payment.js";
 
 
 // import Dr_Profile from "./components/Dr_profile";
 
 
-export default function App (props) {
-  
-    return (
-      
-      <div className="App">
-   <Router>
-          <Provider store={store}>
-            <NavBar />
+export default function App(props) {
+
+  return (
+    <div className="App">
+      <Router>
+        <Provider store={store}>
+          <NavBar />
 
           <Switch>
-              <Route path={"/"} exact component={HomePage} />
-              <Route path={"/dr/:id"} exact component={Dr_Profile} />
-              <Route path={"/booking/:id"} exact component={Booking} />
-              <Route path={"/Home"} exact component={HomePage} />
-              <Route path={"/ContactUs"} exact component={ContactUs} />
-              <Route path={"/Chatbot"} exact component={Chatbot} />
-              <Route path={"/AboutUs"} exact component={AboutUs} />
-              <Route path={"/Logout"} exact component={logout} />
-              <Route path={"/Editpp"} exact component={Editpp} />
-              <Route path={"/Doctors"} exact component={Doctors} />
-              <Route path={"/patientPortal"} exact component={patient_portal} />
-              <Route path={"/prescription"} exact component={prescription} />
-              <Route path={"/appointments"} exact component={appointments} />
-              <Route path={"/Message"} exact component={Message} />
-              <Route path={"/Patient/:id"} exact component={ProfilePage} />
-              <Route path={"/Login"} exact component={Login} />
-              <Route path={"/Message"} exact component={Message} />
-              <Route path={"/Forget"} exact component={Forget} />
+            <Route path={"/"} exact component={HomePage} />
+            <Route path={"/dr/:id"} exact component={Dr_Profile} />
+            <Route path={"/booking/:id"} exact component={Booking} />
+            <Route path={"/Home"} exact component={HomePage} />
+            <Route path={"/ContactUs"} exact component={ContactUs} />
+            <Route path={"/Chatbot"} exact component={Chatbot} />
+            <Route path={"/AboutUs"} exact component={AboutUs} />
+            <Route path={"/Logout"} exact component={logout} />
+            <Route path={"/Editpp"} exact component={Editpp} />
+            <Route path={"/Doctors"} exact component={Doctors} />
+            <Route path={"/patientPortal"} exact component={patient_portal} />
+            <Route path={"/prescription"} exact component={prescription} />
+            <Route path={"/appointments"} exact component={appointments} />
+            <Route path={"/Message"} exact component={Message} />
+            <Route path={"/Patient/:id"} exact component={ProfilePage} />
+            <Route path={"/Login"} exact component={Login} />
+            <Route path={"/Message"} exact component={Message} />
+            <Route path={"/Forget"} exact component={Forget} />
 
-              <Route path={"/RestPass"} exact component={RestPass} />
+            <Route path={"/RestPass"} exact component={RestPass} />
 
-              <Route path={"/recommend/:id"} exact component={Recommend} />
-              <Route path={"/comments"} exact component={Comment} /> 
-              <Route path={"/chat"} exact component={chat} />
-              <Route path={"/admin"} exact component={Admin} />
-              <Route path={"/edituser/:id"} exact component={Edituser} />
-              <Route path={"/add"} exact component={adduser} />
+            <Route path={"/recommend/:id"} exact component={Recommend} />
+            <Route path={"/comments"} exact component={Comment} />
+            <Route path={"/chat"} exact component={chat} />
+            <Route path={"/admin"} exact component={Admin} />
+            <Route path={"/edituser/:id"} exact component={Edituser} />
+            <Route path={"/add"} exact component={adduser} />
+            <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+              <Toaster position="top-center" />
+              <Route path={"/Payment/:id"} exact component={Payment} />
+            </PayPalScriptProvider>
 
+          </Switch>
+          <Footer />
+        </Provider>
+      </Router>
+    </div>
+  );
 
-            </Switch>
-            <Footer />
-          </Provider>
-        </Router>
-      </div>
-    );
-  
 }
