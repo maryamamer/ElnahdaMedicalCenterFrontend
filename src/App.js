@@ -1,11 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-
 import { Provider } from 'react-redux';
 import store from './store';
-
-
 import "./App.css";
 import NavBar from "./components/NavBar";
 import ContactUs from "./components/ContactUs";
@@ -23,13 +19,8 @@ import prescription from "./components/prescription"
 import appointments from './components/appointments'
 import Add_doctor from "./pgaes/add_doctor"
 import Dr_Profile from "./components/Dr_profile";
-
 import Booking from "./components/booking";
-
-
 import RestPass from "./components/RestPass"
-
-
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
 import Comment from "./components/comments";
@@ -38,12 +29,8 @@ import chat from "./components/liveChat/chat";
 import Admin from "./pgaes/adminpanel";
 import Edituser from "./components/edituser";
 import adduser from "./pgaes/adduser";
-
 import DoctorList from "./pgaes/doctorlist";
 import Editdoctor from "./pgaes/Editdoctor";
-
-
-
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Toaster } from "react-hot-toast";
 import { Payment } from "./components/Payment.js";
@@ -81,9 +68,7 @@ export default function App(props) {
               <Route path={"/Login"} exact component={Login} />
               <Route path={"/Message"} exact component={Message} />
               <Route path={"/Forget"} exact component={Forget} />
-
               <Route path={"/RestPass"} exact component={RestPass} />
-
               <Route path={"/recommend/:id"} exact component={Recommend} />
               <Route path={"/comments"} exact component={Comment} /> 
               <Route path={"/chat"} exact component={chat} />
