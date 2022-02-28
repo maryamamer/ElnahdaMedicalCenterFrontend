@@ -14,12 +14,10 @@ import jwtDecode from "jwt-decode";
 import axios from "axios";
 
 const Navbar = ({ logout, isAuthenticated,users }) => {
-    const[user_id,setuser_id]=useState('')
     const token = localStorage.getItem('access')
-    if(localStorage.getItem('access')){
+    if(isAuthenticated){
         const token_refresh = localStorage.getItem('refresh')
-        const user_id = jwtDecode(token).user_id
-        setuser_id(user_id)
+        var user_id = jwtDecode(token).user_id
     }
   
 
@@ -94,9 +92,7 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
     /* function NavBar() { */
     /* let { user, logoutuser } = useContext(Auth) */
     return (
-     
         <>
-    
             <Fragment>
                 <nav className="navbar navbar-expand-lg">
                     <button
@@ -110,7 +106,7 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <Link className="navbar-brand" to="#">
+                        <Link className="navbar-brad"n to="#">
                             <img src={New}
                                 className="img-responsive logo"
                                 width="100"
@@ -119,21 +115,6 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                             />
                         </Link>
                         <ul className="navbar-nav mr-auto">
-                            {/* {
-                            user ?
-                                <li className="nav-item">
-                                    <Link onClick={logoutuser} className="nav-link" to="/Logout"> تسجيل خروج</Link>
-                                </li>
-                                :
-                                <li className="nav-item">
-                                    <Link className="nav-link LastItem" to="/Login">  تسجيل الدخول </Link>
-                                </li>
-
-                        } */}
-
-                            
-
-
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Home">الرئيسية </Link>
                             </li>
@@ -150,20 +131,14 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                                 <Link className="nav-link" to="/ContactUs">اتصل بنا
                                 </Link>
                             </li>
+                            {/* {token && issuper ? superuserlink():''} */}
                             {token ? authLinks() : guestLinks()}
-                            {token && issuper ? superuserlink():''}
-
-
-
-
-
-
+                            {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
                         </ul>
-                       
-
                     </div>
+                    
                 </nav>
-                {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
+                
             </Fragment>
         </>
     );
@@ -174,7 +149,6 @@ const mapStateToProps = state => ({
     patient: state.patient,
 
 });
-
 
 export default connect(mapStateToProps, { logout })(Navbar);
 /* export default NavBar; */

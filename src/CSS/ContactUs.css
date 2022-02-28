@@ -23,6 +23,19 @@ section-title h1 {
     bottom: 0;
     left: calc(50% - 25px);
   }
+
+
+  #chatbot{
+    position: absolute;
+    margin-left: 5px;
+    height: 100px;
+    width: 100px;
+    display: flex;
+    align-items: center;
+
+  }
+ 
+
   .appointment1 .appointment1-btn {
     font-family: "Roboto", sans-serif;
     font-weight: 500;
