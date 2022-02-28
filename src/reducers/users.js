@@ -24,19 +24,24 @@ export default function user (state = initialState, action) {
                 users:payload
             }
         case ADD_USER:
-            // payload.map((user)=>{
-            //     if(user.is_staff==true){
-            //         return{
-            //             ...state,
-            //             users:[...state.users,payload],
-            //             isdoctor:true
-            //         }
-            //     }
-            // })
+            console.log(payload)
+            state.users.map((user)=>{
+                if(user.is_staff==true){
+                    return{
+                        ...state,
+                        isdoctor:true
+                    }
+                }
+                return {
+                    ...state,
+                    isdoctor:false
+                }
+            })
             return {
                 ...state,
-                users:[...state.users,payload]
+                users:[...state.users,payload],
             }
+            
         case UPDATE_USER:
             console.log(payload)
             const updatedusers= state.users.map(user=>{

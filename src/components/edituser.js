@@ -35,10 +35,10 @@ function Edituser() {
   const handlechange = (e) => {
     let checked = e.target.checked;
     if (checked){
-        setuserinfo({is_superuser:true})
+        setuserinfo({...userinfo,is_superuser:true})
     }
     else{
-        setuserinfo({is_superuser:false})
+        setuserinfo({...userinfo,is_superuser:false})
     }
   }; 
 

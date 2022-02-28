@@ -21,6 +21,7 @@ import Forget from "./components/Forget";
 import logout from "./components/logout";
 import prescription from "./components/prescription"
 import appointments from './components/appointments'
+import Add_doctor from "./pgaes/add_doctor"
 import Dr_Profile from "./components/Dr_profile";
 
 import Booking from "./components/booking";
@@ -35,6 +36,8 @@ import chat from "./components/liveChat/chat";
 import Admin from "./pgaes/adminpanel";
 import Edituser from "./components/edituser";
 import adduser from "./pgaes/adduser";
+import DoctorList from "./pgaes/doctorlist";
+import Editdoctor from "./pgaes/Editdoctor";
 
 
 
@@ -75,10 +78,12 @@ export default function App (props) {
               <Route path={"/recommend/:id"} exact component={Recommend} />
               <Route path={"/comments"} exact component={Comment} /> 
               <Route path={"/chat"} exact component={chat} />
-              <Route path={"/admin"} exact component={Admin} />
+              <Route path={"/admin/users"} exact component={Admin} />
               <Route path={"/edituser/:id"} exact component={Edituser} />
               <Route path={"/add"} exact component={adduser} />
-
+              <Route path={"/admin/doctors"} exact component={DoctorList} />
+              <Route path={"/admin/add/doctor"} exact component={Add_doctor} />
+              <Route path={"/admin/editdoctor/:id"} exact component={Editdoctor} />
 
             </Switch>
             <Footer />
