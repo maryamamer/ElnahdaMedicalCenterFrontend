@@ -14,7 +14,7 @@ function Doctors() {
    
     const dispatch=useDispatch()
  
-     const doctors= useSelector((state)=>state.getdoctor)
+     const doctors= useSelector((state)=>state.getdoctor.doctor)
     const [filteredResults, setFilteredResults] = useState([]);
     const [searchInput, setSearchInput] = useState('');
     useEffect(() => {
