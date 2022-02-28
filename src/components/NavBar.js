@@ -4,15 +4,14 @@ import Auth from "../context/auth";
 import New from '../media/images/New.png';
 import '../CSS/NavBar.css';
 
-
-
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
 import axios from "axios"
-
+import { Fragment } from 'react';
+import {Navbar} from 'reactstrap';
 
 const Navbar = ({ logout, isAuthenticated }) => {
     let token = localStorage.getItem('access')

@@ -3,7 +3,8 @@ import pp from "../media/images/pp.png";
 import "../CSS/Profile.css";
 
 
-import { Link } from "react-router-dom";
+import { card } from 'react-bootstrap';
+
 
 function ProfilePage() {
 
