@@ -22,7 +22,7 @@ function AboutUs() {
 
           <div className="col col-md-6 section-title">
 
-            <h1 className="center_header text-dark">عنّا</h1>
+         
             <p className="centered">
               أول واحدث مجمع طبى متكامل بالنهضة صفوة من كبار الاستشاريين
               والأخصائيين فى جميع التخصصات وتشمل عيادتنا مركز النهضة الطبى يوفر

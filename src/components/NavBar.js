@@ -1,28 +1,30 @@
-// import { Link } from 'react-router-dom';
+
 // import { useContext } from "react";
 import Auth from "../context/auth";
 import New from '../media/images/New.png';
 import '../CSS/NavBar.css';
+
+
 
 import React, { Fragment, useState, useEffect } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
-import axios from "axios"
-import { Fragment } from 'react';
-import {Navbar} from 'reactstrap';
+import axios from "axios";
 
 const Navbar = ({ logout, isAuthenticated,users }) => {
-    
-    let token = localStorage.getItem('access')
-    let token_refresh = localStorage.getItem('refresh')
-    const user_id = jwtDecode(token).user_id
-
-    if (isAuthenticated) {
-        const user = jwtDecode(token)
-        console.log(user)
+    const token = localStorage.getItem('access')
+    if(isAuthenticated){
+        const token_refresh = localStorage.getItem('refresh')
+        var user_id = jwtDecode(token).user_id
     }
+  
+
+    // if (isAuthenticated) {
+    //     const user = jwtDecode(token)
+    //     console.log(user)
+    // }
 
 
     const [redirect, setRedirect] = useState(false);
@@ -62,14 +64,14 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
             .then(res => setpatient(res.data))
             .catch((err) => console.log(err));
         
-patients.map((p)=>{
-    if(p.is_superuser==true){
-        setsuper(true)
-    }
-    setsuper(false)
-})
+// patients.map((p)=>{
+//     if(p.is_superuser==true){
+//         setsuper(true)
+//     }
+//     setsuper(false)
+// })
     },[])
-    console.log(issuper)
+ 
     /* const user = jwtDecode(token).user_id */
     const authLinks = () => (
         <>
@@ -77,18 +79,8 @@ patients.map((p)=>{
             <li className='nav-item'>
                 <Link className='nav-link' to='/Logout' onClick={logout_user}> تسجيل خروج</Link>
             </li>
-            {/* {
-                patients.map((p, i) => {
-                    return (
-                        <>
-                            <li className='nav-item'>
-                                <Link className='nav-link' to={`/Patient/${p.id}`}> الصفحة الشخصية</Link>
-                            </li>
-                        </>
-                    )
-                })
-            } */}
-
+     
+            
             <li className='nav-item'>
                 <Link className='nav-link' to={`/Patient/${user_id}`}> الصفحة الشخصية</Link>
             </li>
@@ -104,17 +96,10 @@ patients.map((p)=>{
         <>
     
             <Fragment>
-                <nav className="navbar navbar-expand-lg">
-                    <button
-                        className="navbar-toggler ml-auto custom-toggler"
-                        type="button"
-                        data-toggle="collapse"
-                        data-target="#navbarNav"
-                        aria-controls="navbarNav"
-                        aria-expanded="false"
-                        aria-label="Toggle navigation">
-                        <span className="navbar-toggler-icon"></span>
-                    </button>
+            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+        <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span className="navbar-toggler-icon"></span>
+        </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <Link className="navbar-brand" to="#">
                             <img src={New}
@@ -157,7 +142,7 @@ patients.map((p)=>{
                                 </Link>
                             </li>
                             {token ? authLinks() : guestLinks()}
-                            {issuper ? superuserlink():''}
+                            {/* {token && issuper ? superuserlink():''} */}
 
 
 

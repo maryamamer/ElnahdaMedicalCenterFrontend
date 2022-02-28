@@ -24,13 +24,8 @@ import appointments from './components/appointments'
 import Add_doctor from "./pgaes/add_doctor"
 import Dr_Profile from "./components/Dr_profile";
 import Booking from "./components/booking";
-<<<<<<< HEAD
-
-
-
-=======
 import RestPass from "./components/RestPass"
->>>>>>> master
+
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
 import Comment from "./components/comments";
