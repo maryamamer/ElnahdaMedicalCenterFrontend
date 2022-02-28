@@ -94,6 +94,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
     setRedirect(true);
   };
   const regLinks = () => (
+    <>
     <input
       type="button"
       className="btn btn-danger"
@@ -101,6 +102,12 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       value=" الغاء الحجز"
       onClick={rem_app}
     />
+    <Link to={`/Payment/${doctor.id}`}>
+        <button type="button" className="btns">
+          ادفع الكشف
+        </button>
+      </Link>
+    </>
   );
 
   if (isadded) {
