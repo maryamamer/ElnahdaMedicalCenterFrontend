@@ -11,19 +11,22 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
-import axios from "axios"
-
+import axios from "axios";
 
 const Navbar = ({ logout, isAuthenticated,users }) => {
-    
-    let token = localStorage.getItem('access')
-    let token_refresh = localStorage.getItem('refresh')
-    const user_id = jwtDecode(token).user_id
-
-    if (isAuthenticated) {
-        const user = jwtDecode(token)
-        console.log(user)
+    const[user_id,setuser_id]=useState('')
+    const token = localStorage.getItem('access')
+    if(localStorage.getItem('access')){
+        const token_refresh = localStorage.getItem('refresh')
+        const user_id = jwtDecode(token).user_id
+        setuser_id(user_id)
     }
+  
+
+    // if (isAuthenticated) {
+    //     const user = jwtDecode(token)
+    //     console.log(user)
+    // }
 
 
     const [redirect, setRedirect] = useState(false);
@@ -63,14 +66,14 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
             .then(res => setpatient(res.data))
             .catch((err) => console.log(err));
         
-patients.map((p)=>{
-    if(p.is_superuser==true){
-        setsuper(true)
-    }
-    setsuper(false)
-})
+// patients.map((p)=>{
+//     if(p.is_superuser==true){
+//         setsuper(true)
+//     }
+//     setsuper(false)
+// })
     },[])
-    console.log(issuper)
+ 
     /* const user = jwtDecode(token).user_id */
     const authLinks = () => (
         <>
@@ -78,18 +81,8 @@ patients.map((p)=>{
             <li className='nav-item'>
                 <Link className='nav-link' to='/Logout' onClick={logout_user}> تسجيل خروج</Link>
             </li>
-            {/* {
-                patients.map((p, i) => {
-                    return (
-                        <>
-                            <li className='nav-item'>
-                                <Link className='nav-link' to={`/Patient/${p.id}`}> الصفحة الشخصية</Link>
-                            </li>
-                        </>
-                    )
-                })
-            } */}
-
+     
+            
             <li className='nav-item'>
                 <Link className='nav-link' to={`/Patient/${user_id}`}> الصفحة الشخصية</Link>
             </li>
@@ -158,7 +151,7 @@ patients.map((p)=>{
                                 </Link>
                             </li>
                             {token ? authLinks() : guestLinks()}
-                            {issuper ? superuserlink():''}
+                            {token && issuper ? superuserlink():''}
 
 
 
