@@ -11,17 +11,23 @@ import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
-import axios from "axios"
+import axios from "axios";
 
-
-const Navbar = ({ logout, isAuthenticated }) => {
-    let token = localStorage.getItem('access')
-    let token_refresh = localStorage.getItem('refresh')
-
-    if (isAuthenticated) {
-        const user = jwtDecode(token)
-        console.log(user)
+const Navbar = ({ logout, isAuthenticated,users }) => {
+    const[user_id,setuser_id]=useState('')
+    const token = localStorage.getItem('access')
+    if(localStorage.getItem('access')){
+        const token_refresh = localStorage.getItem('refresh')
+        const user_id = jwtDecode(token).user_id
+        setuser_id(user_id)
     }
+  
+
+    // if (isAuthenticated) {
+    //     const user = jwtDecode(token)
+    //     console.log(user)
+    // }
+
 
     const [redirect, setRedirect] = useState(false);
     const history = useHistory();
@@ -46,12 +52,28 @@ const Navbar = ({ logout, isAuthenticated }) => {
         </Fragment>
     );
 
+    const superuserlink=()=>{
+        <>
+         <li className='nav-item'>
+                <a className='nav-link' href='/admin/users'> الأدمن </a>
+            </li>
+        </>
+    }
+    const[issuper,setsuper]=useState(false)
     const [patients, setpatient] = useState([]);
     useEffect(() => {
         axios.get('/users')
             .then(res => setpatient(res.data))
             .catch((err) => console.log(err));
-    });
+        
+// patients.map((p)=>{
+//     if(p.is_superuser==true){
+//         setsuper(true)
+//     }
+//     setsuper(false)
+// })
+    },[])
+ 
     /* const user = jwtDecode(token).user_id */
     const authLinks = () => (
         <>
@@ -59,20 +81,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
             <li className='nav-item'>
                 <Link className='nav-link' to='/Logout' onClick={logout_user}> تسجيل خروج</Link>
             </li>
-            {/* {
-                patients.map((p, i) => {
-                    return (
-                        <>
-                            <li className='nav-item'>
-                                <Link className='nav-link' to={`/Patient/${p.id}`}> الصفحة الشخصية</Link>
-                            </li>
-                        </>
-                    )
-                })
-            } */}
-
+     
+            
             <li className='nav-item'>
-                <Link className='nav-link' to={`/Patient/${patients.id}`}> الصفحة الشخصية</Link>
+                <Link className='nav-link' to={`/Patient/${user_id}`}> الصفحة الشخصية</Link>
             </li>
 
         </>
@@ -82,7 +94,9 @@ const Navbar = ({ logout, isAuthenticated }) => {
     /* function NavBar() { */
     /* let { user, logoutuser } = useContext(Auth) */
     return (
+     
         <>
+    
             <Fragment>
                 <nav className="navbar navbar-expand-lg">
                     <button
@@ -117,7 +131,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
                         } */}
 
-                            {token && token_refresh ? authLinks() : guestLinks()}
+                            
 
 
                             <li className="nav-item">
@@ -136,7 +150,8 @@ const Navbar = ({ logout, isAuthenticated }) => {
                                 <Link className="nav-link" to="/ContactUs">اتصل بنا
                                 </Link>
                             </li>
-
+                            {token ? authLinks() : guestLinks()}
+                            {token && issuper ? superuserlink():''}
 
 
 
@@ -144,14 +159,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
 
                         </ul>
-                        <Link className="navbar-brand" to="/">
-                            <img src={New}
-                                className="img-responsive logo"
-                                width="100"
-                                height="80"
-                                alt="New"
-                            />
-                        </Link>
+                       
 
                     </div>
                 </nav>
@@ -162,6 +170,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 }
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
+    users:state.user.users,
     patient: state.patient,
 
 });
