@@ -46,6 +46,7 @@ function ProfilePage() {
                       <div className="row" >
 
 
+
                         <div className="col-md-4">
                           <div className="card " >
                             <div className="card-body">
@@ -58,7 +59,7 @@ function ProfilePage() {
                                 </div>
                                 <div className="col-md-9 text-secondary">
                                   {patient.username}
-{/*                                   ندى طه السيد شعبان*/}                                </div>
+                               </div>
                               </div>
                               <hr />
                               <div className="row">
@@ -160,6 +161,7 @@ function ProfilePage() {
                         </div>
 
                       </div>
+
                     </div>
                   </div>
                 </div>

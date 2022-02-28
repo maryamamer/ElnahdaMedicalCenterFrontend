@@ -26,7 +26,9 @@ import Dr_Profile from "./components/Dr_profile";
 
 import Booking from "./components/booking";
 
+
 import RestPass from "./components/RestPass"
+
 
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
@@ -36,24 +38,31 @@ import chat from "./components/liveChat/chat";
 import Admin from "./pgaes/adminpanel";
 import Edituser from "./components/edituser";
 import adduser from "./pgaes/adduser";
+
 import DoctorList from "./pgaes/doctorlist";
 import Editdoctor from "./pgaes/Editdoctor";
 
+
+
+import { PayPalScriptProvider } from "@paypal/react-paypal-js";
+import { Toaster } from "react-hot-toast";
+import { Payment } from "./components/Payment.js";
 
 
 
 // import Dr_Profile from "./components/Dr_profile";
 
 
-export default function App (props) {
- 
-    return (
-      <div className="App">
-        <Router>
-          <Provider store={store}>
-            <NavBar />
+export default function App(props) {
+
+  return (
+    <div className="App">
+      <Router>
+        <Provider store={store}>
+          <NavBar />
 
           <Switch>
+
               <Route path={"/"} exact component={HomePage} />
               <Route path={"/dr/:id"} exact component={Dr_Profile} />
               <Route path={"/booking/:id"} exact component={Booking} />
@@ -84,6 +93,10 @@ export default function App (props) {
               <Route path={"/admin/doctors"} exact component={DoctorList} />
               <Route path={"/admin/add/doctor"} exact component={Add_doctor} />
               <Route path={"/admin/editdoctor/:id"} exact component={Editdoctor} />
+                  <PayPalScriptProvider options={{ "client-id": process.env.REACT_APP_PAYPAL_CLIENT_ID }}>
+              <Toaster position="top-center" />
+              <Route path={"/Payment/:id"} exact component={Payment} />
+            </PayPalScriptProvider>
 
             </Switch>
             <Footer />
@@ -91,5 +104,5 @@ export default function App (props) {
         </Router>
       </div>
     );
-  
+
 }
