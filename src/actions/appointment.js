@@ -25,8 +25,6 @@ export const add_appointment = (date, message) => async (dispatch) => {
   const config = {
     headers: {
       "Content-Type": "application/json",
-      Authorization: `JWT ${localStorage.getItem("access")}`,
-      Accept: "application/json",
     },
   };
   const body = JSON.stringify({
