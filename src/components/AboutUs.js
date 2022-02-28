@@ -20,10 +20,11 @@ function AboutUs() {
       <div className="parent container d-flex justify-content-center align-items-center h-100">
         <div className="row ">
 
-          <div className="col col-md-6 section-title">
+          <div className="col col-md-6 section-title" id="example">
 
-         
-            <p className="centered">
+            <h1 className="center_header text-dark">عنّا</h1>
+            <p className="centered" >
+
               أول واحدث مجمع طبى متكامل بالنهضة صفوة من كبار الاستشاريين
               والأخصائيين فى جميع التخصصات وتشمل عيادتنا مركز النهضة الطبى يوفر
               لك عيادات خارجية شاملة جميع التخصصات تحت إشراف - معمل تحاليل طبية

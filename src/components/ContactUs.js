@@ -24,7 +24,7 @@ function ContactUs() {
 </Link>
          </span>
              <div className="container text-right">
-=
+
         <div className="col-lg-12 px-lg-0 py-5 d-flex flex-row flex-wrap   ">
           <div className="col-lg-5 p-0 d-flex flex-column flex-wrap  justify-content-between section-title">
             <h1 className="text-center text-dark mb-5 ">تواصل معنا</h1>
