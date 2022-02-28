@@ -9,19 +9,24 @@ import logo from "../media/images/logo.jpeg";
 import "../CSS/ContactUs.css";
 
 function ContactUs() {
-  return (
-    <>
-      <span>
-        <Link to="/Chatbot">
-          <input
-            type="button"
-            className="btn btn-primary"
-            id="book-btn"
-            value="نظام الرد اﻵلي"
-          />
-        </Link>
-      </span>
-      <div className="container text-right">
+
+
+    return (
+        <>
+         <span>
+         <Link to="/Chatbot">
+         <div class="input-group">
+  <span id="chatbot">
+    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+  </span>
+
+</div>
+</Link>
+         </span>
+             <div className="container text-right">
+
+
+
         <div className="col-lg-12 px-lg-0 py-5 d-flex flex-row flex-wrap   ">
           <div className="col-lg-5 p-0 d-flex flex-column flex-wrap  justify-content-between section-title">
             <h1 className="text-center text-dark mb-5 ">تواصل معنا</h1>
