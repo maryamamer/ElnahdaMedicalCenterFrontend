@@ -53,13 +53,16 @@
   src: url("../Fonts/Cairo/Cairo-VariableFont_wght.ttf");
 }
 /*End Of Nav Bar*/
-/* @media (max-width: 1200px) {
+
+@media (max-width: 1200px) {
 
   .navbar {
     background-color: #14213d;
     min-height: 450px;
   }
-} */
+
+}
+
 
 
                       

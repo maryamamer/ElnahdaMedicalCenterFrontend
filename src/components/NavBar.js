@@ -160,7 +160,6 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                             {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
                         </ul>
 
-
                     </div>
                     
                 </nav>
