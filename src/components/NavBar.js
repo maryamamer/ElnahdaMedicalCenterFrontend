@@ -115,6 +115,23 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                             />
                         </Link>
                         <ul className="navbar-nav mr-auto">
+
+                            {/* {
+                            user ?
+                                <li className="nav-item">
+                                    <Link onClick={logoutuser} className="nav-link" to="/Logout"> تسجيل خروج</Link>
+                                </li>
+                                :
+                                <li className="nav-item">
+                                    <Link className="nav-link LastItem" to="/Login">  تسجيل الدخول </Link>
+                                </li>
+
+                        } */}
+
+                            
+
+
+
                             <li className="nav-item">
                                 <Link className="nav-link" to="/Home">الرئيسية </Link>
                             </li>
@@ -131,10 +148,13 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                                 <Link className="nav-link" to="/ContactUs">اتصل بنا
                                 </Link>
                             </li>
+
+
                             {/* {token && issuper ? superuserlink():''} */}
                             {token ? authLinks() : guestLinks()}
                             {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
                         </ul>
+
                     </div>
                     
                 </nav>

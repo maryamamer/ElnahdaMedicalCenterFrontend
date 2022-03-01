@@ -11,6 +11,7 @@ import "../CSS/ContactUs.css";
 function ContactUs() {
 
 
+
     return (
         <>
          <span>
@@ -24,6 +25,7 @@ function ContactUs() {
 </Link>
          </span>
              <div className="container text-right">
+
 
 
 
@@ -56,8 +58,10 @@ function ContactUs() {
               </div>
               
             </div>
-            <div className="col-lg-12 p-0 pb-4 speciality-item d-flex flex-row flex-wrap ">
-              <div className="col-11 col-lg-11 p-0 pl-3">
+
+            <div className="col-lg-11 p-0   d-flex flex-row flex-wrap ">
+              <div className=" col-lg-6 p-0 pl-3">
+
                 <p className="m-0 text-right">
                   {" "}
                   <img
@@ -70,7 +74,9 @@ function ContactUs() {
               </div>
               <div id="appointment1" className="appointment1">
                 <Link
-                  className="appointment1-btn scrollto  "
+
+                  className="appointment1-btn"
+
                   to="/Doctors"
                 >
                   إحجز موعداً
@@ -79,8 +85,10 @@ function ContactUs() {
             </div>
             
           </div>
-          <div className="col-lg-3 p-0  ">
-          <img src={map}  alt=""  />{" "}
+
+          <div className="col-6 col-lg-1 p-0 ">
+          <img src={map}  alt="" className="img-responsive" />
+
           </div>
         </div>
         
