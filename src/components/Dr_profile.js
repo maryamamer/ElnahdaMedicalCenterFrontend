@@ -21,6 +21,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const [isadded, setisadded] = useState(false);
   const token = localStorage.getItem("access");
   const [currentdate, setcurrentdate] = useState("");
+  console.log(commvalue)
   const user = jwtDecode(token).user_id;
   const get_user = () => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
@@ -49,7 +50,6 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `JWT ${localStorage.getItem("access")}`,
         Accept: "application/json",
       },
     };
@@ -234,7 +234,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                     cols="30"
                     rows="5"
                     value={commvalue}
-                    onChange={handlechange}
+                    onChange={(e)=>handlechange(e)}
                     className="form-control"
                     style={{ "background-color": "white" }}
                   ></textarea>
