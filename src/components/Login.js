@@ -5,35 +5,39 @@ import Auth from "../context/auth";
 
 import Nurse from '../media/images/Nurse.jpeg';
 import '../CSS/Login.css';
-import React, { useState, useContext } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Link, Redirect,useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { login } from '../actions/auth';
 
 import axios from 'axios';
+import { LOGIN_FAIL } from "../actions/types";
 /*
 function Login() {
     let { loginuser } = useContext(Auth)*/
 const Login = ({ login, isAuthenticated }) => {
     const [formData, setFormData] = useState({
-        email: '',
+        username: '',
         password: ''
     });
     const history = useHistory();
 
-    const { email, password } = formData;
+    const { username, password } = formData;
 
     const onChange = e => setFormData({ ...formData, [e.target.name]: e.target.value });
-
+    const [loginfail,setloginfail]=useState('')
     const onSubmit = e => {
         e.preventDefault();
 
-        login(email, password);
+        login(username, password);
+        if(!isAuthenticated){
+            setloginfail('هذا المستخدم غير موجود , نرجو التواصب مع أحد الموظفين لاعطائك بيانات الدخول')
+        }
+       
     };
 
     /* let { user } = useContext(Auth)
     user ?  <Redirect to='/' /> : <Redirect to='/login' /> */
-
     if (isAuthenticated) {
         return <Redirect to='/' />
         
@@ -49,13 +53,14 @@ const Login = ({ login, isAuthenticated }) => {
                         <div class="card-wrapper">
                             <div class="brand">
                                 <h1 class="card-title text-dark">تسجيل الدخول</h1>
+                               
                             </div>
                             <div class="card-body">
 
                                 <form method="post" class="my-login-validation" novalidate onSubmit={e => onSubmit(e)} /* onSubmit={loginuser} */>
                                     <div class="form-group ">
                                         <label for="email " className=" text-light">اسم المستخدم</label>
-                                        <input id="email" type="email" class="form-control" name="email" required value={email}
+                                        <input id="email" type="text" class="form-control" name="username" required value={username}
                                             onChange={e => onChange(e)} />
                                         <div class="invalid-feedback">
 
@@ -79,11 +84,13 @@ const Login = ({ login, isAuthenticated }) => {
                                     <div className="form-group" />
                                     <div className="custom-checkbox custom-control">
                                         <input type="checkbox" name="remember" id="remember" className="custom-control-input" />
+
                                       
                                             <Link to="/RestPass" className="float-right">
                                                 هل نسيت كلمة السر ؟
                                             </Link>
                                      
+
                                     </div>
 
 
@@ -92,14 +99,21 @@ const Login = ({ login, isAuthenticated }) => {
 
 
                                 </form>
+                                <p style={{color:'red'}} className='text-danger'>
+                                {loginfail}
+                                </p>
+                               
                                 {/* {
                                     isAuthenticated ? (<Redirect to='/' />) : (<div style= {{color:"red"}}>هذا المستخدم غير موجود </div>)
                                 } */}
                             </div>
+                            
                         </div>
+                       
                     </div>
                 </div>
             </section>
+           
         </>
     );
 }
