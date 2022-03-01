@@ -76,7 +76,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
                         aria-controls="navbarNav"
                         aria-expanded="false"
                         aria-label="Toggle navigation"
-                        
+
                         >
                         <span className="navbar-toggler-icon"></span>
                     </button>
