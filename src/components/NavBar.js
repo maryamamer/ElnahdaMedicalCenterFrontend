@@ -66,27 +66,30 @@ const Navbar = ({ logout, isAuthenticated }) => {
     return (
         <>
             <Fragment>
+                
                 <nav className="navbar navbar-expand-lg">
                     <button
-                        className="navbar-toggler ml-auto custom-toggler"
+                        className="navbar-toggler ml-auto custom-toggler exp"
                         type="button"
                         data-toggle="collapse"
                         data-target="#navbarNav"
                         aria-controls="navbarNav"
                         aria-expanded="false"
-                        aria-label="Toggle navigation">
+                        aria-label="Toggle navigation"
+                        onclick="changec()"
+                        >
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <Link className="navbar-brand" to="#">
+                        <Link className="navbar-brand " to="#">
                             <img src={New}
                                 className="img-responsive logo"
-                                width="100"
-                                height="80"
+                                // width="100"
+                                // height="80"
                                 alt="New"
                             />
                         </Link>
-                        <ul className="navbar-nav mr-auto">
+                        <ul className="navbar-nav mr-auto  mt-2 mt-lg-0"  >
                             {/* {
                             user ?
                                 <li className="nav-item">
@@ -103,19 +106,19 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
 
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Home">الرئيسية </Link>
+                                <Link className="nav-link " to="/Home" role="navigation">الرئيسية </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Doctors">الأطباء
+                                <Link className="nav-link" to="/Doctors" role="navigation">الأطباء
                                     {/* <span className="sr-only">(current)</span> */}
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/AboutUs">عنّا
+                                <Link className="nav-link" to="/AboutUs"  role="navigation">عنّا
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/ContactUs">اتصل بنا
+                                <Link className="nav-link" to="/ContactUs"  role="navigation">اتصل بنا
                                 </Link>
                             </li>
                             {token && token_refresh ? authLinks() : guestLinks()}
@@ -131,6 +134,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
 
                     </div>
                 </nav>
+                
                 {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
             </Fragment>
         </>
