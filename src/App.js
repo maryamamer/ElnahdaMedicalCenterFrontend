@@ -1,11 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-
-
 import { Provider } from 'react-redux';
 import store from './store';
-
-
 import "./App.css";
 import NavBar from "./components/NavBar";
 import ContactUs from "./components/ContactUs";
@@ -40,7 +36,7 @@ import Editdoctor from "./pgaes/Editdoctor";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Toaster } from "react-hot-toast";
 import { Payment } from "./components/Payment.js";
-
+import EditPatient from "./components/EditPatient.js";
 
 
 // import Dr_Profile from "./components/Dr_profile";
@@ -74,9 +70,7 @@ export default function App(props) {
             <Route path={"/Login"} exact component={Login} />
             <Route path={"/Message"} exact component={Message} />
             <Route path={"/Forget"} exact component={Forget} />
-
             <Route path={"/RestPass"} exact component={RestPass} />
-
             <Route path={"/recommend/:id"} exact component={Recommend} />
             <Route path={"/comments"} exact component={Comment} />
             <Route path={"/chat"} exact component={chat} />
@@ -97,5 +91,9 @@ export default function App(props) {
       </Router>
     </div>
   );
+
+
+
+
 
 }

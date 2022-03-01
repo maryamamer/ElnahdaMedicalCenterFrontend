@@ -7,11 +7,12 @@ import { React, useState, useEffect, Fragment } from "react";
 import { Link, useParams, Redirect,useHistory } from "react-router-dom";
 import { updateuserprofile } from "../actions/users";
 import { useDispatch } from "react-redux";
-import { param } from "jquery";
+
 
 function EditPatient() {
   const params = useParams();
   console.log(params);
+<<<<<<< HEAD
   const dispatch = useDispatch()
   const token = localStorage.getItem("access");
   const user = jwtDecode(token).user_id;
@@ -162,6 +163,7 @@ function EditPatient() {
                   </div>
                 </div>
               </div>
+
             </div>
           </div>
         </div>
@@ -171,3 +173,4 @@ function EditPatient() {
 }
 
 export default EditPatient;
+

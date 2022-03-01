@@ -11,6 +11,7 @@ import { logout } from "../actions/auth";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
+<<<<<<< HEAD
 const Navbar = ({ logout, isAuthenticated }) => {
   const token = localStorage.getItem("access");
   const [issuper, setsuper] = useState(false);
@@ -114,18 +115,6 @@ console.log(issuper)
               />
             </Link>
             <ul className="navbar-nav mr-auto">
-              {/* {
-                            user ?
-                                <li className="nav-item">
-                                    <Link onClick={logoutuser} className="nav-link" to="/Logout"> تسجيل خروج</Link>
-                                </li>
-                                :
-                                <li className="nav-item">
-                                    <Link className="nav-link LastItem" to="/Login">  تسجيل الدخول </Link>
-                                </li>
-
-                        } */}
-
               <li className="nav-item">
                 <Link className="nav-link" to="/Home">
                   الرئيسية{" "}
@@ -148,7 +137,7 @@ console.log(issuper)
                 </Link>
               </li>
               {token ? authLinks() : guestLinks()}
-              {/* { issuper ? superuserlink():''} */}
+              // {/* { issuper ? superuserlink():''} */}
             </ul>
           </div>
         </nav>
@@ -164,4 +153,3 @@ const mapStateToProps = (state) => ({
 });
 
 export default connect(mapStateToProps, { logout })(Navbar);
-/* export default NavBar; */
