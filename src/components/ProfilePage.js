@@ -10,8 +10,8 @@ import { Link, useParams, Redirect } from "react-router-dom";
 function ProfilePage() {
   const params = useParams();
   console.log(params);
-  const token = localStorage.getItem('access')
-  const user = jwtDecode(token).user_id
+  // const token = localStorage.getItem('access')
+  // const user = jwtDecode(token).user_id
   const [patient, setpatient] = useState({});
 
   useEffect(() => {
@@ -92,8 +92,8 @@ function ProfilePage() {
                           <div className="col-sm-12">
                             <a className="btn btn-info ">سجل المريض</a>
                             {/* <Link to={'/Editpp'}> */}
-                              <Link to={'/EditPatient'}>
-                              <a className="btn btn-info "> تعديل</a>
+                              <Link to={`/EditPatient/${patient.id}`}>
+                              <button type="button" className="btn btn-info "> تعديل</button>
 
                             </Link>
                           </div>

@@ -12,7 +12,6 @@ import { useDispatch } from "react-redux";
 function EditPatient() {
   const params = useParams();
   console.log(params);
-<<<<<<< HEAD
   const dispatch = useDispatch()
   const token = localStorage.getItem("access");
   const user = jwtDecode(token).user_id;

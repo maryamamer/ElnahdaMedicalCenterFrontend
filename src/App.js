@@ -36,7 +36,7 @@ import Editdoctor from "./pgaes/Editdoctor";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Toaster } from "react-hot-toast";
 import { Payment } from "./components/Payment.js";
-import EditPatient from "./components/EditPatient.js";
+
 
 
 // import Dr_Profile from "./components/Dr_profile";

@@ -11,16 +11,13 @@ import { logout } from "../actions/auth";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
-<<<<<<< HEAD
 const Navbar = ({ logout, isAuthenticated }) => {
   const token = localStorage.getItem("access");
   const [issuper, setsuper] = useState(false);
   const [patients, setpatient] = useState({});
   const[user_id,setuser_id] =useState('')
   const params=useParams()
-  if (isAuthenticated ) {
-    var user= jwtDecode(token).user_id
-  }
+  
   useEffect( () => {
     
       axios
@@ -30,7 +27,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
       if (patients.is_superuser === true) {
         setsuper(true);
       }
-      setuser_id(user)
+      if (isAuthenticated ) {
+        const user= jwtDecode(token).user_id
+        setuser_id(user)
+      }
      
   }, []);
 
