@@ -36,7 +36,7 @@ import Editdoctor from "./pgaes/Editdoctor";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Toaster } from "react-hot-toast";
 import { Payment } from "./components/Payment.js";
-
+import EditPatient from "./components/EditPatient.js";
 
 
 // import Dr_Profile from "./components/Dr_profile";
@@ -61,6 +61,7 @@ export default function App(props) {
             <Route path={"/AboutUs"} exact component={AboutUs} />
             <Route path={"/Logout"} exact component={logout} />
             <Route path={"/Editpp"} exact component={Editpp} />
+            <Route path={"/EditPatient"} exact component={EditPatient} />
             <Route path={"/Doctors"} exact component={Doctors} />
             <Route path={"/patientPortal"} exact component={patient_portal} />
             <Route path={"/prescription"} exact component={prescription} />
