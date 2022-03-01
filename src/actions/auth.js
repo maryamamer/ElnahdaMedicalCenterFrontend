@@ -13,7 +13,7 @@ import {
 export const load_user = () => async dispatch => {
 
     if (localStorage.getItem('access')) {
-        const user=jwtDecode(localStorage.get('access')).user_id
+        const user=jwtDecode(localStorage.getItem('access')).user_id
         const config = {
             headers: {
                 'Content-Type': 'application/json',

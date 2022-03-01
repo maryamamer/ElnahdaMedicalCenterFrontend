@@ -22,7 +22,6 @@ function Adduser({ doctor,isdoctor }) {
     username: "",
     fullname: "",
     email: "",
-    report: null,
     phone: "",
     date_of_birth: "",
     address: "",
@@ -67,7 +66,6 @@ function Adduser({ doctor,isdoctor }) {
     username,
     fullname,
     email,
-    report,
     phone,
     date_of_birth,
     address,
@@ -88,7 +86,6 @@ function Adduser({ doctor,isdoctor }) {
     fd.append("password", password);
     fd.append("fullname", fullname);
     fd.append("image", image);
-    fd.append("report", report);
     fd.append("date_of_birth", date_of_birth);
     fd.append("is_superuser", is_superuser);
     fd.append("is_active", is_active);
@@ -296,17 +293,6 @@ function Adduser({ doctor,isdoctor }) {
         </div>
 
         <div className="form-row">
-          <div className="col-md-6 mb-3">
-            <label htmlFor="report">ملف به أخر تطورات</label>
-            <input
-              type="file"
-              className="form-control"
-              id="report"
-              name="report"
-              onChange={(e) => handlefile(e)}
-            />
-            <div className="valid-feedback">Looks good!</div>
-          </div>
           <div className="custom-control custom-checkbox mb-3">
             <input
               type="checkbox"
