@@ -120,7 +120,9 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                             />
                         </Link>
 
+
                         <ul className="navbar-nav mr-auto  mt-2 mt-lg-0"  >
+
 
                             {/* {
                             user ?
@@ -159,6 +161,7 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
                             {token ? authLinks() : guestLinks()}
                             {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
                         </ul>
+
 
                     </div>
                     
