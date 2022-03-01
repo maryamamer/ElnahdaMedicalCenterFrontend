@@ -9,7 +9,6 @@ import logo from "../media/images/logo.jpeg";
 import "../CSS/ContactUs.css";
 
 function ContactUs() {
-
   return (
     <>
       <span>
@@ -23,9 +22,8 @@ function ContactUs() {
         </Link>
       </span>
       <div className="container text-right">
-
         <div className="col-lg-12 px-lg-0 py-5 d-flex flex-row flex-wrap   ">
-          <div className="col-lg-5 p-0 d-flex flex-column flex-wrap  justify-content-between section-title">
+          <div className="col-lg-5 p-0 d-flex flex-column flex-wrap  justify-content-between section-title2">
             <h1 className="text-center text-dark mb-5 ">تواصل معنا</h1>
             <div className="col-lg-12 p-0 pb-4 speciality-item d-flex flex-row flex-wrap ">
               <div className="col-11 col-lg-11 p-0 pl-3">
@@ -33,7 +31,7 @@ function ContactUs() {
                   <img
                     alt=""
                     src={location}
-                    className="img-fluid ls-is-cached lazyloaded"
+                    className="img-fluid ls-is-cached"
                   />{" "}
                   العامرية -النهضة-كوبري شربات-اعلي صيدلية غباشي
                 </p>
@@ -45,7 +43,7 @@ function ContactUs() {
                   {" "}
                   <img
                     alt=""
-                    className="img-fluid ls-is-cached lazyloaded"
+                    className="img-fluid ls-is-cached"
                     src={phone}
                   />{" "}
                   03-3475160 / 01050600505 / 01050600606{" "}
@@ -53,25 +51,21 @@ function ContactUs() {
               </div>
               
             </div>
-
             <div className="col-lg-11 p-0   d-flex flex-row flex-wrap ">
               <div className=" col-lg-6 p-0 pl-3">
-
                 <p className="m-0 text-right">
                   {" "}
                   <img
                     alt=""
-                    className="img-fluid ls-is-cached lazyloaded"
+                    className="img-fluid ls-is-cached"
                     src={mail}
                   />{" "}
                   info@gmail.com
                 </p>
               </div>
-              <div id="appointment1" className="appointment1">
+              <div id="appointment3" className="appointment3">
                 <Link
-
-                  className="appointment1-btn"
-
+                  className="appointment3-btn"
                   to="/Doctors"
                 >
                   إحجز موعداً
@@ -80,10 +74,8 @@ function ContactUs() {
             </div>
             
           </div>
-
           <div className="col-6 col-lg-1 p-0 ">
           <img src={map}  alt="" className="img-responsive" />
-
           </div>
         </div>
         
