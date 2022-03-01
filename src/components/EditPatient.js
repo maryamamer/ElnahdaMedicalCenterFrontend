@@ -7,7 +7,7 @@ import { React, useState, useEffect, Fragment } from "react";
 import { Link, useParams, Redirect } from "react-router-dom";
 
 
-function ProfilePage() {
+function EditPatient() {
   const params = useParams();
   console.log(params);
   const token = localStorage.getItem('access')
@@ -34,9 +34,6 @@ function ProfilePage() {
               />
               <h4>{patient.fullname} </h4>
               <p className="text-muted font-size-sm">{patient.address}</p>
-              <Link to={'/chat'}>
-              <button className="btn btn-outline-primary">رسالة</button>
-              </Link>
               <div className="row">
                 <div className="card" style={{ "width": "60rem", "height": "fit-content", "margin": "auto" }}>
                   <div className="card-body">
@@ -94,10 +91,12 @@ function ProfilePage() {
                       <Link to={'/patientPortal'}>
                         <span className="row">
                           <div className="col-sm-12">
-                            <a className="btn btn-info ">سجل المريض</a>
-                            {/* <Link to={'/Editpp'}> */}
-                              <Link to={'/EditPatient'}>
-                              <a className="btn btn-info "> تعديل</a>
+                            <a className="btn btn-info " target="__blank"
+                              href="Edit.html">سجل المريض</a>
+                            <Link to={'/Editpp'}>
+
+                              <a className="btn btn-info " target="__blank"
+                                href="Edit.html"> تعديل</a>
 
                             </Link>
                           </div>
@@ -105,41 +104,6 @@ function ProfilePage() {
 
                       </Link>
 
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div className="row">
-                <div className="card" style={{ "width": "60rem", "height": "24rem", "margin-top": "83px" }}>
-                  <div className="card-body">
-                    <h6 className="d-flex align-items-right mb-3">هذا الشهر</h6> <i
-                      className="material-icons text-info mr-2">التحاليل</i>
-                    <br />
-                    <small>فيتامين س</small>
-                    <div className="progress mb-3" >
-                      <div className="progress-bar bg-success" role="progressbar" style={{ "width": "80%" }}
-                        aria-valuenow="80" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>فيتامين د</small>
-                    <div className="progress mb-3" >
-                      <div className="progress-bar bg-primary" role="progressbar" style={{ "width": "72%" }}
-                        aria-valuenow="72" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>فيتامين أ</small>
-                    <div className="progress mb-3" >
-                      <div className="progress-bar bg-danger" role="progressbar" style={{ "width": "45%" }}
-                        aria-valuenow="89" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>فيتامين ب</small>
-                    <div className="progress mb-3" >
-                      <div className="progress-bar bg-warning" role="progressbar" style={{ "width": "55%" }}
-                        aria-valuenow="55" aria-valuemin="0" aria-valuemax="100"></div>
-                    </div>
-                    <small>الحديد</small>
-                    <div className="progress mb-3" >
-                      <div className="progress-bar bg-warning" role="progressbar" style={{ "width": "50%" }}
-                        aria-valuenow="66" aria-valuemin="0" aria-valuemax="100"></div>
                     </div>
                   </div>
                 </div>
@@ -153,4 +117,4 @@ function ProfilePage() {
   );
 }
 
-export default ProfilePage;
+export default EditPatient;
