@@ -49,7 +49,7 @@ const Login = ({ login, isAuthenticated }) => {
 
             <section class="h-100" id="login">
                 <div class="container h-100 opacity-0.4;">
-                    <div class="row justify-content-md-center h-100 ">
+                    <div class="row  ">
                         <div class="card-wrapper">
                             <div class="brand">
                                 <h1 class="card-title text-dark">تسجيل الدخول</h1>
@@ -84,11 +84,12 @@ const Login = ({ login, isAuthenticated }) => {
                                     <div className="form-group" />
                                     <div className="custom-checkbox custom-control">
                                         <input type="checkbox" name="remember" id="remember" className="custom-control-input" />
-                                        <label for="remember" className="custom-control-label text-light">تذكرني
+
                                             <Link to="/RestPass" className="float-right">
                                                 هل نسيت كلمة السر ؟
                                             </Link>
-                                        </label>
+                                     
+
                                     </div>
 
 

@@ -22,8 +22,8 @@ function AboutUs() {
 
           <div className="col col-md-6 section-title">
 
-            <h1 className="center_header text-dark">عنّا</h1>
-            <p className="centered">
+            <h1 className="text-dark">عنّا</h1>
+            <p style={{"font-size": "23px"}}>
               أول واحدث مجمع طبى متكامل بالنهضة صفوة من كبار الاستشاريين
               والأخصائيين فى جميع التخصصات وتشمل عيادتنا مركز النهضة الطبى يوفر
               لك عيادات خارجية شاملة جميع التخصصات تحت إشراف - معمل تحاليل طبية
@@ -35,7 +35,7 @@ function AboutUs() {
             </p>
           </div>
           <div className="col col-md-6">
-            {/* <img src={Doctors} alt="Doctors" width={700}/>  */}
+           
             <div id="hero" className="carousel slide" data-ride="carousel">
               {/* <!-- Indicators --> */}
               <ul className="carousel-indicators">
@@ -50,7 +50,7 @@ function AboutUs() {
               </ul>
 
               {/* <!-- The slideshow --> */}
-              <div className="carousel-inner">
+              <div className="carousel-inner" id="carousel-inner1">
                 <div className="carousel-item active">
                   <img src={slide1} alt="Dr" />
                 </div>
