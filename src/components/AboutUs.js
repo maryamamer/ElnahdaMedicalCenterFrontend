@@ -50,7 +50,7 @@ function AboutUs() {
               </ul>
 
               {/* <!-- The slideshow --> */}
-              <div className="carousel-inner">
+              <div className="carousel-inner" id="carousel-inner1">
                 <div className="carousel-item active">
                   <img src={slide1} alt="Dr" />
                 </div>

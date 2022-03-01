@@ -2,21 +2,25 @@
 .custom-toggler.navbar-toggler {
   border-color: white;
 }
-.custom-toggler .navbar-toggler-icon {
+/* .custom-toggler .navbar-toggler-icon {
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32'xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2'stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-.navbar-nav {
+} */
+/* .navbar-nav {
   margin-left: auto;
   padding-left: 30px;
   padding-right: 30px;
-}
+} */
 .navbar {
   background-color: #14213d;
+ 
 }
-.navbar-nav > li {
+
+
+/* .navbar-nav > li {
+
   margin-left: 20px;
   margin-right: 20px;
-}
+} */
 .navbar .nav-item .nav-link {
   color: #ffffff;
   font-size: 25px;
@@ -38,14 +42,24 @@
 .navbar .nav-item:active .nav-link {
   font-weight: bold;
 }
-.logo {
+/* .logo {
   width: 100px;
   height: 100px;
   border-radius: 50px;
   background-color: white;
-}
+} */
 @font-face {
   font-family: Nav;
   src: url("../Fonts/Cairo/Cairo-VariableFont_wght.ttf");
 }
 /*End Of Nav Bar*/
+/* @media (max-width: 1200px) {
+
+  .navbar {
+    background-color: #14213d;
+    min-height: 450px;
+  }
+} */
+
+
+                      
