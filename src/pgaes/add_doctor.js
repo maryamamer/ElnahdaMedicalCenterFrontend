@@ -2,18 +2,22 @@ import { React, useState, useEffect, Fragment } from "react";
 import { Link, useParams, Redirect, useHistory } from "react-router-dom";
 import axios from "axios";
 import { add_user } from "../actions/users";
-import { useDispatch, connect } from "react-redux";
+import { useDispatch, connect, useSelector } from "react-redux";
 import { get_doctor } from "../actions/doctor";
 import {add_doctor} from "../actions/doctor"
 
 function Add_doctor() {
   const dispatch = useDispatch();
   const[dept,setdept]=useState([])
+  const errors=useSelector((state)=>state.getdoctor.errors)
   useEffect(()=>{
     axios.get('/Departments/').then((res)=>{
      setdept(res.data)
     })
+
+    
   },[])
+  
 
   const [doctorinfo, setdoctorinfo] = useState({
     experience: "",
@@ -153,7 +157,12 @@ console.log(doctorinfo)
               onChange={(e) => onChange(e)}
               required
             />
-            <div className="valid-feedback">Looks good!</div>
+          
+           <div className="bg-light">
+          <p style={{color:'red'}}>
+             {errors.email}
+          </p>
+           </div>
           </div>
         </div>
         <div className="form-group">
@@ -243,7 +252,11 @@ console.log(doctorinfo)
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
-            <div className="valid-feedback">Looks good!</div>
+            <div className="bg-light">
+          <p style={{color:'red'}}>
+             {errors.gender}
+          </p>
+          </div>
           </div>
           <div className="col-md-4 mb-3">
             <label htmlFor="date_of_birth">تاريخ الميلاد</label>

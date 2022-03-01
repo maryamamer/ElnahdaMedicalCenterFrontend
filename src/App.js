@@ -9,7 +9,7 @@ import AboutUs from "./components/AboutUs"
 import Doctors from "./components/Doctors"
 import patient_portal from "./components/patient_portal"
 import HomePage from "./components/Home"
-import Editpp from "./components/Editpp";
+import EditPatient from "./components/EditPatient";
 import Footer from "./components/Footer"
 import ProfilePage from "./components/ProfilePage";
 import Login from "./components/Login";
@@ -52,12 +52,6 @@ export default function App(props) {
 
           <Switch>
 
-
-
-
-
-
-
             <Route path={"/"} exact component={HomePage} />
             <Route path={"/dr/:id"} exact component={Dr_Profile} />
             <Route path={"/booking/:id"} exact component={Booking} />
@@ -66,8 +60,7 @@ export default function App(props) {
             <Route path={"/Chatbot"} exact component={Chatbot} />
             <Route path={"/AboutUs"} exact component={AboutUs} />
             <Route path={"/Logout"} exact component={logout} />
-            <Route path={"/Editpp"} exact component={Editpp} />
-            <Route path={"/EditPatient"} exact component={EditPatient} />
+            <Route path={"/EditPatient/:id"} exact component={EditPatient} />
             <Route path={"/Doctors"} exact component={Doctors} />
             <Route path={"/patientPortal"} exact component={patient_portal} />
             <Route path={"/prescription"} exact component={prescription} />
@@ -77,9 +70,7 @@ export default function App(props) {
             <Route path={"/Login"} exact component={Login} />
             <Route path={"/Message"} exact component={Message} />
             <Route path={"/Forget"} exact component={Forget} />
-
             <Route path={"/RestPass"} exact component={RestPass} />
-
             <Route path={"/recommend/:id"} exact component={Recommend} />
             <Route path={"/comments"} exact component={Comment} />
             <Route path={"/chat"} exact component={chat} />

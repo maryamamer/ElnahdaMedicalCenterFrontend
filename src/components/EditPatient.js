@@ -1,29 +1,65 @@
 import pp from "../media/images/pp.png";
 import "../CSS/Profile.css";
 import axios from "axios";
-import { connect } from 'react-redux';
+import { connect, useSelector } from "react-redux";
 import jwtDecode from "jwt-decode";
 import { React, useState, useEffect, Fragment } from "react";
-import { Link, useParams, Redirect } from "react-router-dom";
+import { Link, useParams, Redirect,useHistory } from "react-router-dom";
+import { updateuserprofile } from "../actions/users";
+import { useDispatch } from "react-redux";
 
 
 function EditPatient() {
   const params = useParams();
   console.log(params);
-  const token = localStorage.getItem('access')
-  const user = jwtDecode(token).user_id
+<<<<<<< HEAD
+  const dispatch = useDispatch()
+  const token = localStorage.getItem("access");
+  const user = jwtDecode(token).user_id;
+  
+ const errors=useSelector((state)=>state.user.errors)
   const [patient, setpatient] = useState({});
-
   useEffect(() => {
-    axios
-      .get(`/users/${user}`)
-      .then((res) => setpatient(res.data))
-  }, [])
+    axios.get(`/users/${user}`).then((res) => setpatient(res.data));
+  }, []);
+
+  const [userinfo,  setuserinfo] =   useState({
+    fullname: patient.fullname,
+
+    email: patient.email,
+
+    phone: patient.phone,
+
+    address: patient.address,
+   
+  });
+
+  console.log(errors)
+
+  const onChange = e => setuserinfo({ ...userinfo, [e.target.name]: e.target.value });
+  const {fullname,email,phone,address}=userinfo
+
+  
+  console.log(patient);
+  const isupdated=useSelector((state)=>state.user.updated)
+  const history=useHistory()
+  const edit_patient = (e)=>{
+   e.preventDefault()
+   
+   dispatch(updateuserprofile(userinfo,params.id))
+  if(isupdated){
+    window.location.replace(`/Patient/${params.id}/`)
+  }
+
+  }
   return (
     <>
       <div className="container">
         <div className="row">
-          <div className="card" style={{ "height": "fit-content", "padding": "50px" }}>
+          <div
+            className="card"
+            style={{ height: "fit-content", padding: "50px" }}
+          >
             <div>
               <img
                 src={pp}
@@ -32,79 +68,98 @@ function EditPatient() {
                 width={100}
                 id="photo"
               />
-              <h4>{patient.fullname} </h4>
-              <p className="text-muted font-size-sm">{patient.address}</p>
               <div className="row">
-                <div className="card" style={{ "width": "60rem", "height": "fit-content", "margin": "auto" }}>
+                <div
+                  className="card"
+                  style={{
+                    width: "60rem",
+                    height: "fit-content",
+                    margin: "auto",
+                  }}
+                >
                   <div className="card-body">
-                    <div className="row">
-                      <div className="col-md-3">
-                        <h6 className="mb-0">الاسم بالكامل</h6>
-                      </div>
-                      <div className="col-md-9 text-secondary">
-                        {patient.username}
-                      </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0"> البريد الألكتروني </h6>
-                      </div>
-                      <div className="col-md-9 text-secondary">
-                        {patient.email}
-                      </div>
+                    <form method="post" className="bg-light" onSubmit={(e)=>edit_patient(e)}  noValidate>
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <label htmlFor="fullname" className="mb-0">
+                            الاسم بالكامل
+                          </label>
 
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-md-3">
-                        <h6 className="mb-0">الهاتف المنزلى</h6>
+                          <input
+                            type="text"
+                            id="fullname"
+                            name="fullname"
+                            class="form-control"
+                            onChange={e => onChange(e)}
+                            defaultValue={patient.fullname}
+                          />
+                        </div>
                       </div>
-                      <div className="col-md-9 text-secondary">
-                        08455464
+                      <hr />
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <label htmlFor="email" className="mb-0">
+                            {" "}
+                            البريد الألكتروني{" "}
+                          </label>
+
+                          <input
+                            type="text"
+                            name="email"
+                            id="email"
+                            class="form-control"
+                            onChange={e => onChange(e)}
+                            defaultValue={patient.email}
+                          />
+                        </div>
                       </div>
+                      <hr />
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <label htmlFor="phone" className="mb-0">
+                            الجوال
+                          </label>
 
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">الجوال</h6>
+                          <input
+                            type="text"
+                            id="phone"
+                            name="phone"
+                            class="form-control"
+                            onChange={e => onChange(e)}
+                            defaultValue={patient.phone}
+                          />
+                        </div>
                       </div>
+                      <hr />
+                      <div className="form-row">
+                        <div className="col-md-12">
+                          <label htmlFor="address" className="mb-0">
+                            العنوان
+                          </label>
 
-                      <div className="col-md-9 text-secondary">
-                        {patient.phone}
+                          <input
+                            type="text"
+                            name="address"
+                            id="address"
+                            class="form-control"
+                            onChange={e => onChange(e)}
+                            defaultValue={patient.address}
+                          />
+                        </div>
                       </div>
-                    </div>
-                    <hr />
-                    <div className="row">
-                      <div className="col-sm-3">
-                        <h6 className="mb-0">العنوان</h6>
+                      <hr />
+                      <div className="form-row">
+                        <div className="col-sm-12">
+                       
+                            <input
+                              type="submit"
+                              className="btn btn-info"
+                              value="حفظ التغيرات"
+                            />
+                      
+                        </div>
                       </div>
-                      <div className="col-sm-9 text-secondary">
-                        {patient.address}
-                      </div>
-
-                    </div>
-                    <hr />
-                    <div className="row">
-
-                      <Link to={'/patientPortal'}>
-                        <span className="row">
-                          <div className="col-sm-12">
-                            <a className="btn btn-info " target="__blank"
-                              href="Edit.html">سجل المريض</a>
-                            <Link to={'/Editpp'}>
-
-                              <a className="btn btn-info " target="__blank"
-                                href="Edit.html"> تعديل</a>
-
-                            </Link>
-                          </div>
-                        </span>
-
-                      </Link>
-
-                    </div>
+                    </form>
                   </div>
                 </div>
               </div>
@@ -118,3 +173,4 @@ function EditPatient() {
 }
 
 export default EditPatient;
+

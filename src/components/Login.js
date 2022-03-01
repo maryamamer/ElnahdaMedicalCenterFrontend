@@ -12,6 +12,7 @@ import { login } from '../actions/auth';
 
 import axios from 'axios';
 import { LOGIN_FAIL } from "../actions/types";
+import jwtDecode from "jwt-decode";
 /*
 function Login() {
     let { loginuser } = useContext(Auth)*/
@@ -39,7 +40,7 @@ const Login = ({ login, isAuthenticated }) => {
     /* let { user } = useContext(Auth)
     user ?  <Redirect to='/' /> : <Redirect to='/login' /> */
     if (isAuthenticated) {
-        return <Redirect to='/' />
+        return <Redirect to={`/`} />
         
     }
     return (
