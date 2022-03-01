@@ -56,6 +56,7 @@ export default function App(props) {
 
 
 
+
             <Route path={"/"} exact component={HomePage} />
             <Route path={"/dr/:id"} exact component={Dr_Profile} />
             <Route path={"/booking/:id"} exact component={Booking} />
@@ -98,6 +99,7 @@ export default function App(props) {
       </Router>
     </div>
   );
+
 
 
 

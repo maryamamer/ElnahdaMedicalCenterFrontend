@@ -6,26 +6,22 @@ import '../CSS/NavBar.css';
 
 
 
-import React, { Fragment, useState, useEffect } from 'react';
+import React, { Fragment, useState } from 'react';
 import { Link, Redirect, useHistory } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout } from '../actions/auth';
 import jwtDecode from "jwt-decode";
-import axios from "axios";
 
-const Navbar = ({ logout, isAuthenticated,users }) => {
-    const token = localStorage.getItem('access')
-    if(isAuthenticated){
-        const token_refresh = localStorage.getItem('refresh')
-        var user_id = jwtDecode(token).user_id
+
+
+const Navbar = ({ logout, isAuthenticated }) => {
+    let token = localStorage.getItem('access')
+    let token_refresh = localStorage.getItem('refresh')
+
+    if (isAuthenticated) {
+        const user = jwtDecode(token)
+        console.log(user)
     }
-  
-
-    // if (isAuthenticated) {
-    //     const user = jwtDecode(token)
-    //     console.log(user)
-    // }
-
 
     const [redirect, setRedirect] = useState(false);
     const history = useHistory();
@@ -50,41 +46,17 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
         </Fragment>
     );
 
-    const superuserlink=()=>{
-        <>
-         <li className='nav-item'>
-                <a className='nav-link' href='/admin/users'> الأدمن </a>
-            </li>
-        </>
-    }
-    const[issuper,setsuper]=useState(false)
-    const [patients, setpatient] = useState([]);
-    useEffect(() => {
-        axios.get('/users')
-            .then(res => setpatient(res.data))
-            .catch((err) => console.log(err));
-        
-// patients.map((p)=>{
-//     if(p.is_superuser==true){
-//         setsuper(true)
-//     }
-//     setsuper(false)
-// })
-    },[])
- 
-    /* const user = jwtDecode(token).user_id */
+
+
     const authLinks = () => (
         <>
 
             <li className='nav-item'>
-                <Link className='nav-link' to='/Logout' onClick={logout_user}> تسجيل خروج</Link>
+                <a className='nav-link' href='/Logout' onClick={logout_user}> تسجيل خروج</a>
             </li>
-     
-            
             <li className='nav-item'>
-                <Link className='nav-link' to={`/Patient/${user_id}`}> الصفحة الشخصية</Link>
+                <a className='nav-link' href='/ProfilePage'> الصفحة الشخصية</a>
             </li>
-
         </>
     );
 
@@ -94,59 +66,82 @@ const Navbar = ({ logout, isAuthenticated,users }) => {
     return (
         <>
             <Fragment>
+                
                 <nav className="navbar navbar-expand-lg">
                     <button
-                        className="navbar-toggler ml-auto custom-toggler"
+                        className="navbar-toggler ml-auto custom-toggler exp"
                         type="button"
                         data-toggle="collapse"
                         data-target="#navbarNav"
                         aria-controls="navbarNav"
                         aria-expanded="false"
-                        aria-label="Toggle navigation">
+                        aria-label="Toggle navigation"
+                        
+                        >
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
-                        <Link className="navbar-brad"n to="#">
+                        <Link className="navbar-brand " to="#">
                             <img src={New}
                                 className="img-responsive logo"
-                                width="100"
-                                height="80"
+                                // width="100"
+                                // height="80"
                                 alt="New"
                             />
                         </Link>
-                        <ul className="navbar-nav mr-auto">
+                        <ul className="navbar-nav mr-auto  mt-2 mt-lg-0"  >
+                            {/* {
+                            user ?
+                                <li className="nav-item">
+                                    <Link onClick={logoutuser} className="nav-link" to="/Logout"> تسجيل خروج</Link>
+                                </li>
+                                :
+                                <li className="nav-item">
+                                    <Link className="nav-link LastItem" to="/Login">  تسجيل الدخول </Link>
+                                </li>
+
+                        } */}
+
+                            
+
+
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Home">الرئيسية </Link>
+                                <Link className="nav-link " to="/Home" role="navigation">الرئيسية </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/Doctors">الأطباء
+                                <Link className="nav-link" to="/Doctors" role="navigation">الأطباء
                                     {/* <span className="sr-only">(current)</span> */}
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/AboutUs">عنّا
+                                <Link className="nav-link" to="/AboutUs"  role="navigation">عنّا
                                 </Link>
                             </li>
                             <li className="nav-item">
-                                <Link className="nav-link" to="/ContactUs">اتصل بنا
+                                <Link className="nav-link" to="/ContactUs"  role="navigation">اتصل بنا
                                 </Link>
                             </li>
-                            {/* {token && issuper ? superuserlink():''} */}
-                            {token ? authLinks() : guestLinks()}
-                            {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
+                            {token && token_refresh ? authLinks() : guestLinks()}
+
+
+
+
+
+
+
                         </ul>
+                       
+
                     </div>
-                    
                 </nav>
                 
+                {redirect ? <Redirect to='/' /> : <Fragment></Fragment>}
             </Fragment>
         </>
     );
 }
 const mapStateToProps = state => ({
     isAuthenticated: state.auth.isAuthenticated,
-    users:state.user.users,
-    patient: state.patient,
 
 });
 

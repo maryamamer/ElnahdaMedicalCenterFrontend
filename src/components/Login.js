@@ -88,7 +88,6 @@ const Login = ({ login, isAuthenticated }) => {
                                             <Link to="/RestPass" className="float-right">
                                                 هل نسيت كلمة السر ؟
                                             </Link>
-                                     
 
                                     </div>
 
