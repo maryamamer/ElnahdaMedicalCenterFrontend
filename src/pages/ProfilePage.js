@@ -10,19 +10,17 @@ import { Link, useParams, Redirect } from "react-router-dom";
 function ProfilePage() {
   const params = useParams();
   console.log(params);
-  // const token = localStorage.getItem('access')
-  // const user = jwtDecode(token).user_id
+  const token = localStorage.getItem('access')
+  const user = jwtDecode(token).user_id
   const [patient, setpatient] = useState({});
 
   useEffect(() => {
     axios
-      .get(`/users/${params.id}/`)
+      .get(`/users/${user}`)
       .then((res) => setpatient(res.data))
   }, [])
-  console.log(patient)
   return (
     <>
-
       <div className="container">
         <div className="row">
           <div className="card" style={{ "height": "fit-content", "padding": "50px" }}>
@@ -34,7 +32,6 @@ function ProfilePage() {
                 width={100}
                 id="photo"
               />
-              <h4>{patient.fullname} </h4>
               <p className="text-muted font-size-sm">{patient.address}</p>
               <Link to={'/chat'}>
               <button className="btn btn-outline-primary">رسالة</button>
@@ -47,7 +44,7 @@ function ProfilePage() {
                         <h6 className="mb-0">الاسم بالكامل</h6>
                       </div>
                       <div className="col-md-9 text-secondary">
-                        {patient.username}
+                        {patient.fullname}
                       </div>
                     </div>
                     <hr />
@@ -58,10 +55,6 @@ function ProfilePage() {
                       <div className="col-md-9 text-secondary">
                         {patient.email}
                       </div>
-
-                    </div>
-                    <hr />
-
 
                     </div>
                     <hr />
@@ -92,8 +85,8 @@ function ProfilePage() {
                           <div className="col-sm-12">
                             <a className="btn btn-info ">سجل المريض</a>
                             {/* <Link to={'/Editpp'}> */}
-                              <Link to={`/EditPatient/${patient.id}`}>
-                              <button type="button" className="btn btn-info "> تعديل</button>
+                              <Link to={`/EditPatient/${user}`}>
+                              <a className="btn btn-info "> تعديل</a>
 
                             </Link>
                           </div>
@@ -144,7 +137,7 @@ function ProfilePage() {
             </div>
           </div>
         </div>
-    
+      </div>
     </>
   );
 }
