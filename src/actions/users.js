@@ -7,7 +7,9 @@ import { load_user } from "./auth";
 import { ADD_USER, UPDATE_USER, GET_PATIENT, REMOVE_USER } from "./types";
 import jwtDecode from "jwt-decode";
 
-export const add_user = (user, username, password, email, repassword) => async (dispatch) => {
+export const add_user = (user, username, password, email, repassword) => async (
+  dispatch
+) => {
   console.log(email);
   const config1 = {
     headers: {
@@ -25,7 +27,7 @@ export const add_user = (user, username, password, email, repassword) => async (
     password: password,
     re_password: repassword,
   };
-console.log(body)
+  console.log(body);
   try {
     await axios.post(`/users/`, user, config1).then((res) => {
       dispatch({
@@ -41,7 +43,6 @@ console.log(body)
   //   .post(`/auth/users/`, body,config1)
   //   .then((res) => console.log(res.data))
   //   .catch((err) => console.log(err))
-
 };
 
 export const updateuser = (id, user) => async (dispatch) => {
@@ -93,5 +94,37 @@ export const deleteuser = (id) => async (dispatch) => {
         payload: id,
       })
     )
+    .catch((err) => console.log(err));
+};
+
+export const updateuserprofile = (user, id) => async (dispatch) => {
+  const config = {
+    validateStatus: (status) => {
+      // handling our own errors less than 500 status
+      return status < 500;
+    },
+    headers: {
+      "Content-Type": "application/json",
+    },
+  };
+  const body = {
+    fullname: user.fullname,
+    email: user.email,
+    phone: user.phone,
+    address: user.address,
+  };
+  console.log(body);
+  return axios
+    .patch(`/Userprofile/${id}/`, body, config)
+    .then((res) => {
+      if (res.status === 400) {
+        console.log('failed');
+      } else {
+        dispatch({
+          type: UPDATE_USER,
+          payload: res.data,
+        });
+      }
+    })
     .catch((err) => console.log(err));
 };

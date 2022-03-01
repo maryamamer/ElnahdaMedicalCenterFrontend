@@ -10,7 +10,8 @@ import {
 
 const initialState = {
     users: [],
-    isdoctor:null
+    isdoctor:null,
+    updated:null
 };
 
 export default function user (state = initialState, action) {
@@ -43,7 +44,6 @@ export default function user (state = initialState, action) {
             }
             
         case UPDATE_USER:
-            console.log(payload)
             const updatedusers= state.users.map(user=>{
                 if(user.id===payload.id){
                     console.log('hi')
@@ -55,10 +55,10 @@ export default function user (state = initialState, action) {
                     console.log('user not found')
                     return user;
                 });
-                console.log(state.users)
             return {
                 ...state,
-               users:updatedusers
+               users:updatedusers,
+               updated:true
             }
 
         case REMOVE_USER:

@@ -18,9 +18,10 @@ function ProfilePage() {
 
   useEffect(() => {
     axios
-      .get(`/users/${user}`)
+      .get(`/users/${params.id}/`)
       .then((res) => setpatient(res.data))
   }, [])
+  console.log(patient)
   return (
     <>
       <div className="flex-container">
@@ -58,7 +59,7 @@ function ProfilePage() {
                                   <h6 className="mb-0">الاسم بالكامل</h6>
                                 </div>
                                 <div className="col-md-9 text-secondary">
-                                  {patient.username}
+                                  {patient.fullname}
                                </div>
                               </div>
                               <hr />
@@ -72,15 +73,7 @@ function ProfilePage() {
 
                               </div>
                               <hr />
-                              <div className="row">
-                                <div className="col-md-3">
-                                  <h6 className="mb-0">الهاتف المنزلى</h6>
-                                </div>
-                                <div className="col-md-9 text-secondary">
-                                  08455464
-                                </div>
-
-                              </div>
+                        
                               <hr />
                               <div className="row">
                                 <div className="col-sm-3">
@@ -109,10 +102,10 @@ function ProfilePage() {
                                     <div className="col-sm-12">
                                       <a className="btn btn-info " target="__blank"
                                         href="Edit.html">سجل المريض</a>
-                                      <Link to={'/Editpp'}>
+                                      <Link to={`/EditPatient/${patient.id}`}>
 
-                                        <a className="btn btn-info " target="__blank"
-                                          href="Edit.html"> تعديل</a>
+                                        <input type="button" className="btn btn-info " value="تعديل"
+                                         / > 
 
                                       </Link>
 

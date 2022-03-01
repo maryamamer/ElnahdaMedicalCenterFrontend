@@ -11,33 +11,28 @@ import { logout } from "../actions/auth";
 import jwtDecode from "jwt-decode";
 import axios from "axios";
 
-const Navbar = ({ logout, isAuthenticated, users }) => {
-  const token_refresh = localStorage.getItem("refresh");
+const Navbar = ({ logout, isAuthenticated }) => {
   const token = localStorage.getItem("access");
   const [issuper, setsuper] = useState(false);
   const [patients, setpatient] = useState({});
   const[user_id,setuser_id] =useState('')
   if (isAuthenticated ) {
-    var user= jwtDecode(token)
-     
-  
-   
+    var user= jwtDecode(token).user_id
   }
   useEffect( () => {
-    setuser_id(user.user_id)
-  
+    
       axios
-      .get(`/users/${user_id}`)
+      .get(`/users/${user}`)
       .then((res) => setpatient(res.data))
       .catch((err) => console.log(err));
       if (patients.is_superuser === true) {
         setsuper(true);
       }
+      setuser_id(user)
      
   }, []);
 
   const [redirect, setRedirect] = useState(false);
-  const history = useHistory();
 
   const logout_user = () => {
     logout();
@@ -81,7 +76,7 @@ const Navbar = ({ logout, isAuthenticated, users }) => {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" to={`/Patient/${user_id}`}>
+        <Link className="nav-link" to={`/Patient/${user}`}>
           {" "}
           الصفحة الشخصية
         </Link>

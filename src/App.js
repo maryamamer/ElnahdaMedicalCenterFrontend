@@ -13,7 +13,7 @@ import AboutUs from "./components/AboutUs"
 import Doctors from "./components/Doctors"
 import patient_portal from "./components/patient_portal"
 import HomePage from "./components/Home"
-import Editpp from "./components/Editpp";
+import EditPatient from "./components/EditPatient";
 import Footer from "./components/Footer"
 import ProfilePage from "./components/ProfilePage";
 import Login from "./components/Login";
@@ -64,7 +64,7 @@ export default function App(props) {
             <Route path={"/Chatbot"} exact component={Chatbot} />
             <Route path={"/AboutUs"} exact component={AboutUs} />
             <Route path={"/Logout"} exact component={logout} />
-            <Route path={"/Editpp"} exact component={Editpp} />
+            <Route path={"/EditPatient/:id"} exact component={EditPatient} />
             <Route path={"/Doctors"} exact component={Doctors} />
             <Route path={"/patientPortal"} exact component={patient_portal} />
             <Route path={"/prescription"} exact component={prescription} />
