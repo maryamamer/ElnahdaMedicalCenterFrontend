@@ -74,7 +74,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btns">
+        <button type="button" className="btn btn-success " style={{width:'5rem' ,padding:'10px'}}>
           احجز الآن
         </button>
       </Link>
@@ -139,7 +139,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
 
                         <div>
                           <Link to={`/recommend/${doctor.id}`}>
-                            <button type="button" className="btns">
+                            <button type="button" className="btn btn-info">
                               المقترحات
                             </button>
                           </Link>

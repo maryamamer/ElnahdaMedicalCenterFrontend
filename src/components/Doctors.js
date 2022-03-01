@@ -40,8 +40,8 @@ function Doctors() {
         <>
 
             <div classNameName="container-fluid">
-                <div className="row justify-content-around">
-                    <form method="get" >
+                <div className="row ">
+                    <form method="get"className="mx-auto" >
                         <input className="search" type="search"   onChange={(e) => searchItems(e.target.value)} placeholder="Search" />
                     </form>
                 </div>

@@ -16,7 +16,7 @@ function EditPatient() {
   const token = localStorage.getItem("access");
   const user = jwtDecode(token).user_id;
   
-
+ const errors=useSelector((state)=>state.user.errors)
   const [patient, setpatient] = useState({});
   useEffect(() => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
@@ -33,31 +33,24 @@ function EditPatient() {
    
   });
 
+  console.log(errors)
+
   const onChange = e => setuserinfo({ ...userinfo, [e.target.name]: e.target.value });
   const {fullname,email,phone,address}=userinfo
 
   
   console.log(patient);
   const isupdated=useSelector((state)=>state.user.updated)
-const history=useHistory()
+  const history=useHistory()
   const edit_patient = (e)=>{
    e.preventDefault()
    
    dispatch(updateuserprofile(userinfo,params.id))
-  
-  //  history.push(`/Patient/${params.id}/`)
-  // history.goForward(`/Patient/${params.id}/`)
   if(isupdated){
     window.location.replace(`/Patient/${params.id}/`)
   }
 
   }
-
-  
-  
- 
-
-  console.log(userinfo)
   return (
     <>
       <div className="container">

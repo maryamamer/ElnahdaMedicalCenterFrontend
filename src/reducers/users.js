@@ -5,13 +5,15 @@ import {
    UPDATE_USER,
    REMOVE_USER,
    PARTIAL_UPDATE_USER,
-   GET_PATIENT
+   GET_PATIENT,
+   UserUpdate_Fail
 } from '../actions/types';
 
 const initialState = {
     users: [],
     isdoctor:null,
-    updated:null
+    updated:null,
+    errors:null
 };
 
 export default function user (state = initialState, action) {
@@ -42,7 +44,13 @@ export default function user (state = initialState, action) {
                 ...state,
                 users:[...state.users,payload],
             }
-            
+        
+        case UserUpdate_Fail:
+            console.log(payload)
+            return {
+                ...state,
+                errors: payload,
+            };
         case UPDATE_USER:
             const updatedusers= state.users.map(user=>{
                 if(user.id===payload.id){

@@ -5,7 +5,7 @@ import New from "../media/images/New.png";
 import "../CSS/NavBar.css";
 
 import React, { Fragment, useState, useEffect } from "react";
-import { Link, Redirect, useHistory } from "react-router-dom";
+import { Link, Redirect, useHistory,useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions/auth";
 import jwtDecode from "jwt-decode";
@@ -16,13 +16,14 @@ const Navbar = ({ logout, isAuthenticated }) => {
   const [issuper, setsuper] = useState(false);
   const [patients, setpatient] = useState({});
   const[user_id,setuser_id] =useState('')
+  const params=useParams()
   if (isAuthenticated ) {
     var user= jwtDecode(token).user_id
   }
   useEffect( () => {
     
       axios
-      .get(`/users/${user}`)
+      .get(`/users/${user_id}`)
       .then((res) => setpatient(res.data))
       .catch((err) => console.log(err));
       if (patients.is_superuser === true) {
@@ -76,7 +77,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" to={`/Patient/${user}`}>
+        <Link className="nav-link" to={`/Patient/${user_id}`}>
           {" "}
           الصفحة الشخصية
         </Link>
@@ -151,7 +152,7 @@ console.log(issuper)
             </ul>
           </div>
         </nav>
-        {redirect ? <Redirect to="/" /> : <Fragment></Fragment>}
+        {redirect ? <Redirect to={`/`} /> : <Fragment></Fragment>}
       </Fragment>
     </>
   );

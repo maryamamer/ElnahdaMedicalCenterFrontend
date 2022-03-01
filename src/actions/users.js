@@ -4,7 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FaAccessibleIcon } from "react-icons/fa";
 import { load_user } from "./auth";
-import { ADD_USER, UPDATE_USER, GET_PATIENT, REMOVE_USER } from "./types";
+import { ADD_USER, UPDATE_USER, GET_PATIENT, REMOVE_USER,UserUpdate_Fail } from "./types";
 import jwtDecode from "jwt-decode";
 
 export const add_user = (user, username, password, email, repassword) => async (
@@ -118,7 +118,10 @@ export const updateuserprofile = (user, id) => async (dispatch) => {
     .patch(`/Userprofile/${id}/`, body, config)
     .then((res) => {
       if (res.status === 400) {
-        console.log('failed');
+        dispatch({
+          type:UserUpdate_Fail,
+          payload:res.data
+        })
       } else {
         dispatch({
           type: UPDATE_USER,
