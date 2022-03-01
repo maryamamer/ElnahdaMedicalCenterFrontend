@@ -4,6 +4,7 @@ import { FaHome, FaCalendarAlt, FaFileMedical, FaFlask, FaPills, FaHistory, FaSi
 import { Link } from 'react-router-dom';
 import $ from 'jquery';
 import jquery from 'jquery';
+
 window.$ = window.jQuery=jquery;
 
 export default class appointments extends Component {

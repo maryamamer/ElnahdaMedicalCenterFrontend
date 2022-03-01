@@ -10,36 +10,46 @@ import { connect } from 'react-redux';
 import { get_doctor } from '../actions/doctor';
 
 
-function Doctors(props) {
-    // const doctors =useSelector((state)=>state.doctor)
-    // console.log(doctors)
-    const [doctors, setdoctor] = useState([]);
-    // setdoctor(doctor)
-    // setdoctor(useSelector(state=>state.doctor.doctor))
-    // console.log(doctors)
-    // console.log(doctor)
-
+function Doctors() {
+   
+    const dispatch=useDispatch()
+ 
+     const doctors= useSelector((state)=>state.getdoctor.doctor)
+    const [filteredResults, setFilteredResults] = useState([]);
+    const [searchInput, setSearchInput] = useState('');
     useEffect(() => {
-        axios.get('/doctors')
-            .then(res => setdoctor(res.data))
-            .catch((err) => console.log(err));
+
+        dispatch(get_doctor())
 
 
-    });
+    },[]);
+        const searchItems = (query) => {
+            setSearchInput(query)
+            if (searchInput!==''){
+           const searchdoctors= doctors.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase())
+            })
+            setFilteredResults(searchdoctors)
+        }
+        else{
+            setFilteredResults(doctors)
+        }
+        }
 
     return (
         <>
 
             <div classNameName="container-fluid">
                 <div className="row justify-content-around">
-                    <form>
-                        <input className="search" type="search" placeholder="Search" />
+                    <form method="get" >
+                        <input className="search" type="search"   onChange={(e) => searchItems(e.target.value)} placeholder="Search" />
                     </form>
                 </div>
                 <div className="container-fluid">
                     <div className="row m-5">
                         {
-                            doctors.map((d, i) => {
+                            searchInput.length > 1 ? (
+                            filteredResults.map((d, i) => {
                                 return (
                                     <>
                                         <div className="col-md-3">
@@ -58,7 +68,26 @@ function Doctors(props) {
                                     </>
                                 )
                             }
-                            )}
+                            )):( doctors.map((d, i) => {
+                                return (
+                                    <>
+                                        <div className="col-md-3">
+                                            <Link to={ `/dr/${d.id}`}>
+
+                                            <div className="divDoctor">
+                                                <img className="img1" src={`${d.image}`} alt="doctor" />
+                                                <div className="overview justify-content-evenly">
+                                                    <h2>{d.fullname}</h2>
+                                                    <p> {d.specialization}</p>
+                                                    <p>التقييم</p>
+                                                </div>
+                                            </div>
+                                            </Link>
+                                        </div>
+                                    </>
+                                )
+                            }
+                            ))}
                     </div>
                 </div>
             </div>
@@ -69,8 +98,8 @@ function Doctors(props) {
 }
 
 const mapStateToProps = state => ({
-    doctor: state.doctor,
+    doctor: state.getdoctor,
   
 });
 
-export default connect(mapStateToProps)(Doctors);
+export default connect(mapStateToProps,{get_doctor})(Doctors);
