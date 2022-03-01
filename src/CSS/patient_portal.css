@@ -1,160 +1,8 @@
-/* @import url("https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap");
-
-/*============================= NavBar =================================================--
-.custom-toggler.navbar-toggler {
-  border-color: white;
-}
-
-.custom-toggler .navbar-toggler-icon {
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
-}
-
-.navbar-nav {
-  margin-left: auto;
-  padding-left: 30px;
-  padding-right: 30px;
-}
-
-.navbar {
-  background-color: #14213d;
-}
-
-/* .nav-item>.LastItem {
-      margin-left: 100px;
-      margin-right: 100px;
-    } --
-
-.navbar-nav > li {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
-.navbar .nav-item .nav-link {
-  color: #ffffff;
-  font-size: 25px;
-  font-family: Nav;
-}
-
-.navbar .nav-item.active .nav-link,
-.navbar .nav-item:focus .nav-link,
-.navbar .nav-item:hover .nav-link {
-  border-bottom: 4px double;
-}
-
-.navbar .nav-item.active .nav-link {
-  font-weight: bold;
-}
-
-.logo {
-  width: 100px;
-  height: 100px;
-  border-radius: 50px;
-  background-color: white;
-}
-
-@font-face {
-  font-family: Nav;
-  /* src: url("./Fonts/Cairo/Cairo-VariableFont_wght.ttf"); --
-  src: url("./Cairo/Cairo-VariableFont_wght.ttf"); 
-}*/
-
-/*============================= MY CSS =================================================*/
+/*============================= Body CSS =================================================*/
 body {
-  /* text-align: right; */
-  /* font-size: 15px; */
   font-family: "Cairo", sans-serif;
+  font-size: 40px;
   color: #14213d;
-}
-
-.sidebar-container {
-  position: fixed;
-  width: 220px;
-  height: 100%;
-  left: 0;
-  overflow-x: hidden;
-  overflow-y: auto;
-  background: #14213d;
-  color: #fca311;
-}
-
-.content-container {
-  padding-top: 20px;
-}
-
-.sidebar-logo {
-  text-align: center;
-  /* padding-top: 25px; */
-  /* padding-bottom: 15px; */
-  font-size: 30px;
-  background-color: #14213d;
-}
-
-.sidebar-navigation {
-  padding: 0;
-  margin: 10;
-  list-style-type: none;
-  position: relative;
-}
-
-.sidebar-navigation li {
-  background-color: transparent;
-  position: relative;
-  display: inline-block;
-  width: 100%;
-  line-height: 20px;
-}
-
-.sidebar-navigation li a {
-  padding-top: 25px;
-  padding-right: 15px;
-  padding-bottom: 15px;
-  padding-left: 50px;
-  display: block;
-  color: #fca311;
-  font-size: 17px;
-  text-align: right;
-}
-
-.sidebar-navigation li .fa {
-  margin-right: 50px;
-}
-
-.sidebar-navigation li a,
-.sidebar-navigation li a:active,
-.sidebar-navigation li a:hover,
-.sidebar-navigation li a:focus {
-  text-decoration: none;
-  outline: none;
-}
-
-.sidebar-navigation li::before {
-  background-color: #e5e5e5;
-  position: absolute;
-  content: "";
-  height: 100%;
-  left: 0;
-  top: 0;
-  -webkit-transition: width 0.2s ease-in;
-  transition: width 0.2s ease-in;
-  width: 3px;
-  z-index: -1;
-}
-
-.sidebar-navigation li:hover::before {
-  width: 100%;
-}
-
-.sidebar-navigation .header {
-  text-align: center;
-  font-size: 25px;
-  text-transform: uppercase;
-  background-color: #0e182e;
-  padding-top: 25px;
-  padding-bottom: 15px;
-}
-
-.sidebar-navigation .header::before {
-  background-color: transparent;
 }
 
 .card {
@@ -165,4 +13,75 @@ body {
   background-color: #e5e5e5;
 }
 
-/*============================= Body CSS =================================================*/
+.custom-border {
+  border: 7px #14213d;
+  border-radius: 12px;
+  border-style: double;
+  padding: 0%;
+}
+
+
+/* .flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: right;
+  font-size: 30px;
+  text-align: center;
+  flex-flow: row wrap;
+  flex-direction: row;
+} */
+
+/* .flex-container > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 10px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+} */
+
+/* .flex-item-left {
+  background-color: #f1f1f1;
+  padding: 10px;
+  flex: 50%;
+}
+
+.flex-item-right {
+  background-color: dodgerblue;
+  padding: 10px;
+  flex: 50%;
+} */
+
+/* Responsive layout - makes a one column-layout instead of a two-column layout */
+/* @media (max-width: 800px) {
+  .flex-item-right, .flex-item-left {
+    flex: 100%;
+  } */
+
+
+/* .flex-container {
+  display: flex;
+  justify-content: center;
+  margin: 25px;
+  padding: 20px;
+} */
+
+/* .grid-container {
+  display: grid;
+  grid-template-columns: auto ;
+  gap: 10px;
+  background-color: #2196F3;
+  padding: 10px;
+} */
+
+/* .grid-container > div {
+  background-color: rgba(255, 255, 255, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+} */
+
+/* .item1 {
+  grid-row-start: 1;
+  grid-row-end: 3;
+} */

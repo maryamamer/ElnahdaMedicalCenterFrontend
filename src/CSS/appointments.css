@@ -1,5 +1,4 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
 
 td.fc-day {
     background: #fff !important;
@@ -165,11 +164,11 @@ span.fc-button {
     border-bottom: 1px solid #eee;
 }
 
-.fc-state-highlight {
-    /* <td> today cell */
-    /* TODO: add .fc-today to <th> */
-    /* background: #fcf8e3; */
-}
+/* .fc-state-highlight {
+    <td> today cell
+    TODO: add .fc-today to <th>
+    background: #fcf8e3;
+} */
 
 .fc-state-highlight>div>div.fc-day-number {
     background-color: #ff3b30;
@@ -450,7 +449,7 @@ table.fc-border-separate {
     border-right-width: 1px;
 }
 
-.fc-border-separate tr.fc-last td {}
+/* .fc-border-separate tr.fc-last td {} */
 
 .fc-border-separate .fc-week .fc-first {
     border-left: 0;
@@ -746,7 +745,6 @@ table.fc-header {
 
 /*============================= Calender Body =================================================*/
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,100i,300,300i,400,400i,500,500i,700,700i,900,900i");
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap');
 
 body {
     margin-bottom: 40px;
@@ -811,100 +809,13 @@ body {
 }
 
 
-/*============================= SideBar Nav =================================================*/
-.sidebar-container {
-    position: fixed;
-    width: 220px;
-    height: 100%;
-    left: 0;
-    overflow-x: hidden;
-    overflow-y: auto;
-    background: #14213D;
-    color: #FCA311;
-}
-
+/*============================= Bodyyy =================================================*/
 .content-container {
-    padding-top: 55px;
-}
-
-.sidebar-logo {
-    text-align: center;
-    /* padding-top: 25px;
-                padding-bottom: 15px; */
-    font-size: 30px;
-    background-color: #14213D;
-}
-
-.sidebar-navigation {
-    padding: 0;
-    margin: 10;
-    list-style-type: none;
-    position: relative;
-}
-
-.sidebar-navigation li {
-    background-color: transparent;
-    position: relative;
-    display: inline-block;
-    width: 100%;
-    line-height: 20px;
-}
-
-.sidebar-navigation li a {
-    text-align: right;
-    padding-top: 25px;
-    padding-right: 15px;
-    padding-bottom: 15px;
-    /* padding-left: 90px; */
-    display: block;
-    color: #FCA311;
-    font-size: 17px;
-}
-
-.sidebar-navigation li .fa {
-    margin-right: 50px;
-}
-
-.sidebar-navigation li a,
-.sidebar-navigation li a:active,
-.sidebar-navigation li a:hover,
-.sidebar-navigation li a:focus {
-    text-decoration: none;
-    outline: none;
-}
-
-.sidebar-navigation li::before {
-    background-color: #e5e5e5;
-    position: absolute;
-    content: '';
-    height: 100%;
-    left: 0;
-    top: 0;
-    -webkit-transition: width 0.2s ease-in;
-    transition: width 0.2s ease-in;
-    width: 3px;
-    z-index: -1;
-}
-
-.sidebar-navigation li:hover::before {
-    width: 100%;
-}
-
-.sidebar-navigation .header {
-    text-align: center;
-    font-size: 25px;
-    text-transform: uppercase;
-    background-color: #0e182e;
-    padding-top: 25px;
-    padding-bottom: 15px;
-}
-
-.sidebar-navigation .header::before {
-    background-color: transparent;
-}
-
-.content-container {
-    padding-left: 220px;
+    margin-top: 25px;
+    margin-bottom: 15px;
+    margin-right: 150px;
+    /* margin-left: 25px; */
+    /* padding: auto; */
 }
 
 .card {
