@@ -14,14 +14,27 @@ import axios from "axios";
 const Navbar = ({ logout, isAuthenticated, users }) => {
   const token_refresh = localStorage.getItem("refresh");
   const token = localStorage.getItem("access");
-  if (isAuthenticated && token) {
-    var user= jwtDecode(token).user_id
+  const [issuper, setsuper] = useState(false);
+  const [patients, setpatient] = useState({});
+  const[user_id,setuser_id] =useState('')
+  if (isAuthenticated ) {
+    var user= jwtDecode(token)
+     
+  
+   
   }
-
-  // if (isAuthenticated) {
-  //     const user = jwtDecode(token)
-  //     console.log(user)
-  // }
+  useEffect( () => {
+    setuser_id(user.user_id)
+  
+      axios
+      .get(`/users/${user_id}`)
+      .then((res) => setpatient(res.data))
+      .catch((err) => console.log(err));
+      if (patients.is_superuser === true) {
+        setsuper(true);
+      }
+     
+  }, []);
 
   const [redirect, setRedirect] = useState(false);
   const history = useHistory();
@@ -48,33 +61,14 @@ const Navbar = ({ logout, isAuthenticated, users }) => {
   const superuserlink = () => (
     <>
       <li className="nav-item">
-        <a className="nav-link" href="/admin/users">
+        <Link className="nav-link" to="/admin/users">
           {" "}
           الأدمن{" "}
-        </a>
+        </Link>
       </li>
     </>
   );
-  const [issuper, setsuper] = useState('');
-  const [patients, setpatient] = useState({});
-  useEffect(() => {
-    axios
-      .get(`/users/${user}`)
-      .then((res) => setpatient(res.data))
-      .catch((err) => console.log(err));
-
-    // patients.map((p)=>{
-    //     if(p.is_superuser==true){
-    //         setsuper(true)
-    //     }
-    //     setsuper(false)
-    // })
-    if (patients.is_superuser == true) {
-      setsuper(true);
-    }
-  }, []);
-
-  console.log("issuper", issuper);
+ 
 
   /* const user = jwtDecode(token).user_id */
   const authLinks = () => (
@@ -87,14 +81,15 @@ const Navbar = ({ logout, isAuthenticated, users }) => {
       </li>
 
       <li className="nav-item">
-        <Link className="nav-link" to={`/Patient/${user}`}>
+        <Link className="nav-link" to={`/Patient/${user_id}`}>
           {" "}
           الصفحة الشخصية
         </Link>
       </li>
+      {issuper ? superuserlink():''}
     </>
   );
-
+console.log(issuper)
   /* function NavBar() { */
   /* let { user, logoutuser } = useContext(Auth) */
   return (
@@ -157,7 +152,7 @@ const Navbar = ({ logout, isAuthenticated, users }) => {
                 </Link>
               </li>
               {token ? authLinks() : guestLinks()}
-              { issuper ? superuserlink():''}
+              {/* { issuper ? superuserlink():''} */}
             </ul>
           </div>
         </nav>
