@@ -9,9 +9,11 @@ import dr from "../media/images/icon-doctors.png";
 import nurse from "../media/images/icon-nurses.png";
 import staff from "../media/images/icon-support-staff.png";
 
-
-
 import CountUp from 'react-countup';
+
+
+
+
 function AboutUs() {
   return (
     <>
