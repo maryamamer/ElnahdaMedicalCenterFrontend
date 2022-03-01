@@ -17,7 +17,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
   const [patients, setpatient] = useState({});
   const[user_id,setuser_id] =useState('')
   const params=useParams()
-  
+  if (isAuthenticated ) {
+    var user= jwtDecode(token).user_id
+    
+  }
   useEffect( () => {
     
       axios
@@ -27,10 +30,7 @@ const Navbar = ({ logout, isAuthenticated }) => {
       if (patients.is_superuser === true) {
         setsuper(true);
       }
-      if (isAuthenticated ) {
-        const user= jwtDecode(token).user_id
-        setuser_id(user)
-      }
+      setuser_id(user)
      
   }, []);
 

@@ -16,7 +16,7 @@ export default function Comment({id}) {
   axios.get('/Comments/').then((res)=>{
     setcomments(res.data.filter((cm)=>cm.doctor_id==id))
   })
- 
+ console.log(comments)
   get_all()
   console.log(id)
 
