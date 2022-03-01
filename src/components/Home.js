@@ -4,7 +4,7 @@ import slide2 from "../media/images/slide-2.jpg";
 import slide3 from "../media/images/slide-3.jpg";
 import logo from "../media/images/logo.jpeg";
 import "../CSS/Home.css";
-
+import { Link } from "react-router-dom";
 import { FaCheckDouble } from "react-icons/fa";
 import { FaAngleDown } from "react-icons/fa";
 import { FaAngleUp } from "react-icons/fa";
@@ -18,6 +18,8 @@ export default class HomePage extends React.Component {
     return (
       <>
         <body>
+
+
           <div id="hero" className="carousel slide" data-ride="carousel">
             {/* <!-- Indicators --> */}
             <ul className="carousel-indicators">
@@ -57,6 +59,15 @@ export default class HomePage extends React.Component {
           </div>
 
           {/* <!-- ======= Featured Services Section ======= --> */}
+          <span>  <Link to="/Chatbot">
+            <div class="input-group">
+              <span id="chatbot">
+                <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+              </span>
+
+            </div>
+          </Link>
+          </span>
           <section id="featured-services" className="featured-services">
             <div className="container" data-aos="fade-up">
               <div className="row">
@@ -66,6 +77,7 @@ export default class HomePage extends React.Component {
                     data-aos="fade-up"
                     data-aos-delay="100"
                   >
+
                     <h4 className="title">مركز الطوارئ</h4>
                     <p className="description text-right">
                       معاك لحظة بلحظة طوال ال 24 ساعة يومياً

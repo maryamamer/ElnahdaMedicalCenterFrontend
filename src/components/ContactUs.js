@@ -11,19 +11,19 @@ import "../CSS/ContactUs.css";
 function ContactUs() {
 
 
-    return (
-        <>
-         <span>
-         <Link to="/Chatbot">
-         <div class="input-group">
-  <span id="chatbot">
-    <i class="fa fa-user-circle-o" aria-hidden="true"></i>
-  </span>
+  return (
+    <>
+      <span>
+        <Link to="/Chatbot">
+          <div class="input-group">
+            <span id="chatbot">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </span>
 
-</div>
-</Link>
-         </span>
-             <div className="container text-right">
+          </div>
+        </Link>
+      </span>
+      <div className="container text-right">
 
         <div className="col-lg-12 px-lg-0 py-5 d-flex flex-row flex-wrap   ">
           <div className="col-lg-5 p-0 d-flex flex-column flex-wrap  justify-content-between section-title">
@@ -52,7 +52,7 @@ function ContactUs() {
                   03-3475160 / 01050600505 / 01050600606{" "}
                 </p>
               </div>
-              
+
             </div>
             <div className="col-lg-12 p-0 pb-4 speciality-item d-flex flex-row flex-wrap ">
               <div className="col-11 col-lg-11 p-0 pl-3">
@@ -75,15 +75,15 @@ function ContactUs() {
                 </Link>
               </div>
             </div>
-            
+
           </div>
           <div className="col-lg-3 p-0  ">
-          <img src={map}  alt=""  />{" "}
+            <img src={map} alt="" />{" "}
           </div>
         </div>
-        
+
       </div>
-      
+
     </>
   );
 }

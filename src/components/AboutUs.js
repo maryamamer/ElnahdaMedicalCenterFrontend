@@ -8,6 +8,7 @@ import bed from "../media/images/icon-beds.png";
 import dr from "../media/images/icon-doctors.png";
 import nurse from "../media/images/icon-nurses.png";
 import staff from "../media/images/icon-support-staff.png";
+import { Link } from "react-router-dom";
 
 import CountUp from 'react-countup';
 
@@ -17,6 +18,16 @@ import CountUp from 'react-countup';
 function AboutUs() {
   return (
     <>
+    <span>
+            <Link to="/Chatbot">
+          <div class="input-group">
+            <span id="chatbot">
+              <i class="fa fa-user-circle-o" aria-hidden="true"></i>
+            </span>
+
+          </div>
+        </Link>
+      </span>
       <div className="parent container d-flex justify-content-center align-items-center h-100">
         <div className="row ">
 

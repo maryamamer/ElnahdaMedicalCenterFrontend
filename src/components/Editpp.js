@@ -43,7 +43,7 @@ function ProfilePage() {
                                                                     <h6 className="mb-0">الاسم بالكامل</h6>
                                                                 </div>
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="text" class="form-control" value="من فضلك ادخل اﻻسم" />
+                                                                    <input type="text" class="form-control" value="من فضلك ادخل اﻻسم" required/>
                                                                 </div>
                                                             </div>
                                                             <hr />
@@ -52,7 +52,7 @@ function ProfilePage() {
                                                                     <h6 className="mb-0"> البريد الألكتروني </h6>
                                                                 </div>
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="text" class="form-control" value="email@example.com" />
+                                                                    <input type="text" class="form-control" value="email@example.com" required/>
                                                                 </div>
 
                                                             </div>
@@ -62,7 +62,7 @@ function ProfilePage() {
                                                                     <h6 className="mb-0">الهاتف المنزلى</h6>
                                                                 </div>
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="text" class="form-control" value="0103337" />
+                                                                    <input type="text" class="form-control" value="0103337" required/>
                                                                 </div>
                                                             </div>
                                                             <hr />
@@ -72,7 +72,7 @@ function ProfilePage() {
                                                                 </div>
 
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="text" class="form-control" value="01057878" />
+                                                                    <input type="text" class="form-control" value="01057878"required />
                                                                 </div>
                                                             </div>
                                                             <hr />
@@ -81,7 +81,7 @@ function ProfilePage() {
                                                                     <h6 className="mb-0">العنوان</h6>
                                                                 </div>
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="text" class="form-control" value="من فضلك ادخل العنوان" />
+                                                                    <input type="text" class="form-control" value="من فضلك ادخل العنوان" required/>
                                                                 </div>
 
                                                             </div>
@@ -90,7 +90,7 @@ function ProfilePage() {
 
                                                                 <div class="col-sm-3"></div>
                                                                 <div class="col-sm-9 text-secondary">
-                                                                    <input type="button" class="btn btn-primary px-4" value="حفظ التغيرات" />
+                                                                    <input type="button" class="btn btn-primary px-4" value="حفظ التغيرات"required />
                                                                 </div>
                                                             </div>
 
