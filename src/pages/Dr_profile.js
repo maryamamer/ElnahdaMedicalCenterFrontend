@@ -9,7 +9,7 @@ import { BsBook } from "react-icons/bs";
 import axios from "axios";
 import { add_appointment, remAppointment } from "../actions/appointment";
 import { connect } from "react-redux";
-import Comment from "./comments";
+import Comment from "../components/comments";
 import jwtDecode from "jwt-decode";
 import smile from "../media/images/smile.jpg";
 

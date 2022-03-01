@@ -4,24 +4,24 @@ import { Provider } from 'react-redux';
 import store from './store';
 import "./App.css";
 import NavBar from "./components/NavBar";
-import ContactUs from "./components/ContactUs";
-import AboutUs from "./components/AboutUs"
-import Doctors from "./components/Doctors"
-import patient_portal from "./components/patient_portal"
-import HomePage from "./components/Home"
-import EditPatient from "./components/EditPatient";
+import ContactUs from "./pages/ContactUs";
+import AboutUs from "./pages/AboutUs"
+import Doctors from "./pages/Doctors"
+import patient_portal from "./pages/patient_portal"
+import HomePage from "./pages/Home"
+import EditPatient from "./pages/EditPatient";
 import Footer from "./components/Footer"
-import ProfilePage from "./components/ProfilePage";
-import Login from "./components/Login";
-import Forget from "./components/Forget";
+import ProfilePage from "./pages/ProfilePage";
+import Login from "./pages/Login";
+import Forget from "./pages/Forget";
 import logout from "./components/logout";
 import prescription from "./components/prescription"
 import appointments from './components/appointments'
 import Add_doctor from "./pages/add_doctor"
-import Dr_Profile from "./components/Dr_profile";
+import Dr_Profile from "./pages/Dr_profile";
 import Booking from "./components/booking";
 
-import RestPass from "./components/RestPass"
+import RestPass from "./pages/RestPass"
 
 import Message from "./components/Message";
 import Chatbot from './components/chatbot/Chatbot';
@@ -29,13 +29,13 @@ import Comment from "./components/comments";
 import Recommend from "./components/recommendations";
 import chat from "./components/liveChat/chat";
 import AdminPanel from "./pages/AdminPanel";
-import Edituser from "./components/edituser";
+import Edituser from "./pages/edituser";
 import adduser from "./pages/adduser";
 import DoctorList from "./pages/DoctorList";
 import Editdoctor from "./pages/Editdoctor";
 import { PayPalScriptProvider } from "@paypal/react-paypal-js";
 import { Toaster } from "react-hot-toast";
-import { Payment } from "./components/Payment.js";
+import { Payment } from "./pages/Payment.js";
 
 
 
