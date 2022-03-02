@@ -1,3 +1,4 @@
+
 import "../CSS/dr_profile.css";
 import { React, useState, useEffect, Fragment } from "react";
 
@@ -19,26 +20,40 @@ export default function Comment({id}) {
   get_all()
   console.log(id)
 
+    },[])
+  
+    const get_all = async ()=>{
+        axios.get(`/users/`).then((res)=>setpatient(res.data))
+      }
+ 
   return (
     <>
-      <div className="text-justify darker float-right commentsection">
-        {comments.map((c, i) => {
-          return (
-            <div key={i}>
-              <h6 className="text-muted m-1">
-                {patient.map((p) => {
-                  if (p.id === c.patient_id) {
-                    return <>{p.username}</>;
-                  }
-                })}
-              </h6>{" "}
-              <span>{c.date_added}</span> <br />
-              <p>{c.comment_description}</p>
-            </div>
-          );
-        })}
-      </div>
+     <h1>التعليقات</h1>
+     <div className="text-justify darker mt-4 float-right commentsection" >
+                    { comments.map((c,i)=>{
+                        return (
+                            <div key={i}>
+                            <h6 className="text-muted m-1" >{
+                                patient.map((p)=>{
+                                    if (p.id===c.patient_id){
+                                        return (
+                                            <>
+                                            {p.username}
+                                            </>
+                                        )
+                                    }
+                                })
+                            
+                            }</h6> <span>{c.date_added}</span> <br />
+                            <p>
+                              {c.comment_description}
+                            </p>
+                            </div>
+                        )
+                    })
+                  
+}
+                  </div>
     </>
-);
-})}
-
+  );
+}
