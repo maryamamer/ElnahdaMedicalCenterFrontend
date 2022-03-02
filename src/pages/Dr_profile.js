@@ -82,13 +82,11 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       {/* <li className='nav-item'>
             <Link className='nav-link' to='/signup'>Sign Up</Link>
         </li> */}
-      <Link to={`/Payment/${doctor.id}`}>
+     {/*  <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
         </button>
-      </Link>
-      <br />
-
+      </Link> */}
       <Link to={`/recommend/${doctor.id}`}>
         <button type="button" className="btns">
           المقترحات

@@ -1,5 +1,5 @@
 import jwtDecode from "jwt-decode";
-import { React, useState,useEffect } from "react";
+import { React, useState, useEffect } from "react";
 import { Link, useParams, Redirect } from "react-router-dom";
 import "../CSS/booking.css";
 import { add_appointment, registered } from "../actions/appointment";
@@ -7,14 +7,14 @@ import { connect } from 'react-redux';
 import axios from "axios";
 
 
-function Booking({ registered, isregistered, add_appointment,app }) {
+function Booking({ registered, isregistered, add_appointment, app }) {
   const params = useParams()
-  const[doctorapps,setdoctorapps]=useState([])
-useEffect(()=>{
-  axios.get('/Doctorapps/').then((res)=>setdoctorapps(res.data.filter((d)=>d.doctor_id==params.id)))
+  const [doctorapps, setdoctorapps] = useState([])
+  useEffect(() => {
+    axios.get('/Doctorapps/').then((res) => setdoctorapps(res.data.filter((d) => d.doctor_id == params.id)))
 
-},[])
- 
+  }, [])
+
   const [formData, setFormData] = useState({
     date: '',
     message: ''
@@ -29,15 +29,15 @@ useEffect(()=>{
 
     add_appointment(date, message);
     registered();
-    
+
   };
 
   if (isregistered) {
-    localStorage.setItem('appointment',(JSON.parse(app))[0].id)
+    localStorage.setItem('appointment', (JSON.parse(app))[0].id)
 
     return <Redirect to={`/dr/${params.id}`} />
   }
- 
+
 
   return (
     <>
@@ -56,25 +56,25 @@ useEffect(()=>{
             <div className="form-group">
               <label for="date">المواعيد </label>
               <select
-              className="custom-select "
-              value={date}
-              name="date"
-              onChange={(e) =>onChange(e)}
-              id="date"
-            >
-              {doctorapps.map((d,i)=>{
-                d.date=new Date().toLocaleString()
+                className="custom-select "
+                value={date}
+                name="date"
+                onChange={(e) => onChange(e)}
+                id="date"
+              >
+                {doctorapps.map((d, i) => {
+                  d.date = new Date().toLocaleString()
 
-                return(
-                  <option key={i} value={d.date}>{d.date}</option>
-                )
-              
-              })
-               
-                  
-               
-              }
-            </select>
+                  return (
+                    <option key={i} value={d.date}>{d.date}</option>
+                  )
+
+                })
+
+
+
+                }
+              </select>
             </div>
 
 
@@ -93,8 +93,8 @@ useEffect(()=>{
             <a href="/dr">
               <input type="submit" className="btn btn-success" value="التأكيد" />
             </a>
-            <input type="reset" className="btn btn-primary" value="التراجع" /><hr />
-
+            <Link to={`/dr/${params.id}`}> <input type="reset" className="btn btn-primary" value="التراجع" /><hr />
+            </Link>
           </form>
 
           {/* <!-- form end --> */}
@@ -105,7 +105,7 @@ useEffect(()=>{
 }
 const mapStateToProps = state => ({
   isregistered: state.addapp.isregistered,
-  app:state.getapp.app
+  app: state.getapp.app
 });
 
 
