@@ -28,8 +28,8 @@ export default function Comment({id}) {
  
   return (
     <>
-     <h1>التعليقات</h1>
-     <div className="text-justify darker mt-4 float-right commentsection" >
+     {/* <h1>التعليقات</h1> */}
+     <div className="text-justify darker float-right commentsection" >
                     { comments.map((c,i)=>{
                         return (
                             <div key={i}>

@@ -74,7 +74,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btn btn-success " style={{ width: '5rem', padding: '10px' }}>
+        <button type="button" className="btn btn-outline-success " style={{ width: '5rem', padding: '10px' }}>
           احجز الآن
         </button>
       </Link>
@@ -143,7 +143,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                   height="70px"
                 />
               </div>
-              <b className="h6 b-str">{doctor.fullname}</b>
+              <b className="h5 b-str">{doctor.fullname}</b>
             </div>
             <br />
             {/* breeeeeeeeeeeeeeeeeeeeeeeeeeak */}
