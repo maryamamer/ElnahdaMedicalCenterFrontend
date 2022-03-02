@@ -74,7 +74,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btn btn-success " style={{width:'5rem' ,padding:'10px'}}>
+        <button type="button" className="btn btn-success " style={{ width: '5rem', padding: '10px' }}>
           احجز الآن
         </button>
       </Link>
@@ -103,16 +103,21 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   };
   const regLinks = () => (
     <>
-    <input
-      type="button"
-      className="btn btn-danger"
-      id="book-btn"
-      value=" الغاء الحجز"
-      onClick={rem_app}
-    />
-    <Link to={`/Payment/${doctor.id}`}>
+      <input
+        type="button"
+        className="btn btn-danger"
+        id="book-btn"
+        value=" الغاء الحجز"
+        onClick={rem_app}
+      />
+      <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
+        </button>
+      </Link>
+      <Link to={`/recommend/${doctor.id}`}>
+        <button type="button" className="btns">
+          المقترحات
         </button>
       </Link>
     </>
