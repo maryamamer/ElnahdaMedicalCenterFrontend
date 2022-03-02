@@ -3,7 +3,7 @@
   src: url("../Fonts/Cairo/Cairo-ExtraBold.ttf");
 }
 
-section-title2 h1 {
+section-title h1 {
   font-size: 32px;
   font-weight: bold;
   text-transform: uppercase;
@@ -11,7 +11,7 @@ section-title2 h1 {
   padding-bottom: 20px;
   position: relative;
 }
-.section-title2 h1::after {
+.section-title h1::after {
   content: "";
   position: absolute;
   display: block;
@@ -21,18 +21,15 @@ section-title2 h1 {
   bottom: 0;
   left: calc(50% - 25px);
 }
-.appointment3 .appointment3-btn {
+.appointment1 .appointment1-btn {
   font-family: "Roboto", sans-serif;
   font-weight: 500;
   font-size: 16px;
   letter-spacing: 1px;
-  display:  block;
-  padding: 8px 35px;
+  display:inline-block;
+  padding: 17px ;
   border-radius: 25px;
   transition: 0.5s;
-  margin-top: 90px;
-  /* margin-right: 160px; */
-  
   border: 2px solid #fff;
   color: #fff;
   background: #1e386d;

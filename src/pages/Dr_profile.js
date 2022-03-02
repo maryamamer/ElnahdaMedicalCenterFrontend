@@ -74,13 +74,24 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btn btn-success " style={{width:'5rem' ,padding:'10px'}}>
+        <button type="button" className="btn btn-outline-success " style={{ width: '5rem', padding: '10px' }}>
           احجز الآن
         </button>
       </Link>
       {/* <li className='nav-item'>
             <Link className='nav-link' to='/signup'>Sign Up</Link>
         </li> */}
+
+      {/*  <Link to={`/Payment/${doctor.id}`}>
+        <button type="button" className="btns">
+          ادفع الكشف
+        </button>
+      </Link> */}
+      <Link to={`/recommend/${doctor.id}`}>
+        <button type="button" className="btns">
+          المقترحات
+        </button>
+      </Link>
     </Fragment>
   );
 
@@ -90,16 +101,21 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   };
   const regLinks = () => (
     <>
-    <input
-      type="button"
-      className="btn btn-danger"
-      id="book-btn"
-      value=" الغاء الحجز"
-      onClick={rem_app}
-    />
-    <Link to={`/Payment/${doctor.id}`}>
+      <input
+        type="button"
+        className="btn btn-danger"
+        id="book-btn"
+        value=" الغاء الحجز"
+        onClick={rem_app}
+      />
+      <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
+        </button>
+      </Link>
+      <Link to={`/recommend/${doctor.id}`}>
+        <button type="button" className="btns">
+          المقترحات
         </button>
       </Link>
     </>
@@ -116,7 +132,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
 
           <div className="row first-row">
             <div className="col-md-5 col-sm-12 div-size">
-              <div className="card " style={{height:'500px'}}>
+              <div className="card " style={{ height: '500px' }}>
                 <div className="card-body doc-det">
                   <div className="row no-gutters">
                     <div className="col-md-2 col-sm-12 div-size">
@@ -160,6 +176,9 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                   </div>
                 </div>
               </div>
+
+              <b className="h5 b-str">{doctor.fullname}</b>
+
             </div>
 
             {/* <!--*************************** 2nd Card - Contact ***************************--> */}
@@ -234,7 +253,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                     cols="30"
                     rows="5"
                     value={commvalue}
-                    onChange={(e)=>handlechange(e)}
+                    onChange={(e) => handlechange(e)}
                     className="form-control"
                     style={{ "background-color": "white" }}
                   ></textarea>

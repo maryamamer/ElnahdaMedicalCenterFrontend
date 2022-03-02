@@ -4,20 +4,20 @@ import axios from "axios";
 import { add_user } from "../actions/users";
 import { useDispatch, connect, useSelector } from "react-redux";
 import { get_doctor } from "../actions/doctor";
-import {add_doctor} from "../actions/doctor"
+import { add_doctor } from "../actions/doctor"
 
 function Add_doctor() {
   const dispatch = useDispatch();
-  const[dept,setdept]=useState([])
-  const errors=useSelector((state)=>state.getdoctor.errors)
-  useEffect(()=>{
-    axios.get('/Departments/').then((res)=>{
-     setdept(res.data)
+  const [dept, setdept] = useState([])
+  const errors = useSelector((state) => state.getdoctor.errors)
+  useEffect(() => {
+    axios.get('/Departments/').then((res) => {
+      setdept(res.data)
     })
 
-    
-  },[])
-  
+
+  }, [])
+
 
   const [doctorinfo, setdoctorinfo] = useState({
     experience: "",
@@ -38,14 +38,14 @@ function Add_doctor() {
     status: "",
     is_superuser: "",
     patient_number: "",
-    dept_id:"",
+    dept_id: "",
   });
 
   const history = useHistory();
 
   const onChange = (e) => {
     setdoctorinfo({ ...doctorinfo, [e.target.name]: e.target.value });
- 
+
   };
   // setuserinfo({ ...userinfo, [e.target.name]: e.target.value });
 
@@ -84,7 +84,7 @@ function Add_doctor() {
     dept_id,
 
   } = doctorinfo;
-console.log(doctorinfo)
+  console.log(doctorinfo)
   const adddoctor = (e) => {
     e.preventDefault();
     const fd = new FormData();
@@ -107,7 +107,7 @@ console.log(doctorinfo)
     fd.append("is_superuser", is_superuser);
     fd.append("patient_number", patient_number);
     fd.append("dept_id", dept_id);
- 
+
     dispatch(add_doctor(fd));
   };
 
@@ -157,46 +157,48 @@ console.log(doctorinfo)
               onChange={(e) => onChange(e)}
               required
             />
-          
-           <div className="bg-light">
-          <p style={{color:'red'}}>
-             {errors.email}
-          </p>
-           </div>
+
+            {
+              errors ? (<div className="bg-light">
+                <p style={{ color: 'red' }}>
+                  {errors.email}
+                </p>
+              </div>) : ""
+            }
           </div>
         </div>
         <div className="form-group">
           <label htmlFor="dept_id">رقم القسم</label>
           <select
-              className="custom-select "
-              onChange={(e) => onChange(e)}
-              name="dept_id"
-              value={dept_id}
-              id="gender"
-            >
-              {
-                dept.map((d)=>{
-                  return (
-                    <option value={d.id}>{d.id}</option>
-                  )
-                })
-              }
-            
-             
-            </select>
+            className="custom-select "
+            onChange={(e) => onChange(e)}
+            name="dept_id"
+            value={dept_id}
+            id="gender"
+          >
+            {
+              dept.map((d) => {
+                return (
+                  <option value={d.id}>{d.id}</option>
+                )
+              })
+            }
+
+
+          </select>
         </div>
         <div className="form-group">
           <label htmlFor="patient_number">عدد المرضي</label>
 
           <input
-              type="number"
-              className="form-control"
-              id="patient_number"
-              name="patient_number"
-              value={patient_number}
-              onChange={(e) => onChange(e)}
-            />
-         
+            type="number"
+            className="form-control"
+            id="patient_number"
+            name="patient_number"
+            value={patient_number}
+            onChange={(e) => onChange(e)}
+          />
+
         </div>
         <div className="form-row">
           <div className="col-md-4 mb-3">
@@ -243,7 +245,7 @@ console.log(doctorinfo)
 
             <select
               className="custom-select "
-              
+
               name="gender"
               value={gender}
               onChange={(e) => onChange(e)}
@@ -252,11 +254,13 @@ console.log(doctorinfo)
               <option value="male">Male</option>
               <option value="female">Female</option>
             </select>
-            <div className="bg-light">
-          <p style={{color:'red'}}>
-             {errors.gender}
-          </p>
-          </div>
+            {
+              errors?(<div className="bg-light">
+              <p style={{ color: 'red' }}>
+                {errors.gender}
+              </p>
+            </div>):""
+            }
           </div>
           <div className="col-md-4 mb-3">
             <label htmlFor="date_of_birth">تاريخ الميلاد</label>
