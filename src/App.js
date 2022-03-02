@@ -28,7 +28,7 @@ import Chatbot from './components/chatbot/Chatbot';
 import Comment from "./components/comments";
 import Recommend from "./components/recommendations";
 import chat from "./components/liveChat/chat";
-import AdminPanel from "./pages/AdminPanel";
+import Admin from "./pages/AdminPanel";
 import Edituser from "./pages/edituser";
 import adduser from "./pages/adduser";
 import DoctorList from "./pages/DoctorList";
@@ -74,7 +74,7 @@ export default function App(props) {
             <Route path={"/recommend/:id"} exact component={Recommend} />
             <Route path={"/comments"} exact component={Comment} />
             <Route path={"/chat"} exact component={chat} />
-            <Route path={"/admin/users"} exact component={AdminPanel} />
+            <Route path={"/admin/users"} exact component={Admin} />
             <Route path={"/edituser/:id"} exact component={Edituser} />
             <Route path={"/add"} exact component={adduser} />
             <Route path={"/admin/doctors"} exact component={DoctorList} />
