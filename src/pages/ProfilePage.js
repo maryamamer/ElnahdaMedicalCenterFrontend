@@ -83,10 +83,10 @@ function ProfilePage() {
                       <Link to={'/patientPortal'}>
                         <span className="row">
                           <div className="col-sm-12">
-                            <a className="btn btn-info ">سجل المريض</a>
+                            <a className="btn prof_btns">سجل المريض</a>
                             {/* <Link to={'/Editpp'}> */}
                               <Link to={`/EditPatient/${user}`}>
-                              <a className="btn btn-info "> تعديل</a>
+                              <a className="btn prof_btns"> تعديل</a>
 
                             </Link>
                           </div>

@@ -23,6 +23,17 @@
     border-radius: .25rem;
 }
 
+.prof_btns {
+    color: #14213d;
+    /* width: 100px;
+    height: 70px; */
+    text-align: center;
+    text-decoration: none;
+  }
+  
+  .prof_btns:hover {
+    background-color: rgb(236, 205, 236);
+  }
 
 
 

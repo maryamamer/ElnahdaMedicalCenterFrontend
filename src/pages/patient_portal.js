@@ -35,27 +35,27 @@ function patient_portal() {
           <ul className="navbar-nav mr-auto">
             <li className="nav-item active">
               <Link to="/patientPortal" className="nav-link current">
-                <FaHome size={25} /> الرئيسية
+                <FaHome size={35} /> الرئيسية
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/prescription" className="nav-link">
-                <FaPills size={25} /> الروشيتة
+                <FaPills size={35} /> الروشيتة
               </Link>
             </li>
             <li className="nav-item">
               <Link to="/appointments" className="nav-link">
-                <FaCalendarAlt size={25} /> المواعيد
+                <FaCalendarAlt size={35} /> المواعيد
               </Link>
             </li>
             <li className="nav-item">
               <a href="#" className="nav-link">
-                <FaFileMedical size={25} /> التقارير
+                <FaFileMedical size={35} /> التقارير
               </a>
             </li>
             <li className="nav-item">
               <a href="#" className="nav-link">
-                <FaFlask size={25} /> نتائج المعمل
+                <FaFlask size={35} /> نتائج المعمل
               </a>
             </li>
           </ul>

@@ -5,7 +5,7 @@ import New from "../media/images/New.png";
 import "../CSS/NavBar.css";
 
 import React, { Fragment, useState, useEffect } from "react";
-import { Link, Redirect, useHistory,useParams } from "react-router-dom";
+import { Link, Redirect, useHistory, useParams } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions/auth";
 import jwtDecode from "jwt-decode";
@@ -15,23 +15,20 @@ const Navbar = ({ logout, isAuthenticated }) => {
   const token = localStorage.getItem("access");
   const [issuper, setsuper] = useState(false);
   const [patients, setpatient] = useState({});
-  const[user_id,setuser_id] =useState('')
-  const params=useParams()
-  if (isAuthenticated ) {
-    var user= jwtDecode(token).user_id
-    
+  const [user_id, setuser_id] = useState("");
+  const params = useParams();
+  if (isAuthenticated) {
+    var user = jwtDecode(token).user_id;
   }
-  useEffect( () => {
-    
-      axios
+  useEffect(() => {
+    axios
       .get(`/users/${user_id}`)
       .then((res) => setpatient(res.data))
       .catch((err) => console.log(err));
-      if (patients.is_superuser === true) {
-        setsuper(true);
-      }
-      setuser_id(user)
-     
+    if (patients.is_superuser === true) {
+      setsuper(true);
+    }
+    setuser_id(user);
   }, []);
 
   const [redirect, setRedirect] = useState(false);
@@ -65,7 +62,6 @@ const Navbar = ({ logout, isAuthenticated }) => {
       </li>
     </>
   );
- 
 
   /* const user = jwtDecode(token).user_id */
   const authLinks = () => (
@@ -83,10 +79,10 @@ const Navbar = ({ logout, isAuthenticated }) => {
           الصفحة الشخصية
         </Link>
       </li>
-      {issuper ? superuserlink():''}
+      {issuper ? superuserlink() : ""}
     </>
   );
-console.log(issuper)
+  console.log(issuper);
   /* function NavBar() { */
   /* let { user, logoutuser } = useContext(Auth) */
   return (
