@@ -87,7 +87,6 @@ export default function Footer() {
           
         </div>
         
-        <hr />
 
         <div className="copyright text-center text-light">
           &copy; حقوق النشر ترجع لـ{" "}
