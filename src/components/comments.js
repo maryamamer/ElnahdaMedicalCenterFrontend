@@ -5,23 +5,19 @@ import axios from "axios";
 import jwtDecode from "jwt-decode";
 import { useParams } from "react-router";
 
-export default function Comment({ id }) {
-  const [comments, setcomments] = useState([]);
-  const [patient, setpatient] = useState([]);
-  const [filtered, setfiltered] = useState([]);
-
-  useEffect(() => {
-    axios.get("/Comments/").then((res) => {
-      setcomments(res.data.filter((cm) => cm.doctor_id == id));
-    });
-
-    get_all();
-    console.log(id);
-  }, []);
-
-  const get_all = async () => {
-    axios.get(`/users/`).then((res) => setpatient(res.data));
-  };
+export default function Comment({id}) {
+    const [comments,setcomments]=useState([])
+    const [patient,setpatient]=useState([])
+    const[filtered,setfiltered]=useState([])
+   
+    
+    useEffect(()=>{
+  axios.get('/Comments/').then((res)=>{
+    setcomments(res.data.filter((cm)=>cm.doctor_id==id))
+  })
+ console.log(comments)
+  get_all()
+  console.log(id)
 
   return (
     <>
@@ -43,5 +39,6 @@ export default function Comment({ id }) {
         })}
       </div>
     </>
-  );
-}
+);
+})}
+

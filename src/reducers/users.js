@@ -5,12 +5,15 @@ import {
    UPDATE_USER,
    REMOVE_USER,
    PARTIAL_UPDATE_USER,
-   GET_PATIENT
+   GET_PATIENT,
+   UserUpdate_Fail
 } from '../actions/types';
 
 const initialState = {
     users: [],
-    isdoctor:null
+    isdoctor:null,
+    updated:null,
+    errors:null
 };
 
 export default function user (state = initialState, action) {
@@ -24,21 +27,31 @@ export default function user (state = initialState, action) {
                 users:payload
             }
         case ADD_USER:
-            // payload.map((user)=>{
-            //     if(user.is_staff==true){
-            //         return{
-            //             ...state,
-            //             users:[...state.users,payload],
-            //             isdoctor:true
-            //         }
-            //     }
-            // })
+            console.log(payload)
+            state.users.map((user)=>{
+                if(user.is_staff==true){
+                    return{
+                        ...state,
+                        isdoctor:true
+                    }
+                }
+                return {
+                    ...state,
+                    isdoctor:false
+                }
+            })
             return {
                 ...state,
-                users:[...state.users,payload]
+                users:[...state.users,payload],
             }
-        case UPDATE_USER:
+        
+        case UserUpdate_Fail:
             console.log(payload)
+            return {
+                ...state,
+                errors: payload,
+            };
+        case UPDATE_USER:
             const updatedusers= state.users.map(user=>{
                 if(user.id===payload.id){
                     console.log('hi')
@@ -50,10 +63,10 @@ export default function user (state = initialState, action) {
                     console.log('user not found')
                     return user;
                 });
-                console.log(state.users)
             return {
                 ...state,
-               users:updatedusers
+               users:updatedusers,
+               updated:true
             }
 
         case REMOVE_USER:

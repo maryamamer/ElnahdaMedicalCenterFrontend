@@ -39,7 +39,7 @@
     border-radius: 50%;
     margin: 40px auto;
     box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
-    position: relative;
+    /* position: relative; */
     z-index: 1;
 }
 
@@ -56,14 +56,14 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, .05);
 }
 
-.my-login-page .card.fat {
+/* .my-login-page .card.fat {
     padding: 10px;
 }
 
 .my-login-page .card  {
     margin-bottom: 10px;
   
-}
+} */
 
 .my-login-page .form-control {
     border-width: 2.3px;
@@ -72,15 +72,15 @@
 .my-login-page .form-group label {
     width: 100%;
 }
-
+ 
 .my-login-page .btn.btn-block {
     padding: 12px 10px;
 }
+
 form.my-login-validation, .card-title{
-    margin-right: 700px;
-    /* margin-left: 300px; */
-   
-}
+  margin-right: 40%;
+  
+} 
 
 
 
@@ -88,6 +88,7 @@ form.my-login-validation, .card-title{
     .my-login-page .card-wrapper {
         width: 90%;
         margin: 0 auto;
+       
     }
 }
 
@@ -98,5 +99,6 @@ form.my-login-validation, .card-title{
 
     .my-login-page .card.fat .card-body {
         padding: 15px;
+    
     }
 }

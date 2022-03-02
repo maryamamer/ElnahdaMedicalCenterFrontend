@@ -9,7 +9,7 @@ import { BsBook } from "react-icons/bs";
 import axios from "axios";
 import { add_appointment, remAppointment } from "../actions/appointment";
 import { connect } from "react-redux";
-import Comment from "./comments";
+import Comment from "../components/comments";
 import jwtDecode from "jwt-decode";
 import smile from "../media/images/smile.jpg";
 
@@ -21,6 +21,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const [isadded, setisadded] = useState(false);
   const token = localStorage.getItem("access");
   const [currentdate, setcurrentdate] = useState("");
+  console.log(commvalue)
   const user = jwtDecode(token).user_id;
   const get_user = () => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
@@ -49,7 +50,6 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
     const config = {
       headers: {
         "Content-Type": "application/json",
-        Authorization: `JWT ${localStorage.getItem("access")}`,
         Accept: "application/json",
       },
     };
@@ -74,7 +74,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btns">
+        <button type="button" className="btn btn-success " style={{width:'5rem' ,padding:'10px'}}>
           احجز الآن
         </button>
       </Link>
@@ -102,6 +102,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
     setRedirect(true);
   };
   const regLinks = () => (
+    <>
     <input
       type="button"
       className="btn btn-danger"
@@ -109,6 +110,12 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       value=" الغاء الحجز"
       onClick={rem_app}
     />
+    <Link to={`/Payment/${doctor.id}`}>
+        <button type="button" className="btns">
+          ادفع الكشف
+        </button>
+      </Link>
+    </>
   );
 
   if (isadded) {

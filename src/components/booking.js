@@ -1,22 +1,24 @@
 import jwtDecode from "jwt-decode";
-import { React, useState } from "react";
+import { React, useState,useEffect } from "react";
 import { Link, useParams, Redirect } from "react-router-dom";
 import "../CSS/booking.css";
 import { add_appointment, registered } from "../actions/appointment";
 import { connect } from 'react-redux';
+import axios from "axios";
 
 
 function Booking({ registered, isregistered, add_appointment,app }) {
-
   const params = useParams()
+  const[doctorapps,setdoctorapps]=useState([])
+useEffect(()=>{
+  axios.get('/Doctorapps/').then((res)=>setdoctorapps(res.data.filter((d)=>d.doctor_id==params.id)))
+
+},[])
+ 
   const [formData, setFormData] = useState({
     date: '',
     message: ''
   });
-  //   if (isregistered) {
-  //     return <Redirect to='/dr' />
-
-  // }
 
   const { date, message } = formData;
 
@@ -44,7 +46,6 @@ function Booking({ registered, isregistered, add_appointment,app }) {
           <div className="well-header text-center">من فضلك أدخل جمبع البيانات المطلوبة</div>
           <hr />
 
-          <p>ميعاد المقابلة</p>
 
           {/* <!-- 1st Choice Input --> */}
           <form method="post" onSubmit={e => {
@@ -53,16 +54,31 @@ function Booking({ registered, isregistered, add_appointment,app }) {
 
           }}>
             <div className="form-group">
-              <label for="datepicker">الاختيار الاول</label>
-              <div className="input-group date" id="datetimepicker2">
-                <input type="date" className="form-control" id="datepicker" name="date" value={date}
-                  onChange={e => onChange(e)} />
-                <span className="input-group-addon"><span className="fa fa-calendar"></span></span>
-              </div>
+              <label for="date">المواعيد </label>
+              <select
+              className="custom-select "
+              value={date}
+              name="date"
+              onChange={(e) =>onChange(e)}
+              id="date"
+            >
+              {doctorapps.map((d,i)=>{
+                d.date=new Date().toLocaleString()
+
+                return(
+                  <option key={i} value={d.date}>{d.date}</option>
+                )
+              
+              })
+               
+                  
+               
+              }
+            </select>
             </div>
 
 
-
+            <p>رسالتك</p>
             <div className="form-group">
 
               <input className="form-control text-right" type="text" name="message" value={message}
