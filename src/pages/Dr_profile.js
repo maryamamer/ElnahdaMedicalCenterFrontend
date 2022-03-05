@@ -22,7 +22,10 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const token = localStorage.getItem("access");
   const [currentdate, setcurrentdate] = useState("");
   console.log(commvalue)
-  const user = jwtDecode(token).user_id;
+  if (token) {
+    var user = jwtDecode(token).user_id;
+  }
+
   const get_user = () => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
   };
@@ -74,7 +77,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btn btn-success " style={{width:'5rem' ,padding:'10px'}}>
+        <button type="button" className="btn btn-success " style={{ width: '5rem', padding: '10px' }}>
           احجز الآن
         </button>
       </Link>
@@ -82,12 +85,12 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       {/* <li className='nav-item'>
             <Link className='nav-link' to='/signup'>Sign Up</Link>
         </li> */}
-      <Link to={`/Payment/${doctor.id}`}>
+      {/* <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
         </button>
       </Link>
-      <br />
+      <br /> */}
 
       <Link to={`/recommend/${doctor.id}`}>
         <button type="button" className="btns">
@@ -103,14 +106,14 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   };
   const regLinks = () => (
     <>
-    <input
-      type="button"
-      className="btn btn-danger"
-      id="book-btn"
-      value=" الغاء الحجز"
-      onClick={rem_app}
-    />
-    <Link to={`/Payment/${doctor.id}`}>
+      <input
+        type="button"
+        className="btn btn-danger"
+        id="book-btn"
+        value=" الغاء الحجز"
+        onClick={rem_app}
+      />
+      <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
         </button>
@@ -216,7 +219,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
       </div>
 
       {/* <!--*************************** 4th Card - ShareWithUS ***************************--> */}
-      <div className="container mt-5 mb-5 p-3">
+      {/* <div className="container mt-5 mb-5 p-3">
         <div className="row">
           <div className="col-md-10 col-sm-12 rounded m-auto">
             <form>
@@ -266,7 +269,67 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
             <br /> <br /> <br />
           </div>
         </div>
-      </div>
+      </div> */}
+
+      {token ? (<div className="container mt-5 mb-5 p-3">
+        <div className="row">
+          <div className="col-md-10 col-sm-12 rounded m-auto">
+            <form>
+              <div className="form-group">
+                <h3 className="text-center font-weight-bold text-white">
+                  شارك بتجربتك
+                </h3>
+                <label className="text-white h5" for="message">
+                  رسالتك
+                </label>{" "}
+                <textarea
+                  name="msg"
+                  id=""
+                  msg
+                  cols="30"
+                  rows="5"
+                  value={commvalue}
+                  onChange={handlechange}
+                  className="form-control"
+                  style={{ "background-color": "white" }}
+                ></textarea>
+              </div>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  id="post"
+                  onClick={add_comment}
+                  className="btn"
+                >
+                  <b className="h4">انشر</b>
+                </button>
+              </div>
+
+              <div className="form-inline">
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="checkbx"
+                  className="mr-1"
+                />
+                <label className="text-white h6 mr-1" for="subscribe">
+                  تابعنا ليصلك أخر المستجدات
+                </label>
+              </div>
+            </form>
+            <br /> <br /> <br />
+          </div>
+        </div>
+      </div>) :
+        (
+          <div>
+            <h3 className="text-danger text-center">
+              قم بتسجيل الدخول لتستطيع المشاركة بتجربتك
+            </h3>
+          </div>
+        )
+      }
     </>
   );
 }

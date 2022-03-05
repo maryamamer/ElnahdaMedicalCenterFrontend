@@ -6,12 +6,17 @@ import { FaAccessibleIcon } from "react-icons/fa";
 import { load_user } from "./auth";
 import { ADD_USER, UPDATE_USER, GET_PATIENT, REMOVE_USER,UserUpdate_Fail } from "./types";
 import jwtDecode from "jwt-decode";
+import { CloseOutlined } from "@ant-design/icons";
 
 export const add_user = (user, username, password, email, repassword) => async (
   dispatch
 ) => {
-  console.log(email);
+ 
   const config1 = {
+    validateStatus: (status) => {
+      // handling our own errors less than 500 status
+      return status < 500;
+    },
     headers: {
       "Content-Type": "multipart/form-data",
     },
@@ -21,19 +26,26 @@ export const add_user = (user, username, password, email, repassword) => async (
       "Content-Type": "application/json",
     },
   };
+  
   const body = {
     email: email,
     username: username,
     password: password,
     re_password: repassword,
   };
-  console.log(body);
+ 
   try {
     await axios.post(`/users/`, user, config1).then((res) => {
-      dispatch({
-        type: ADD_USER,
-        payload: res.data,
-      });
+      if(res.status===400){
+        console.log(res.data)
+      }
+      else{
+        dispatch({
+          type: ADD_USER,
+          payload: res.data,
+        });
+      }
+     
     });
   } catch (err) {
     console.log(err);
