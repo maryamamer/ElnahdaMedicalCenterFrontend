@@ -345,13 +345,13 @@ form {
   background-color: #fca311;
 }
 
-.string, .b-str {
+.string .b-str {
   color: #1e386d;
 }
 
 .p-str {
   color: #1e386d;
-  font-size: 17px;
+  font-size: 20px;
 }
 
 
