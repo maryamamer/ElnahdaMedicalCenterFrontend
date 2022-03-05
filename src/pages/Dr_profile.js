@@ -21,9 +21,11 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const [isadded, setisadded] = useState(false);
   const token = localStorage.getItem("access");
   const [currentdate, setcurrentdate] = useState("");
-  if (token){
-  var user = jwtDecode(token).user_id;
+  console.log(commvalue)
+  if (token) {
+    var user = jwtDecode(token).user_id;
   }
+
   const get_user = () => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
   };
@@ -75,19 +77,21 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const notregLinks = () => (
     <Fragment>
       <Link to={`/booking/${doctor.id}`}>
-        <button type="button" className="btn btn-outline-success " style={{ width: '5rem', padding: '10px' }}>
+        <button type="button" className="btn btn-success " style={{ width: '5rem', padding: '10px' }}>
           احجز الآن
         </button>
       </Link>
+      <br />
       {/* <li className='nav-item'>
             <Link className='nav-link' to='/signup'>Sign Up</Link>
         </li> */}
-     {/*  <Link to={`/Payment/${doctor.id}`}>
-
+      {/* <Link to={`/Payment/${doctor.id}`}>
         <button type="button" className="btns">
           ادفع الكشف
         </button>
-      </Link> */}
+      </Link>
+      <br /> */}
+
       <Link to={`/recommend/${doctor.id}`}>
         <button type="button" className="btns">
           المقترحات
@@ -114,11 +118,6 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
           ادفع الكشف
         </button>
       </Link>
-      <Link to={`/recommend/${doctor.id}`}>
-        <button type="button" className="btns">
-          المقترحات
-        </button>
-      </Link>
     </>
   );
 
@@ -127,228 +126,210 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   }
   return (
     <>
-      <main role="main">
-        <div className="container main-container">
-          {/* <!--*************************** 1st Card - Profile ***************************--> */}
-
-          <div className="row first-row">
-            <div className="col-md-5 col-sm-12 div-size">
-              <div className="card " style={{ height: '500px' }}>
-                <div className="card-body doc-det">
-                  <div className="row no-gutters">
-                    <div className="col-md-2 col-sm-12 div-size">
-                      <img
-                        src={doctor.image}
-                        className="img-fluid rounded-circle"
-                        alt="لا يوجد"
-                      />
-                      <h5 className="text-center m-2">{doctor.fullname}</h5>
-
-                      <div
-                        className="d-flex justify-content-between"
-                        id="card-body-bg"
-                      >
-                        <div>
-                          <Fragment>
-                            {appointment ? regLinks() : notregLinks()}
-                          </Fragment>
-                        </div>
-
-                        <div>
-                          <Link to={`/recommend/${doctor.id}`}>
-                            <button type="button" className="btn btn-info">
-                              المقترحات
-                            </button>
-                          </Link>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="col-md-3 col-sm-12 div-size">
-                      <div className="dr-info">
-                        <h6 className="card-text text-right">
-                          تخصص: {doctor.specialization}
-                          <br />
-                          ثمن الكشف: {doctor.price}
-                          <br />
-                          الخبرة: {doctor.experience}
-                        </h6>
-                      </div>
-                    </div>
-                  </div>
-                </div>
+      {/* <!--*************************** 1st Card - Profile ***************************--> */}
+      <div className="container mt-5 mb-5 p-3">
+        <div className="row">
+          <div className="col-md-5 col-sm-12 rounded shadow m-auto">
+            {/* <div className="card " style={{height:'500px'}}> */}
+            <div className="text-right">
+              <div>
+                <img
+                  src={doctor.image}
+                  className="img-fluid rounded-circle"
+                  alt=""
+                  width="70px"
+                  height="70px"
+                />
               </div>
-
-              <b className="h5 b-str">{doctor.fullname}</b>
-
+              <b className="h6 b-str">{doctor.fullname}</b>
             </div>
+            <br />
+            {/* breeeeeeeeeeeeeeeeeeeeeeeeeeak */}
 
-            {/* <!--*************************** 2nd Card - Contact ***************************--> */}
-            <div className="col-md-7 col-sm-12 div-size">
-              <div className="d-card">
-                <div className="info">
-                  <h6>
-                    <br /> &nbsp;
-                    <i className="fas fa-phone"></i>
-                    الهاتف:
-                    {doctor.phone}
-                    <br /> &nbsp;
-                    <i className="fas fa-envelope"></i>
-                    الميل:
-                    {doctor.email}
-                    <br /> &nbsp;
-                    <i className="fas fa-graduation-cap"></i>
-                    التعليم:
-                    {doctor.education_degree}
-                    <br /> &nbsp;
-                    <i className="fas fa-award"></i>
-                    الإنجازات: حاصل على {doctor.achievements}
+            <div>
+              <p className="card-text text-center p-str">
+                تخصص: {doctor.specialization}
+                <br />
+                ثمن الكشف: {doctor.price}
+                <br />
+                الخبرة: {doctor.experience}
+              </p>
+            </div>
+            {/* breeeeeeeeeeeeeeeeeeeeeeeeeeak */}
 
-                  </h6>
-                </div>
+            {/* <div className="d-flex justify-content-around m-auto" id="card-body-bg"> */}
+            <div className="d-flex flex-column bd-highlight mb-3">
+              <div className="p-2 bd-highlight">
+                <Fragment>{appointment ? regLinks() : notregLinks()}</Fragment>
               </div>
             </div>
           </div>
 
-          {/* <!--*************************** 3rd Card - Comments ***************************--> */}
-          <div className="row">
-            <div className="col-md-6 col-sm-12">
-              <div className="card shadow-sm rounded">
-
-                <h1 className="text-center font-weight-bold string">
-                  التعليقات
-                </h1>
-                <div>
-                  <img src={smile} width="70px" alt="" height="70px" />
-                  <b className="h3">{username}</b>
-                  <br />
-                  <p className="text-muted">{currentdate}</p>
-                </div>
-                <Comment id={params.id} />
-
-
-                <div className="text-center">
-                  <a href="" className="h6">
-                    أظهر كل التعليقات
-                  </a>
-                </div>
+          {/* <!--*************************** 2nd Card - Contact ***************************--> */}
+          <div className="col-md-7 col-sm-12 m-auto">
+            <div className="d-card">
+              <div className="info">
+                <h6>
+                  <br /> &nbsp;
+                  <i className="fas fa-phone"></i>
+                  الهاتف:
+                  {doctor.phone}
+                  <br /> &nbsp;
+                  <i className="fas fa-envelope"></i>
+                  الميل:
+                  {doctor.email}
+                  <br /> &nbsp;
+                  <i className="fas fa-graduation-cap"></i>
+                  التعليم:
+                  {doctor.education_degree}
+                  <br /> &nbsp;
+                  <i className="fas fa-award"></i>
+                  الإنجازات: حاصل على {doctor.achievements}
+                </h6>
               </div>
             </div>
           </div>
-          <br /> <br />
-
-          {/* <!--*************************** 4th Card - ShareWithUS ***************************--> */}
-          {token ? (  <div className="row">
-            <div className="col-md-12 col-sm-12">
-              <form>
-                <div className="form-group">
-                  <h3 className="text-center font-weight-bold text-white">
-                    شارك بتجربتك
-                  </h3>
-                  <label className="text-white h5" for="message">
-                    رسالتك
-                  </label>{" "}
-                
-                  <textarea
-                    name="msg"
-                    id=""
-                    msg
-                    cols="30"
-                    rows="5"
-                    value={commvalue}
-                    onChange={(e) => handlechange(e)}
-                    className="form-control"
-                    style={{ "background-color": "white" }}
-                  ></textarea>
-                </div>
-
-                <div className="form-group">
-                  <button
-                    type="button"
-                    id="post"
-                    onClick={add_comment}
-                    className="btn btn-lg share-btn"
-                  >
-                    <b className="h4">انشر</b>
-                  </button>
-                </div>
-
-                <div className="form-inline">
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="checkbx"
-                    className="mr-1"
-                  />
-                  <label className="text-white h6 mr-1" for="subscribe">
-                    تابعنا ليصلك أخر المستجدات
-                  </label>
-                </div>
-              </form>
-              <br /> <br /> <br />
-            </div>
-          </div>):(
-          <div className="mx-auto">
-            <h3 className="text-danger ">
-قم بتسجيل الدخول لتستطيع المشاركة بتجربتك
-            </h3>
-            </div>
-            
-            
-            )}
-          {/* <div className="row">
-            <div className="col-md-12 col-sm-12">
-              <form>
-                <div className="form-group">
-                  <h3 className="text-center font-weight-bold text-white">
-                    شارك بتجربتك
-                  </h3>
-                  <label className="text-white h5" for="message">
-                    رسالتك
-                  </label>{" "}
-                
-                  <textarea
-                    name="msg"
-                    id=""
-                    msg
-                    cols="30"
-                    rows="5"
-                    value={commvalue}
-                    onChange={(e) => handlechange(e)}
-                    className="form-control"
-                    style={{ "background-color": "white" }}
-                  ></textarea>
-                </div>
-
-                <div className="form-group">
-                  <button
-                    type="button"
-                    id="post"
-                    onClick={add_comment}
-                    className="btn btn-lg share-btn"
-                  >
-                    <b className="h4">انشر</b>
-                  </button>
-                </div>
-
-                <div className="form-inline">
-                  <input
-                    type="checkbox"
-                    name="check"
-                    id="checkbx"
-                    className="mr-1"
-                  />
-                  <label className="text-white h6 mr-1" for="subscribe">
-                    تابعنا ليصلك أخر المستجدات
-                  </label>
-                </div>
-              </form>
-              <br /> <br /> <br />
-            </div>
-          </div> */}
         </div>
-      </main>
+      </div>
+      {/* <!--*************************** 3rd Card - Comments ***************************--> */}
+      <div className="container mt-5 mb-5 p-3">
+        <div className="row">
+          <div className="col-md-7 col-sm-12 rounded shadow m-auto">
+            <h1 className="text-center font-weight-bold string">التعليقات</h1>
 
-      {/* =========================================================================================== */}
+            <div className="text-right">
+              <img src={smile} width="70px" alt="" height="70px" />
+              <b className="h3">{username}</b>
+              <br />
+              <p className="text-muted">{currentdate}</p>
+            </div>
+
+            <div className="d-flex flex-div">
+              <Comment id={params.id} />
+            </div>
+            <br />
+
+            <div className="text-center">
+              <a href="#" className="h6">
+                أظهر كل التعليقات
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* <!--*************************** 4th Card - ShareWithUS ***************************--> */}
+      {/* <div className="container mt-5 mb-5 p-3">
+        <div className="row">
+          <div className="col-md-10 col-sm-12 rounded m-auto">
+            <form>
+              <div className="form-group">
+                <h3 className="text-center font-weight-bold text-white">
+                  شارك بتجربتك
+                </h3>
+                <label className="text-white h5" for="message">
+                  رسالتك
+                </label>{" "}
+                <textarea
+                  name="msg"
+                  id=""
+                  msg
+                  cols="30"
+                  rows="5"
+                  value={commvalue}
+                  onChange={handlechange}
+                  className="form-control"
+                  style={{ "background-color": "white" }}
+                ></textarea>
+              </div>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  id="post"
+                  onClick={add_comment}
+                  className="btn"
+                >
+                  <b className="h4">انشر</b>
+                </button>
+              </div>
+
+              <div className="form-inline">
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="checkbx"
+                  className="mr-1"
+                />
+                <label className="text-white h6 mr-1" for="subscribe">
+                  تابعنا ليصلك أخر المستجدات
+                </label>
+              </div>
+            </form>
+            <br /> <br /> <br />
+          </div>
+        </div>
+      </div> */}
+
+      {token ? (<div className="container mt-5 mb-5 p-3">
+        <div className="row">
+          <div className="col-md-10 col-sm-12 rounded m-auto">
+            <form>
+              <div className="form-group">
+                <h3 className="text-center font-weight-bold text-white">
+                  شارك بتجربتك
+                </h3>
+                <label className="text-white h5" for="message">
+                  رسالتك
+                </label>{" "}
+                <textarea
+                  name="msg"
+                  id=""
+                  msg
+                  cols="30"
+                  rows="5"
+                  value={commvalue}
+                  onChange={handlechange}
+                  className="form-control"
+                  style={{ "background-color": "white" }}
+                ></textarea>
+              </div>
+
+              <div className="text-center">
+                <button
+                  type="button"
+                  id="post"
+                  onClick={add_comment}
+                  className="btn"
+                >
+                  <b className="h4">انشر</b>
+                </button>
+              </div>
+
+              <div className="form-inline">
+                <input
+                  type="checkbox"
+                  name="check"
+                  id="checkbx"
+                  className="mr-1"
+                />
+                <label className="text-white h6 mr-1" for="subscribe">
+                  تابعنا ليصلك أخر المستجدات
+                </label>
+              </div>
+            </form>
+            <br /> <br /> <br />
+          </div>
+        </div>
+      </div>) :
+        (
+          <div>
+            <h3 className="text-danger text-center">
+              قم بتسجيل الدخول لتستطيع المشاركة بتجربتك
+            </h3>
+          </div>
+        )
+      }
     </>
   );
 }
