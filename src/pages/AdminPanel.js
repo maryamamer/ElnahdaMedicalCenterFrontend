@@ -18,7 +18,7 @@ export default function AdminPanel() {
     }, [])
     const removeuser = (id) => {
         dispatch(deleteuser(id))
-        window.location.reload(true)
+      
     }
     return (
         <>
@@ -56,7 +56,7 @@ export default function AdminPanel() {
                             <tbody>
                                 {user.map((u) => {
                                     return (
-                                        <tr>
+                                        <tr key={u.id}>
                                             <td>
                                                 <span className="custom-checkbox">
                                                     <input type="checkbox" id="checkbox1" name="options[]" value="1" />
@@ -70,7 +70,7 @@ export default function AdminPanel() {
                                                 <td>{u.phone}</td>
                                                 <td>
                                                     <Link to={`/edituser/${u.id}`} className="edit" data-toggle="modal"><i className="material-icons" data-toggle="tooltip" title="Edit">&#xE254;</i></Link>
-                                                    <Link to="#deleteEmployeeModal" className="delete" data-toggle="modal" onClick={()=>{removeuser(u.id)}}><i className="material-icons" data-toggle="tooltip" title="Delete">&#xE872;</i></Link>
+                                                    <Link to="/admin/users" className="delete" data-toggle="modal" onClick={()=>{removeuser(u.id)}} ><i className="material-icons"  data-toggle="tooltip" title="Delete">&#xE872;</i></Link>
                                                 </td>
                                             </tr>
                                             )
