@@ -21,8 +21,9 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
   const [isadded, setisadded] = useState(false);
   const token = localStorage.getItem("access");
   const [currentdate, setcurrentdate] = useState("");
-  console.log(commvalue)
-  const user = jwtDecode(token).user_id;
+  if (token){
+  var user = jwtDecode(token).user_id;
+  }
   const get_user = () => {
     axios.get(`/users/${user}`).then((res) => setpatient(res.data));
   };
@@ -236,7 +237,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
           <br /> <br />
 
           {/* <!--*************************** 4th Card - ShareWithUS ***************************--> */}
-          <div className="row">
+          {token ? (  <div className="row">
             <div className="col-md-12 col-sm-12">
               <form>
                 <div className="form-group">
@@ -246,6 +247,7 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
                   <label className="text-white h5" for="message">
                     رسالتك
                   </label>{" "}
+                
                   <textarea
                     name="msg"
                     id=""
@@ -284,7 +286,65 @@ function Dr_Profile({ isregistered, remAppointment }, props) {
               </form>
               <br /> <br /> <br />
             </div>
-          </div>
+          </div>):(
+          <div className="mx-auto">
+            <h3 className="text-danger ">
+قم بتسجيل الدخول لتستطيع المشاركة بتجربتك
+            </h3>
+            </div>
+            
+            
+            )}
+          {/* <div className="row">
+            <div className="col-md-12 col-sm-12">
+              <form>
+                <div className="form-group">
+                  <h3 className="text-center font-weight-bold text-white">
+                    شارك بتجربتك
+                  </h3>
+                  <label className="text-white h5" for="message">
+                    رسالتك
+                  </label>{" "}
+                
+                  <textarea
+                    name="msg"
+                    id=""
+                    msg
+                    cols="30"
+                    rows="5"
+                    value={commvalue}
+                    onChange={(e) => handlechange(e)}
+                    className="form-control"
+                    style={{ "background-color": "white" }}
+                  ></textarea>
+                </div>
+
+                <div className="form-group">
+                  <button
+                    type="button"
+                    id="post"
+                    onClick={add_comment}
+                    className="btn btn-lg share-btn"
+                  >
+                    <b className="h4">انشر</b>
+                  </button>
+                </div>
+
+                <div className="form-inline">
+                  <input
+                    type="checkbox"
+                    name="check"
+                    id="checkbx"
+                    className="mr-1"
+                  />
+                  <label className="text-white h6 mr-1" for="subscribe">
+                    تابعنا ليصلك أخر المستجدات
+                  </label>
+                </div>
+              </form>
+              <br /> <br /> <br />
+            </div>
+          </div> */}
         </div>
       </main>
 
