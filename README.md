@@ -1,3 +1,14 @@
+# React based Hospital system app 
+
+Bokking system with features :
+- Viewing doctors registered on the system
+- payment system
+- booking for the selected doctor
+- adding comments for the doctor if you are registered user
+- admin can do crud operations on patients and doctors
+- chatting system using react 
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
